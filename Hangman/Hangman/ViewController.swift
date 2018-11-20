@@ -10,11 +10,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  override func viewDidLoad() {
+    @IBOutlet weak var wordTF: UITextField!
+    @IBOutlet weak var guessTF: UITextField!
+    @IBOutlet weak var wordDisplay: UILabel!
+    
+    override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    wordTF.delegate = self
+    guessTF.delegate = self
   }
-
-
 }
 
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(textField.text ?? "")
+        return true
+    }
+    
+}
