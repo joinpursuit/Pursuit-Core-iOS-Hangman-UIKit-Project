@@ -26,19 +26,18 @@ class ViewController: UIViewController {
 
     private func displayLines(_ userWord: String) {
         var displayStr: String = ""
-        for _ in displayStr {
+        for _ in userWord {
             displayStr += "_ "
         }
-        message.text = displayStr
+        wordDisplay.text = displayStr
     }
-    
-    
 }
-
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        theWord = textField.text!
+        displayLines(theWord)
         return true
     }
     
@@ -47,7 +46,6 @@ extension ViewController: UITextFieldDelegate {
         let characterSetAllowed = CharacterSet.letters
         if textField == wordTF {
             if let _ = string.rangeOfCharacter(from: characterSetAllowed, options: .caseInsensitive) {
-                theWord = textField.text!
                 return true
             } else {
                 return false
