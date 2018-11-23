@@ -17,23 +17,23 @@ class ViewController: UIViewController {
     @IBOutlet var wrong: UILabel!
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var mainScreen: UIView!
+    @IBOutlet weak var mainScreenText: UILabel!
+    @IBOutlet weak var winnerScreen: UILabel!
     
-
-  override func viewDidLoad() {
+  
+    override func viewDidLoad() {
     super.viewDidLoad()
     userInputText.delegate = self
     user2InputText.delegate = self
-    correct.text = "Correct: "
-    wrong.text = "Wrong: "
-    restartButton.isHidden = true
-    chosenWord.text = ""
-    label.text = ""
+    restartGame()
+    
   }
     private func restartGame() {
         correct.text = "Correct: "
         wrong.text = "Wrong: "
         chosenWord.text = ""
-        userInputText.isUserInteractionEnabled = true
+        userInputText.isHidden = false
         userInputText.text = ""
         HangmanBrain.allowedStrikes = 0
         HangmanBrain.correct = 0
@@ -41,6 +41,9 @@ class ViewController: UIViewController {
         HangmanBrain.alreadyChosen = [String]()
         Image.image = UIImage (named: "Default Image")
         restartButton.isHidden = true
+        winnerScreen.isHidden = true
+        mainScreenText.text = "Choose a word"
+        label.text = ""
     }
     
     
@@ -57,37 +60,38 @@ extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        let captureWord = userInputText.text!
-        let captureWord2 = user2InputText.text!
-        var replacedString = String()
+        HangmanBrain.userWordInput = userInputText.text!.lowercased()
+        HangmanBrain.userWordGuess = user2InputText.text!.lowercased()
+//        var replacedString = String()
         var word = String()
         
         
-        for _ in 0..<captureWord.count {
+        for _ in 0..<HangmanBrain.userWordInput.count {
             word += " _ "
         }
         chosenWord.text = word
-        userInputText.isUserInteractionEnabled = false
+        userInputText.isHidden = true
+        mainScreen.isHidden = true
         
         if textField == user2InputText {
             
-            if !HangmanBrain.alreadyChosen.contains(captureWord2){
+            if !HangmanBrain.alreadyChosen.contains(HangmanBrain.userWordGuess){
             
-            if captureWord.contains(captureWord2){
+            if HangmanBrain.userWordInput.contains(HangmanBrain.userWordGuess){
                 label.text = "Correct!"
-                let captureChar = Character(captureWord2)
-                for character in captureWord {
+                let captureChar = Character(HangmanBrain.userWordGuess)
+                for character in HangmanBrain.userWordInput {
                     switch character {
                     case captureChar:
                         HangmanBrain.correct += 1
-                        HangmanBrain.rightLetter.append(captureWord2)
-                        HangmanBrain.alreadyChosen.append(captureWord2)
+                        HangmanBrain.rightLetter.append(HangmanBrain.userWordGuess)
+                        HangmanBrain.alreadyChosen.append(HangmanBrain.userWordGuess)
                     default:
                         continue
                     }
                 }
             } else {
-                HangmanBrain.alreadyChosen.append(captureWord2)
+                HangmanBrain.alreadyChosen.append(HangmanBrain.userWordGuess)
                 label.text = "Incorrect"
                 HangmanBrain.allowedStrikes += 1
         }
@@ -126,30 +130,39 @@ extension ViewController: UITextFieldDelegate {
             }
             
             
-            for letter in captureWord {
-                if HangmanBrain.rightLetter.contains(letter) {
-                    replacedString += String(letter)
-                } else {
-                    replacedString += "_"
-                }
-                replacedString += " "
-            }
-            chosenWord.text = replacedString
+//            for letter in HangmanBrain.userWordInput {
+//                if HangmanBrain.rightLetter.contains(letter) {
+//                    replacedString += String(letter)
+//                } else {
+//                    replacedString += "_"
+//                }
+//                replacedString += " "
+//            }
+            chosenWord.text =  HangmanBrain.transformWord(word: HangmanBrain.userWordInput)
         }
         
         correct.text = "Correct: \(HangmanBrain.correct)"
         wrong.text = "Wrong: \(HangmanBrain.allowedStrikes)"
         
-        if HangmanBrain.correct == captureWord.count {
-            chosenWord.text = "\(captureWord)"
+        if HangmanBrain.correct == HangmanBrain.userWordInput.count {
+            chosenWord.text = "\(HangmanBrain.userWordInput)"
             restartButton.isHidden = false
-            label.text = "Won!"
+            mainScreen.isHidden = false
+            winnerScreen.isHidden = false
+            mainScreenText.text = "The Correct Word Is: \(HangmanBrain.userWordInput)"
+            winnerScreen.text = "Won!"
+//            wrong.text = ""
+
             
         }
         if HangmanBrain.allowedStrikes == 7 {
-           chosenWord.text = "\(captureWord)"
+           chosenWord.text = "\(HangmanBrain.userWordInput)"
             restartButton.isHidden = false
-            label.text = "Lost!"
+            mainScreen.isHidden = false
+            winnerScreen.isHidden = false
+            mainScreenText.text = "The Correct Word Is: \(HangmanBrain.userWordInput)"
+            winnerScreen.text = "Lost!"
+//            wrong.text = ""
         }
         return true
     }
@@ -162,8 +175,13 @@ extension ViewController: UITextFieldDelegate {
         } else  if user2InputText.text!.count < 1{
             boolToReturn = true
         }
+        let allowCharacters = CharacterSet.letters
+        let characterSet = CharacterSet(charactersIn: string)
+        boolToReturn = allowCharacters.isSuperset(of: characterSet)
         return boolToReturn
+        
     }
+    
     
 }
 
