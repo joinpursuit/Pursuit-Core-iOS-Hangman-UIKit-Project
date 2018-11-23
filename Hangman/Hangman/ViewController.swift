@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var Image: UIImageView!
     @IBOutlet weak var correct: UILabel!
     @IBOutlet var wrong: UILabel!
+    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var label: UILabel!
     
 
   override func viewDidLoad() {
@@ -22,10 +24,34 @@ class ViewController: UIViewController {
     userInputText.delegate = self
     user2InputText.delegate = self
     correct.text = "Correct: "
-    wrong.text = "Wrong"
+    wrong.text = "Wrong: "
+    restartButton.isHidden = true
+    chosenWord.text = ""
+    label.text = ""
   }
-
-
+    private func restartGame() {
+        correct.text = "Correct: "
+        wrong.text = "Wrong: "
+        chosenWord.text = ""
+        userInputText.isUserInteractionEnabled = true
+        userInputText.text = ""
+        HangmanBrain.allowedStrikes = 0
+        HangmanBrain.correct = 0
+        HangmanBrain.rightLetter = String()
+        HangmanBrain.alreadyChosen = [String]()
+        Image.image = UIImage (named: "Default Image")
+        restartButton.isHidden = true
+    }
+    
+    
+    @IBAction func restartGame(_ sender: UIButton) {
+        restartGame()
+    }
+    
+    
+    
+    
+    
 }
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -35,6 +61,8 @@ extension ViewController: UITextFieldDelegate {
         let captureWord2 = user2InputText.text!
         var replacedString = String()
         var word = String()
+        
+        
         for _ in 0..<captureWord.count {
             word += " _ "
         }
@@ -42,7 +70,11 @@ extension ViewController: UITextFieldDelegate {
         userInputText.isUserInteractionEnabled = false
         
         if textField == user2InputText {
+            
+            if !HangmanBrain.alreadyChosen.contains(captureWord2){
+            
             if captureWord.contains(captureWord2){
+                label.text = "Correct!"
                 let captureChar = Character(captureWord2)
                 for character in captureWord {
                     switch character {
@@ -50,45 +82,22 @@ extension ViewController: UITextFieldDelegate {
                         HangmanBrain.correct += 1
                         HangmanBrain.rightLetter.append(captureWord2)
                         HangmanBrain.alreadyChosen.append(captureWord2)
-                        
-                        for letter in captureWord {
-                            if HangmanBrain.rightLetter.contains(letter) {
-                                replacedString += String(letter)
-                            } else {
-                                replacedString += "_"
-                            }
-                            replacedString += " "
-                        }
-                        chosenWord.text = replacedString
                     default:
                         continue
                     }
                 }
             } else {
                 HangmanBrain.alreadyChosen.append(captureWord2)
+                label.text = "Incorrect"
                 HangmanBrain.allowedStrikes += 1
-                for letter in captureWord {
-                    if HangmanBrain.rightLetter.contains(letter) {
-                        replacedString += String(letter)
-                    } else {
-                        replacedString += "_"
-                    }
-                    replacedString += " "
-                }
-                chosenWord.text = replacedString
-
-                
-
         }
-
+            } else {
+                label.text = "Letter already Chosen"
+                textField.text = ""
+            }
+            
         textField.text = ""
-            if HangmanBrain.correct == captureWord.count {
-                chosenWord.text = "WON!"
-                
-            }
-            if HangmanBrain.allowedStrikes == 7 {
-                chosenWord.text = "LOST"
-            }
+            
             switch HangmanBrain.allowedStrikes {
             case 1:
                 Image.image = UIImage(named: "hang1")
@@ -115,12 +124,46 @@ extension ViewController: UITextFieldDelegate {
                 print("nothing")
                 
             }
+            
+            
+            for letter in captureWord {
+                if HangmanBrain.rightLetter.contains(letter) {
+                    replacedString += String(letter)
+                } else {
+                    replacedString += "_"
+                }
+                replacedString += " "
+            }
+            chosenWord.text = replacedString
         }
+        
         correct.text = "Correct: \(HangmanBrain.correct)"
         wrong.text = "Wrong: \(HangmanBrain.allowedStrikes)"
+        
+        if HangmanBrain.correct == captureWord.count {
+            chosenWord.text = "\(captureWord)"
+            restartButton.isHidden = false
+            label.text = "Won!"
+            
+        }
+        if HangmanBrain.allowedStrikes == 7 {
+           chosenWord.text = "\(captureWord)"
+            restartButton.isHidden = false
+            label.text = "Lost!"
+        }
         return true
     }
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        var boolToReturn = Bool()
+        print(HangmanBrain.alreadyChosen)
+        if user2InputText.text!.count > 1 {
+            boolToReturn = false
+        } else  if user2InputText.text!.count < 1{
+            boolToReturn = true
+        }
+        return boolToReturn
+    }
     
 }
 

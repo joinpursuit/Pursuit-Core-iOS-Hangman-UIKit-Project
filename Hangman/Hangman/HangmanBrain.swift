@@ -9,8 +9,8 @@
 import Foundation
 
 class HangmanBrain {
-    static var userWord = String()
-    static var userGuess =  String()
+    static var userWordInput = String()
+    static var userWordGuess = String()
     static var correct = 0
     static var rightLetter = String()
     static var alreadyChosen = [String]()
