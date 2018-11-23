@@ -62,7 +62,6 @@ extension ViewController: UITextFieldDelegate {
         
         HangmanBrain.userWordInput = userInputText.text!.lowercased()
         HangmanBrain.userWordGuess = user2InputText.text!.lowercased()
-//        var replacedString = String()
         var word = String()
         
         
@@ -76,25 +75,12 @@ extension ViewController: UITextFieldDelegate {
         if textField == user2InputText {
             
             if !HangmanBrain.alreadyChosen.contains(HangmanBrain.userWordGuess){
-            
-            if HangmanBrain.userWordInput.contains(HangmanBrain.userWordGuess){
-                label.text = "Correct!"
-                let captureChar = Character(HangmanBrain.userWordGuess)
-                for character in HangmanBrain.userWordInput {
-                    switch character {
-                    case captureChar:
-                        HangmanBrain.correct += 1
-                        HangmanBrain.rightLetter.append(HangmanBrain.userWordGuess)
-                        HangmanBrain.alreadyChosen.append(HangmanBrain.userWordGuess)
-                    default:
-                        continue
-                    }
+                if HangmanBrain.mainLogic() == true {
+                    label.text = "Correct!"
+                } else {
+                    label.text = "Incorrect!"
                 }
-            } else {
-                HangmanBrain.alreadyChosen.append(HangmanBrain.userWordGuess)
-                label.text = "Incorrect"
-                HangmanBrain.allowedStrikes += 1
-        }
+
             } else {
                 label.text = "Letter already Chosen"
                 textField.text = ""
@@ -129,15 +115,6 @@ extension ViewController: UITextFieldDelegate {
                 
             }
             
-            
-//            for letter in HangmanBrain.userWordInput {
-//                if HangmanBrain.rightLetter.contains(letter) {
-//                    replacedString += String(letter)
-//                } else {
-//                    replacedString += "_"
-//                }
-//                replacedString += " "
-//            }
             chosenWord.text =  HangmanBrain.transformWord(word: HangmanBrain.userWordInput)
         }
         
@@ -151,7 +128,6 @@ extension ViewController: UITextFieldDelegate {
             winnerScreen.isHidden = false
             mainScreenText.text = "The Correct Word Is: \(HangmanBrain.userWordInput)"
             winnerScreen.text = "Won!"
-//            wrong.text = ""
 
             
         }
@@ -162,23 +138,25 @@ extension ViewController: UITextFieldDelegate {
             winnerScreen.isHidden = false
             mainScreenText.text = "The Correct Word Is: \(HangmanBrain.userWordInput)"
             winnerScreen.text = "Lost!"
-//            wrong.text = ""
+
         }
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+//
         var boolToReturn = Bool()
-        print(HangmanBrain.alreadyChosen)
+
         if user2InputText.text!.count > 1 {
             boolToReturn = false
         } else  if user2InputText.text!.count < 1{
             boolToReturn = true
         }
+
+        
         let allowCharacters = CharacterSet.letters
         let characterSet = CharacterSet(charactersIn: string)
-        boolToReturn = allowCharacters.isSuperset(of: characterSet)
-        return boolToReturn
+        
+        return allowCharacters.isSuperset(of: characterSet) && boolToReturn
         
     }
     

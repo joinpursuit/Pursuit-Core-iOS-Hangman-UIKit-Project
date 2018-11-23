@@ -30,5 +30,28 @@ class HangmanBrain {
         }
     return replacedString
     }
+    
+    static func mainLogic () -> Bool {
+        var boolToReturn = Bool ()
+        if HangmanBrain.userWordInput.contains(HangmanBrain.userWordGuess){
+            boolToReturn = true
+            let captureChar = Character(HangmanBrain.userWordGuess)
+            for character in HangmanBrain.userWordInput {
+                switch character {
+                case captureChar:
+                    HangmanBrain.correct += 1
+                    HangmanBrain.rightLetter.append(HangmanBrain.userWordGuess)
+                    HangmanBrain.alreadyChosen.append(HangmanBrain.userWordGuess)
+                default:
+                    continue
+                }
+            }
+        } else {
+            HangmanBrain.alreadyChosen.append(HangmanBrain.userWordGuess)
+            HangmanBrain.allowedStrikes += 1
+            boolToReturn = false
+        }
+       return boolToReturn
+    }
 }
 
