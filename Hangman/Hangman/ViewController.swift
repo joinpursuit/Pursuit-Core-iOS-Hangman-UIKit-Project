@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var hangImage: UIImageView!
     @IBOutlet weak var rightGuess: UILabel!
     @IBOutlet weak var wrongGuess: UILabel!
+    private var strikeCounter = 0
     override func viewDidLoad() {
     super.viewDidLoad()
     wordTF.delegate = self
@@ -36,16 +37,25 @@ extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == wordTF {
-        Brain.theWord = textField.text!
-        wordDisplay.text = Brain.displayUnderscores(from: Brain.theWord)
+        Brain.theWord = textField.text!.lowercased()
+        wordDisplay.text = Brain.displayUnderscores()
         guessTF.isEnabled = true
         return true
         }
         
         if textField == guessTF {
-        Brain.guessLetter = textField.text!
-        wordDisplay.text = Brain.checkForLetter(is: Brain.guessLetter, in: Brain.theWord)
-       // return true
+        Brain.guessLetter = textField.text!.lowercased()
+        if Brain.checkLetter() {
+            message.text = "Correct guess"
+            rightGuess.text = "Right Guess: \(String(Brain.rightChoice.flatMap{String($0)}))"
+            wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
+        } else {
+            message.text = "Wrong Guess"
+            wrongGuess.text = "Wrong Guess: \(String(Brain.wrongChoice.flatMap{String($0)}))"
+            wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
+            strikeCounter += 1
+            print(strikeCounter)
+        }
     }
         return true
     }

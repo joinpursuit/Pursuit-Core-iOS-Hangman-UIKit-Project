@@ -10,64 +10,45 @@ import UIKit
 
 class Brain {
     static var theWord: String = ""
-    var array: [Character] {
-        return Array(Brain.theWord)
-    }
-    
+    static var theWordArr: [Character] {
+        return Array(Brain.theWord)}
+    static var displayWord: [String] = []
     static var guessLetter: String = ""
     static var rightChoice: [String] = []
     static var wrongChoice: [String] = []
     
-    static func displayUnderscores(from theWord: String) -> String {
-        var displayStr: String = ""
+    static func displayUnderscores() -> String {
         for _ in theWord {
-            displayStr += "_ "
+            displayWord.append("_ ")
         }
-       return displayStr
+       return String(displayWord.flatMap{String($0)})
     }
     
-    static func checkForLetter(is guessLetter: String, in theWord: String) -> String {
-        var displayStr: String = ""
-        if theWord.contains(guessLetter) && !rightChoice.contains(guessLetter) {
+    static func checkLetter() -> Bool {
+        if theWord.contains(guessLetter) {
+            if !rightChoice.contains(guessLetter) {
             rightChoice.append(guessLetter)
-            displayStr = ""
-            for letter in theWord {
+            for (index, letter) in theWordArr.enumerated() {
                 for guessLetter in rightChoice {
                     if String(letter) == guessLetter {
-                        displayStr += "\(guessLetter) "
-                    } else {
-                        displayStr += "_ "
+                        displayWord[index] = "\(String(letter)) "
                     }
                 }
             }
-            print(guessLetter)
-            print(rightChoice)
-        } else {//need an else-if the rightChoice already contains the letter
-            for letter in theWord {
-                for guessLetter in rightChoice {
-                    if String(letter) == guessLetter {
-                        displayStr += "\(guessLetter) "
-                    } else {
-                        displayStr += "_ "
-                    }
-                }
             }
-            print(guessLetter)
-            print(rightChoice)
+     //       print("right: \(rightChoice)")
+            return true
+        } else {
+            if !wrongChoice.contains(guessLetter) {
+            wrongChoice.append(guessLetter)
+            }
+     //       print("wrong: \(wrongChoice)")
+            return false
         }
-        return displayStr
     }
     
-    static func updateDisplay(replace guessLetter: String, in theWord: String) -> String {
-        var displayStr: String = ""
-        for letter in theWord {
-            if String(letter) == guessLetter {
-                displayStr += "\(guessLetter) "
-            } else {
-                displayStr += "_ "
-            }
-        }
-        return displayStr
+    static func checkForWin() {
+        print("hello")
     }
     
 }
