@@ -15,29 +15,42 @@ class ViewController: UIViewController {
     @IBOutlet weak var wordDisplay: UILabel!
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var hangImage: UIImageView!
-    
-    private var theWord: String = ""
-    
+    @IBOutlet weak var rightGuess: UILabel!
+    @IBOutlet weak var wrongGuess: UILabel!
     override func viewDidLoad() {
     super.viewDidLoad()
     wordTF.delegate = self
     guessTF.delegate = self
+    guessTF.isEnabled = false
   }
-
-    private func displayLines(_ userWord: String) {
-        var displayStr: String = ""
-        for _ in userWord {
-            displayStr += "_ "
+    func updateMessage(update label: UILabel, with arr: [String]) {
+        var str = ""
+        for letter in arr {
+            str.append(letter)
         }
-        wordDisplay.text = displayStr
+        label.text = str
     }
 }
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        theWord = textField.text!
-        displayLines(theWord)
+        if textField == wordTF {
+        Brain.theWord = textField.text!
+        wordDisplay.text = Brain.displayUnderscores(from: Brain.theWord)
+        guessTF.isEnabled = true
+        return true
+        }
+        
+        if textField == guessTF {
+        Brain.guessLetter = textField.text!
+        wordDisplay.text = Brain.checkForLetter(is: Brain.guessLetter, in: Brain.theWord)
+       // return true
+    }
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
     
@@ -57,8 +70,9 @@ extension ViewController: UITextFieldDelegate {
         let lengthToReplace = range.length
         let newLength = startingLength + lengthToAdd - lengthToReplace
         return newLength <= characterCountLimit
-            
     }
         return true
     }
+    
+    
 }
