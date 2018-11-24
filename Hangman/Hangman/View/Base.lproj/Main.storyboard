@@ -17,75 +17,137 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oQ-Yc-r5j">
-                                <rect key="frame" x="221.5" y="451.5" width="120" height="120"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="xNp-lR-Xe9">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMK-cd-UX1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <color key="backgroundColor" red="0.2204844587" green="0.2194193163" blue="0.22154960100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gB4-ct-Icc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="23"/>
+                                        <state key="normal" title="Choose Number Of Players">
+                                            <color key="titleColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseNumberOfPlayers:" destination="uQP-qZ-b5c" eventType="touchUpInside" id="Td9-vM-k1E"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-DA-D1L">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <color key="backgroundColor" red="0.3142376046" green="0.3127195485" blue="0.31575566059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="fRS-5y-CCu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                        <state key="normal" title="Two Players">
+                                            <color key="titleColor" red="0.7392118822" green="0.98539999680000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playerSelected:" destination="uQP-qZ-b5c" eventType="touchUpInside" id="HGM-4h-lqb"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oQ-Yc-r5j">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                        <color key="backgroundColor" red="0.3142376046" green="0.3127195485" blue="0.31575566059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0JF-lc-Fmm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                        <state key="normal" title="Single Player">
+                                            <color key="titleColor" red="0.95366614810000006" green="1" blue="0.58888541719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playerSelected:" destination="uQP-qZ-b5c" eventType="touchUpInside" id="Eng-wy-WI7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="hen-XK-j4C"/>
-                                    <constraint firstAttribute="width" constant="120" id="xOJ-Oe-cmm"/>
+                                    <constraint firstItem="4oQ-Yc-r5j" firstAttribute="leading" secondItem="xNp-lR-Xe9" secondAttribute="leading" id="BjG-bs-xFc"/>
+                                    <constraint firstAttribute="trailing" secondItem="4oQ-Yc-r5j" secondAttribute="trailing" id="SdV-Ae-7I1"/>
+                                    <constraint firstItem="nMK-cd-UX1" firstAttribute="leading" secondItem="xNp-lR-Xe9" secondAttribute="leading" id="bNE-fV-aoL"/>
+                                    <constraint firstAttribute="trailing" secondItem="4ZP-DA-D1L" secondAttribute="trailing" id="jGI-y1-LAf"/>
+                                    <constraint firstAttribute="trailing" secondItem="nMK-cd-UX1" secondAttribute="trailing" id="lE1-OO-1mj"/>
+                                    <constraint firstItem="4ZP-DA-D1L" firstAttribute="leading" secondItem="xNp-lR-Xe9" secondAttribute="leading" id="raR-hJ-Kbq"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="hang7"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="drawing" id="k4D-xe-ZFo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hot-qS-H0Y">
-                                <rect key="frame" x="221.5" y="196" width="120" height="120"/>
+                            </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl4-Rx-zzr">
+                                <rect key="frame" x="0.0" y="204.5" width="375" height="29.5"/>
+                                <color key="backgroundColor" red="0.2204844587" green="0.2194193163" blue="0.22154960100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hot-qS-H0Y">
+                                <rect key="frame" x="221.5" y="250.5" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Anp-4l-66N"/>
+                                    <constraint firstAttribute="width" constant="120" id="o3M-Zn-4KQ"/>
+                                </constraints>
                                 <state key="normal" title="Single Player" image="hang7"/>
                                 <connections>
-                                    <segue destination="h0b-Ya-ugg" kind="show" identifier="drawing" id="jiw-MV-ClY"/>
+                                    <segue destination="h0b-Ya-ugg" kind="show" identifier="drawing" id="C7R-tn-uGk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgS-NE-I4G">
-                                <rect key="frame" x="34" y="196" width="120" height="120"/>
-                                <state key="normal" title="Button" image="hang7b"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vC8-9z-ksB">
+                                <rect key="frame" x="221.5" y="250.5" width="120" height="120"/>
+                                <state key="normal" title="Two Players" image="hang7"/>
                                 <connections>
-                                    <segue destination="h0b-Ya-ugg" kind="show" identifier="cartoon" id="2UY-Lg-ajJ"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="drawing" id="rOk-nG-7UL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-DA-D1L">
-                                <rect key="frame" x="34" y="451.5" width="120" height="120"/>
-                                <state key="normal" title="Button" image="hang7b"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgS-NE-I4G">
+                                <rect key="frame" x="34" y="250.5" width="120" height="120"/>
+                                <state key="normal" title="SinglePlayeB" image="hang7b"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="cartoon" id="mkd-rt-8gZ"/>
+                                    <segue destination="h0b-Ya-ugg" kind="show" identifier="cartoon" id="ENO-qP-XoG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDj-CY-F3B">
-                                <rect key="frame" x="142" y="392" width="91.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Single Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfQ-qd-XmA">
-                                <rect key="frame" x="138.5" y="154" width="98.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7E-Q8-Ohm">
+                                <rect key="frame" x="34" y="250.5" width="120" height="120"/>
+                                <state key="normal" title="Two Player B" image="hang7b"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="kxe-Wf-zMc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GDj-CY-F3B" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="1.1" id="3tl-Uh-B3b"/>
-                            <constraint firstItem="4ZP-DA-D1L" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="0.5" id="57x-t7-xDD"/>
-                            <constraint firstItem="qfQ-qd-XmA" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" id="9hL-8X-xu4"/>
-                            <constraint firstItem="Hot-qS-H0Y" firstAttribute="height" secondItem="4oQ-Yc-r5j" secondAttribute="height" id="Bgy-o1-HVd"/>
-                            <constraint firstItem="WgS-NE-I4G" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="0.5" id="Bph-pi-QwR"/>
-                            <constraint firstItem="Hot-qS-H0Y" firstAttribute="width" secondItem="4oQ-Yc-r5j" secondAttribute="width" id="Fw9-EU-uWs"/>
-                            <constraint firstItem="4oQ-Yc-r5j" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="1.4" id="H7c-Hy-SdU"/>
-                            <constraint firstItem="4ZP-DA-D1L" firstAttribute="width" secondItem="Hot-qS-H0Y" secondAttribute="width" id="MCv-t8-yin"/>
-                            <constraint firstItem="4ZP-DA-D1L" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="1.4" id="O0B-vQ-hOz"/>
-                            <constraint firstItem="qfQ-qd-XmA" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.45" id="P3e-XT-xZ0"/>
-                            <constraint firstItem="4ZP-DA-D1L" firstAttribute="height" secondItem="Hot-qS-H0Y" secondAttribute="height" id="Rk3-Gp-yBV"/>
-                            <constraint firstItem="WgS-NE-I4G" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.7" id="hHe-QZ-vIi"/>
-                            <constraint firstItem="4oQ-Yc-r5j" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="1.5" id="hT1-AI-E1h"/>
-                            <constraint firstItem="Hot-qS-H0Y" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.7" id="mgL-Zs-kqp"/>
-                            <constraint firstItem="WgS-NE-I4G" firstAttribute="width" secondItem="4oQ-Yc-r5j" secondAttribute="width" id="neg-0h-O93"/>
-                            <constraint firstItem="WgS-NE-I4G" firstAttribute="height" secondItem="4oQ-Yc-r5j" secondAttribute="height" id="rRH-Hf-0CC"/>
-                            <constraint firstItem="Hot-qS-H0Y" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="1.5" id="tEc-1N-yW0"/>
-                            <constraint firstItem="GDj-CY-F3B" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" id="zUm-Gg-mok"/>
+                            <constraint firstItem="vC8-9z-ksB" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="1.5" id="2bQ-i6-35L"/>
+                            <constraint firstItem="vC8-9z-ksB" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.85" id="4fz-v3-8pu"/>
+                            <constraint firstItem="Hot-qS-H0Y" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.85" id="6C7-K9-ioc"/>
+                            <constraint firstItem="xl4-Rx-zzr" firstAttribute="leading" secondItem="wWk-xo-2oj" secondAttribute="leading" id="6iN-6s-eRv"/>
+                            <constraint firstItem="Hot-qS-H0Y" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="1.5" id="BOI-OR-epK"/>
+                            <constraint firstItem="q7E-Q8-Ohm" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="0.5" id="GQD-SU-OWR"/>
+                            <constraint firstItem="WgS-NE-I4G" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" multiplier="0.5" id="MM5-3j-3Y9"/>
+                            <constraint firstItem="q7E-Q8-Ohm" firstAttribute="width" secondItem="Hot-qS-H0Y" secondAttribute="width" id="QoM-Pv-Tgf"/>
+                            <constraint firstItem="WgS-NE-I4G" firstAttribute="height" secondItem="Hot-qS-H0Y" secondAttribute="height" id="RPg-yQ-vBh"/>
+                            <constraint firstItem="xl4-Rx-zzr" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.6" id="SrO-iR-kQS"/>
+                            <constraint firstItem="q7E-Q8-Ohm" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.85" id="TF3-ph-rXL"/>
+                            <constraint firstItem="xNp-lR-Xe9" firstAttribute="top" secondItem="wWk-xo-2oj" secondAttribute="top" id="V2n-Zt-DTj"/>
+                            <constraint firstItem="xl4-Rx-zzr" firstAttribute="centerX" secondItem="wWk-xo-2oj" secondAttribute="centerX" id="d0I-MK-v8A"/>
+                            <constraint firstItem="WgS-NE-I4G" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="0.85" id="dYp-se-GIO"/>
+                            <constraint firstItem="vC8-9z-ksB" firstAttribute="height" secondItem="Hot-qS-H0Y" secondAttribute="height" id="fNl-Rc-Lmh"/>
+                            <constraint firstItem="wWk-xo-2oj" firstAttribute="trailing" secondItem="xNp-lR-Xe9" secondAttribute="trailing" id="iRz-PR-NDQ"/>
+                            <constraint firstItem="q7E-Q8-Ohm" firstAttribute="height" secondItem="Hot-qS-H0Y" secondAttribute="height" id="j6b-8b-FLi"/>
+                            <constraint firstItem="vC8-9z-ksB" firstAttribute="width" secondItem="Hot-qS-H0Y" secondAttribute="width" id="pDO-C2-uGa"/>
+                            <constraint firstItem="WgS-NE-I4G" firstAttribute="width" secondItem="Hot-qS-H0Y" secondAttribute="width" id="s20-RW-Nfc"/>
+                            <constraint firstItem="wWk-xo-2oj" firstAttribute="trailing" secondItem="xl4-Rx-zzr" secondAttribute="trailing" id="zAk-Fx-al6"/>
+                            <constraint firstItem="xNp-lR-Xe9" firstAttribute="leading" secondItem="wWk-xo-2oj" secondAttribute="leading" id="zoC-xX-sHg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wWk-xo-2oj"/>
                     </view>
                     <navigationItem key="navigationItem" id="x9p-uJ-5vv"/>
+                    <connections>
+                        <outlet property="chooseImage" destination="xl4-Rx-zzr" id="Q1I-vb-n0r"/>
+                        <outletCollection property="numberOfPlayer" destination="4ZP-DA-D1L" collectionClass="NSMutableArray" id="iFb-Pr-yVn"/>
+                        <outletCollection property="numberOfPlayer" destination="4oQ-Yc-r5j" collectionClass="NSMutableArray" id="VFh-1S-kb7"/>
+                        <outletCollection property="singlePlayerImages" destination="Hot-qS-H0Y" collectionClass="NSMutableArray" id="zZw-XF-sqf"/>
+                        <outletCollection property="singlePlayerImages" destination="WgS-NE-I4G" collectionClass="NSMutableArray" id="gVJ-Jq-0T6"/>
+                        <outletCollection property="twoPlayersImages" destination="vC8-9z-ksB" collectionClass="NSMutableArray" id="0yr-gD-M8a"/>
+                        <outletCollection property="twoPlayersImages" destination="q7E-Q8-Ohm" collectionClass="NSMutableArray" id="Zzp-Jl-pTd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOh-Ay-osJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -385,7 +447,7 @@
         <image name="hang7b" width="75" height="175"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2UY-Lg-ajJ"/>
-        <segue reference="mkd-rt-8gZ"/>
+        <segue reference="C7R-tn-uGk"/>
+        <segue reference="rOk-nG-7UL"/>
     </inferredMetricsTieBreakers>
 </document>
