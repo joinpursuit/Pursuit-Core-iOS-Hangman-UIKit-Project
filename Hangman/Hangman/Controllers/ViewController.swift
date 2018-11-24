@@ -12,14 +12,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var userInputText: UITextField!
     @IBOutlet weak var chosenWord: UILabel!
     @IBOutlet weak var user2InputText: UITextField!
-    @IBOutlet weak var Image: UIImageView!
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var correct: UILabel!
-    @IBOutlet var wrong: UILabel!
+    @IBOutlet weak var wrong: UILabel!
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var mainScreen: UIView!
     @IBOutlet weak var mainScreenText: UILabel!
     @IBOutlet weak var winnerScreen: UILabel!
+    @IBOutlet weak var letterChosen: UILabel!
     
   
     override func viewDidLoad() {
@@ -39,7 +40,7 @@ class ViewController: UIViewController {
         HangmanBrain.correct = 0
         HangmanBrain.rightLetter = String()
         HangmanBrain.alreadyChosen = [String]()
-        Image.image = UIImage (named: "Default Image")
+        image.image = UIImage (named: "Default Image")
         restartButton.isHidden = true
         winnerScreen.isHidden = true
         mainScreenText.text = "Choose a word"
@@ -75,7 +76,7 @@ extension ViewController: UITextFieldDelegate {
         if textField == user2InputText {
             
             if !HangmanBrain.alreadyChosen.contains(HangmanBrain.userWordGuess){
-                if HangmanBrain.mainLogic() == true {
+                if HangmanBrain.mainLogic(userWordInput: HangmanBrain.userWordInput, userWordGuess: HangmanBrain.userWordGuess) == true {
                     label.text = "Correct!"
                 } else {
                     label.text = "Incorrect!"
@@ -87,33 +88,8 @@ extension ViewController: UITextFieldDelegate {
             }
             
         textField.text = ""
-            
-            switch HangmanBrain.allowedStrikes {
-            case 1:
-                Image.image = UIImage(named: "hang1")
-                
-            case 2:
-                Image.image = UIImage(named: "hang2")
-                
-            case 3:
-                Image.image = UIImage(named: "hang3")
-                
-            case 4:
-                Image.image = UIImage(named: "hang4")
-                
-            case 5:
-                Image.image = UIImage(named: "hang5")
-                
-            case 6:
-                Image.image = UIImage(named: "hang6")
-                
-            case 7:
-                Image.image = UIImage(named: "hang7")
-                
-            default:
-                print("nothing")
-                
-            }
+        image.image = UIImage(named: HangmanBrain.arrayOfImages[HangmanBrain.allowedStrikes])
+        letterChosen.text = "Letters Chosen: \(HangmanBrain.alreadyChosen.joined(separator: " ").uppercased())"
             
             chosenWord.text =  HangmanBrain.transformWord(word: HangmanBrain.userWordInput)
         }
