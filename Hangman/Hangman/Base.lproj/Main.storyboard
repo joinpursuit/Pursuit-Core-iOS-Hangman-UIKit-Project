@@ -72,12 +72,19 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strike 0/7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbM-b7-0BK">
+                                <rect key="frame" x="149" y="504" width="116" height="33"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="WSm-lN-qGH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="3QZ-3n-XTe"/>
                             <constraint firstItem="vXx-yd-XLN" firstAttribute="top" secondItem="WSm-lN-qGH" secondAttribute="bottom" constant="11" id="6Yr-RP-T2K"/>
                             <constraint firstItem="NjE-ne-LOZ" firstAttribute="top" secondItem="vXx-yd-XLN" secondAttribute="bottom" constant="22" id="7jN-zK-p7k"/>
+                            <constraint firstItem="cbM-b7-0BK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="BGW-Ab-kGZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dcH-DB-iS6" secondAttribute="trailing" constant="11" id="Bib-dO-RXi"/>
                             <constraint firstItem="xUb-XK-jE1" firstAttribute="top" secondItem="wuv-jX-hpt" secondAttribute="bottom" constant="11" id="CHO-G8-zZQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xUb-XK-jE1" secondAttribute="trailing" constant="11" id="DEB-BS-ZcW"/>
@@ -97,6 +104,7 @@
                             <constraint firstItem="dcH-DB-iS6" firstAttribute="top" secondItem="NjE-ne-LOZ" secondAttribute="bottom" constant="11" id="lpl-Ez-S6C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rlc-rY-VY0" secondAttribute="trailing" constant="60" id="mMm-fo-OXj"/>
                             <constraint firstItem="WSm-lN-qGH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="p8p-eC-CM1"/>
+                            <constraint firstItem="rlc-rY-VY0" firstAttribute="top" secondItem="cbM-b7-0BK" secondAttribute="bottom" constant="11" id="pXj-WO-MER"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rlc-rY-VY0" secondAttribute="bottom" constant="20" id="tDL-Je-rgz"/>
                             <constraint firstItem="NjE-ne-LOZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="uhP-9X-KZq"/>
                             <constraint firstItem="wuv-jX-hpt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="vgL-TK-ggu"/>
@@ -106,9 +114,10 @@
                     </view>
                     <connections>
                         <outlet property="guessTF" destination="RSR-2Y-P0f" id="GJ9-EX-qA1"/>
-                        <outlet property="hangImage" destination="rlc-rY-VY0" id="2f7-RE-A1I"/>
                         <outlet property="message" destination="dcH-DB-iS6" id="od4-Dj-PZv"/>
                         <outlet property="rightGuess" destination="wuv-jX-hpt" id="x0d-Ff-8kl"/>
+                        <outlet property="strikeImageDisplay" destination="rlc-rY-VY0" id="39i-vk-WkB"/>
+                        <outlet property="strikeNumDisplay" destination="cbM-b7-0BK" id="X0K-HK-Far"/>
                         <outlet property="wordDisplay" destination="NjE-ne-LOZ" id="k0i-wC-xkG"/>
                         <outlet property="wordTF" destination="vXx-yd-XLN" id="4Cg-Ru-ggC"/>
                         <outlet property="wrongGuess" destination="xUb-XK-jE1" id="ytB-Xw-BJg"/>

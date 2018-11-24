@@ -36,13 +36,11 @@ class Brain {
                 }
             }
             }
-     //       print("right: \(rightChoice)")
             return true
         } else {
             if !wrongChoice.contains(guessLetter) {
             wrongChoice.append(guessLetter)
             }
-     //       print("wrong: \(wrongChoice)")
             return false
         }
     }
