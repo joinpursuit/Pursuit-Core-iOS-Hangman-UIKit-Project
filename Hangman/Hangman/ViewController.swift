@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightGuess: UILabel!
     @IBOutlet weak var wrongGuess: UILabel!
     private var strikeCounter = 0
+    private var rightLetterCounter = 0
     override func viewDidLoad() {
     super.viewDidLoad()
     wordTF.delegate = self
@@ -49,10 +50,31 @@ class ViewController: UIViewController {
     }
     
     func checkForGameOver() {
-        
+        if rightLetterCounter == Brain.theWord.count {
+            message.text = "YOU WIN."
+            guessTF.isEnabled = false
+            strikeNumDisplay.text = "Press \"New Game\" to begin"
+        }
+        if strikeCounter == 7 {
+            message.text = "GAME OVER."
+            guessTF.isEnabled = false
+            strikeNumDisplay.text = "The word is \(Brain.theWord)"
+        }
     }
-    // need a gameOver func
-    // need a newGame func
+    
+    @IBAction func reset(_ sender: UIButton) {
+        // reset all textfields
+        //    textFieldShouldClear(wordTF)
+        //      textFieldShouldClear(guessTF)
+        strikeCounter = 0
+        rightLetterCounter = 0
+        Brain.theWord = ""
+        strikeImageDisplay.isHidden = true
+        strikeNumDisplay.isHidden = true
+        message.text = "Enter a word."
+        rightGuess.text = "Right Guess:"
+        wrongGuess.text = "Wrong Guess:"
+    }
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -61,30 +83,37 @@ extension ViewController: UITextFieldDelegate {
         if textField == wordTF {
         Brain.theWord = textField.text!.lowercased()
         wordDisplay.text = Brain.displayUnderscores()
+        message.text = "Enter a guess letter."
         guessTF.isEnabled = true
         strikeImageDisplay.isHidden = false
         strikeNumDisplay.isHidden = false
+        wordTF.isEnabled = false
         return true
         }
         
         if textField == guessTF {
         Brain.guessLetter = textField.text!.lowercased()
-        if Brain.checkLetter() {
+        if Brain.isLetterInWord() {
             message.text = "\"\(Brain.guessLetter)\" : correct guess 😃"
             rightGuess.text = "Right Guess: \(String(Brain.rightChoice.flatMap{String($0)}))"
             wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
+            rightLetterCounter += 1
+            checkForGameOver()
         } else {
             message.text = "\"\(Brain.guessLetter)\" : wrong guess 😨"
             wrongGuess.text = "Wrong Guess: \(String(Brain.wrongChoice.flatMap{String($0)}))"
             wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
             strikeImageUpdater()
-            print(strikeCounter)
+            checkForGameOver()
         }
     }
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        if textField == guessTF {
+        return true
+        }
         return true
     }
     

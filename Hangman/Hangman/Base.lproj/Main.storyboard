@@ -27,7 +27,7 @@
                                 <rect key="frame" x="60" y="113" width="294" height="37"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="💀 HANGMAN 💀" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSm-lN-qGH">
                                 <rect key="frame" x="11" y="55" width="392" height="47"/>
@@ -42,35 +42,39 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type in a letter e.g. a" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2Y-P0f">
-                                <rect key="frame" x="50" y="266" width="314" height="37"/>
+                                <rect key="frame" x="50" y="265.5" width="314" height="37"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a word." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcH-DB-iS6">
-                                <rect key="frame" x="11" y="222" width="392" height="33"/>
+                                <rect key="frame" x="11" y="222" width="392" height="32.5"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right Guess: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuv-jX-hpt">
-                                <rect key="frame" x="11" y="314" width="392" height="33"/>
+                                <rect key="frame" x="22" y="313.5" width="381" height="33"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong Guess: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-XK-jE1">
-                                <rect key="frame" x="11" y="358" width="392" height="33"/>
+                                <rect key="frame" x="22" y="357.5" width="381" height="33"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EU9-s1-e3Q">
-                                <rect key="frame" x="141" y="402" width="132" height="45"/>
+                                <rect key="frame" x="141" y="401.5" width="132" height="45"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <state key="normal" title="New Game">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="inz-Hv-PBi"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strike 0/7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbM-b7-0BK">
                                 <rect key="frame" x="149" y="504" width="116" height="33"/>
@@ -96,7 +100,7 @@
                             <constraint firstItem="wuv-jX-hpt" firstAttribute="top" secondItem="RSR-2Y-P0f" secondAttribute="bottom" constant="11" id="eRQ-md-O4g"/>
                             <constraint firstItem="vXx-yd-XLN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="fSe-dh-3yn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RSR-2Y-P0f" secondAttribute="trailing" constant="50" id="fg8-hl-dbD"/>
-                            <constraint firstItem="xUb-XK-jE1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="iCV-KM-Yx3"/>
+                            <constraint firstItem="xUb-XK-jE1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="iCV-KM-Yx3"/>
                             <constraint firstItem="RSR-2Y-P0f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="jOl-GC-FHy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NjE-ne-LOZ" secondAttribute="trailing" constant="11" id="kGC-dD-UFy"/>
                             <constraint firstItem="rlc-rY-VY0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="kHt-nj-BF3"/>
@@ -107,7 +111,7 @@
                             <constraint firstItem="rlc-rY-VY0" firstAttribute="top" secondItem="cbM-b7-0BK" secondAttribute="bottom" constant="11" id="pXj-WO-MER"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rlc-rY-VY0" secondAttribute="bottom" constant="20" id="tDL-Je-rgz"/>
                             <constraint firstItem="NjE-ne-LOZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="uhP-9X-KZq"/>
-                            <constraint firstItem="wuv-jX-hpt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="vgL-TK-ggu"/>
+                            <constraint firstItem="wuv-jX-hpt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="vgL-TK-ggu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXx-yd-XLN" secondAttribute="trailing" constant="60" id="wa8-fj-4HW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

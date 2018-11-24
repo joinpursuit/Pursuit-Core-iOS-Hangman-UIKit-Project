@@ -24,7 +24,7 @@ class Brain {
        return String(displayWord.flatMap{String($0)})
     }
     
-    static func checkLetter() -> Bool {
+    static func isLetterInWord() -> Bool {
         if theWord.contains(guessLetter) {
             if !rightChoice.contains(guessLetter) {
             rightChoice.append(guessLetter)
