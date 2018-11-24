@@ -22,14 +22,15 @@ class SinglePlayerViewController: UIViewController {
     @IBOutlet weak var winnerScreen: UILabel!
     @IBOutlet weak var mainScreenText: UILabel!
     @IBOutlet weak var letterChosen: UILabel!
+    @IBOutlet var font: [UILabel]!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+        restartButton.backgroundColor = HangmanBrain.chosenBackgroundColor
+        view.backgroundColor = HangmanBrain.chosenBackgroundColor
+        font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
         user2InputText.delegate = self
         restartGame()
     }
