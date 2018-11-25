@@ -9,27 +9,18 @@
 import UIKit
 
 class MainMenuViewController: UIViewController {
+   
+    @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet var numberOfPlayer: [UIButton]!
+    @IBOutlet var chooseColor: [UILabel]!
+    @IBOutlet var singlePlayerColor: [UIButton]!
+    @IBOutlet var twoPlayersColor: [UIButton]!
+    @IBOutlet weak var selectChalk: UILabel!
+    @IBOutlet weak var fontPickerView: UIPickerView!
+    @IBOutlet weak var chooseImage: UILabel!
     @IBOutlet var singlePlayerImages: [UIButton]!
     @IBOutlet var twoPlayersImages: [UIButton]!
-    @IBOutlet weak var chooseImage: UILabel!
-    @IBOutlet var chooseColor: [UILabel]!
-    
-    @IBOutlet weak var fontPickerView: UIPickerView!
-    @IBOutlet var singlePlayerColor: [UIButton]!
-    
-    @IBOutlet var twoPlayersColor: [UIButton]!
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
   
         super.viewDidLoad()
@@ -45,15 +36,19 @@ class MainMenuViewController: UIViewController {
         restartUI()
     }
     private func restartUI (){
-        numberOfPlayer.forEach{$0.isHidden = true}
+//        numberOfPlayer.forEach{$0.isHidden = true}
+        selectChalk.isHidden = true
+        numberOfPlayer.forEach{$0.isEnabled = true}
+        singlePlayerColor.forEach{$0.isEnabled = true}
+        twoPlayersColor.forEach{$0.isEnabled = true}
         singlePlayerImages.forEach{$0.isHidden = true}
         twoPlayersImages.forEach{$0.isHidden = true}
         chooseImage.isHidden = true
         chooseColor.forEach{$0.isHidden = true}
         fontPickerView.isHidden = true
-        singlePlayerColor.forEach{$0.isHidden = true}
+        singlePlayerColor.forEach{$0.isHidden = true} // need
         twoPlayersColor.forEach{$0.isHidden = true}
-        
+        numberOfPlayersLabel.text = "Select Number Of Players"
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -65,37 +60,54 @@ class MainMenuViewController: UIViewController {
             print("No segue")
         }
     }
-    @IBAction func chooseNumberOfPlayers(_ sender: UIButton) {
-        
-        
-        numberOfPlayer.forEach { (button) in
-            UIView.animate(withDuration: 0.3, animations: {
-                button.isHidden = !button.isHidden
-                self.view.layoutIfNeeded()
-            })
+
+    @IBAction func playerSelected(_ sender: UIButton) {
+        switch sender.tag {
+        case 0: // single player
+            numberOfPlayer.forEach{$0.isEnabled = !$0.isEnabled}
+            sender.isEnabled = true
+            numberOfPlayer.forEach{$0.setTitleColor(UIColor.gray, for: .disabled)}
+            chooseColor.forEach{$0.isHidden = !$0.isHidden}
+            singlePlayerColor.forEach{$0.isHidden = !$0.isHidden}
+            numberOfPlayersLabel.text = "Single Player"
+            sender.isUserInteractionEnabled = false
+        case 1:
+            numberOfPlayer.forEach{$0.isEnabled = !$0.isEnabled}
+            sender.isEnabled = true
+            numberOfPlayer.forEach{$0.setTitleColor(UIColor.gray, for: .disabled)}
+            chooseColor.forEach{$0.isHidden = !$0.isHidden}
+            twoPlayersColor.forEach{$0.isHidden = !$0.isHidden}
+            numberOfPlayersLabel.text = "Two Players"
+            sender.isUserInteractionEnabled = false
+        default:
+            print("Error")
         }
-       
-    
     }
+    
     @IBAction func colorSelected(_ sender: UIButton) {
         switch sender.tag {
         case 0:
-            HangmanBrain.chosenBackgroundColor = HangmanBrain.backgroundColor[0]
-            chooseImage.isHidden = !chooseImage.isHidden
-            singlePlayerImages.forEach{$0.isHidden = !$0.isHidden}
+            singlePlayerColor.forEach{$0.isEnabled = !$0.isEnabled}
+            sender.isEnabled = true
+            HangmanBrain.colorWasSelected(colorChosen: HangmanBrain.backgroundColor[0], toBeShown: singlePlayerImages, showPickerLabel: selectChalk, showPicker: fontPickerView, labelShown: chooseImage, buttons: singlePlayerColor )
+            sender.isUserInteractionEnabled = false
             
         case 1:
-            HangmanBrain.chosenBackgroundColor = HangmanBrain.backgroundColor[0]
-            chooseImage.isHidden = !chooseImage.isHidden
-            twoPlayersImages.forEach{$0.isHidden = !$0.isHidden}
+            twoPlayersColor.forEach{$0.isEnabled = !$0.isEnabled}
+            sender.isEnabled = true
+            HangmanBrain.colorWasSelected(colorChosen: HangmanBrain.backgroundColor[0], toBeShown: twoPlayersImages, showPickerLabel: selectChalk, showPicker: fontPickerView, labelShown: chooseImage, buttons: twoPlayersColor)
+            sender.isUserInteractionEnabled = false
+            
         case 2:
-            HangmanBrain.chosenBackgroundColor = HangmanBrain.backgroundColor[1]
-            chooseImage.isHidden = !chooseImage.isHidden
-            singlePlayerImages.forEach{$0.isHidden = !$0.isHidden}
+            singlePlayerColor.forEach{$0.isEnabled = !$0.isEnabled}
+            sender.isEnabled = true
+            HangmanBrain.colorWasSelected(colorChosen: HangmanBrain.backgroundColor[1], toBeShown: singlePlayerImages, showPickerLabel: selectChalk, showPicker: fontPickerView, labelShown: chooseImage, buttons: singlePlayerColor)
+            sender.isUserInteractionEnabled = false
         case 3:
-             HangmanBrain.chosenBackgroundColor = HangmanBrain.backgroundColor[1]
-             chooseImage.isHidden = !chooseImage.isHidden
-             twoPlayersImages.forEach{$0.isHidden = !$0.isHidden}
+            twoPlayersColor.forEach{$0.isEnabled = !$0.isEnabled}
+            sender.isEnabled = true
+            HangmanBrain.colorWasSelected(colorChosen: HangmanBrain.backgroundColor[1], toBeShown: twoPlayersImages, showPickerLabel: selectChalk, showPicker: fontPickerView, labelShown: chooseImage, buttons: twoPlayersColor)
+            sender.isUserInteractionEnabled = false
         default:
             print("Wrong Button")
             
@@ -103,24 +115,6 @@ class MainMenuViewController: UIViewController {
         
         
         
-    }
-    @IBAction func playerSelected(_ sender: UIButton) {
-        switch sender.tag {
-        case 0: // single player
-            numberOfPlayer.forEach{$0.isHidden = true}
-            chooseColor.forEach{$0.isHidden = !$0.isHidden}
-            singlePlayerColor.forEach{$0.isHidden = !$0.isHidden}
-            fontPickerView.isHidden = !fontPickerView.isHidden
-            sender.isHidden = false
-        case 1:
-            numberOfPlayer.forEach{$0.isHidden = true}
-            chooseColor.forEach{$0.isHidden = !$0.isHidden}
-            twoPlayersColor.forEach{$0.isHidden = !$0.isHidden}
-            fontPickerView.isHidden = !fontPickerView.isHidden
-            sender.isHidden = false
-        default:
-            print("Error")
-        }
     }
     
 
@@ -138,6 +132,7 @@ extension MainMenuViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         HangmanBrain.chosenFontColor = HangmanBrain.fontColor[row]
+        pickerView.backgroundColor = HangmanBrain.fontColor[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

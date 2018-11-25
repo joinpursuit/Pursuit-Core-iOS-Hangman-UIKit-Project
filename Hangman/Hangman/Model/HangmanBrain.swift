@@ -19,7 +19,7 @@ class HangmanBrain {
     static var arrayOfImages = [String]()
     static var fontColor: [UIColor] = [#colorLiteral(red: 0.9427184463, green: 1, blue: 0.5265357494, alpha: 1),#colorLiteral(red: 1, green: 0.683965981, blue: 0.9692175984, alpha: 1),#colorLiteral(red: 0.6666424274, green: 0.9941070676, blue: 1, alpha: 1),#colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)]
     static var fontColorNames = ["Yellow","Pink","Light Blue","White"]
-    static var backgroundColor: [UIColor] = [#colorLiteral(red: 0.3187960982, green: 0.5831527114, blue: 0.3352566361, alpha: 1),#colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)]
+    static var backgroundColor: [UIColor] = [#colorLiteral(red: 0.3187960982, green: 0.5831527114, blue: 0.3352566361, alpha: 1),#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)]
     static var chosenBackgroundColor = UIColor()
     static var chosenFontColor = UIColor()
 
@@ -61,6 +61,21 @@ class HangmanBrain {
         }
        return boolToReturn
     }
+    
+    static func hideOrShowLabelsAndButtons (labels: [UILabel], buttons: [UIButton]) {
+        labels.forEach{$0.isHidden = !$0.isHidden}
+        buttons.forEach{$0.isHidden = !$0.isHidden}
+    }
+    static func colorWasSelected (colorChosen: UIColor, toBeShown: [UIButton], showPickerLabel: UILabel, showPicker: UIPickerView, labelShown: UILabel, buttons: [UIButton]) {
+        
+        HangmanBrain.chosenBackgroundColor = colorChosen
+        labelShown.isHidden = !labelShown.isHidden
+        toBeShown.forEach{$0.isHidden = !$0.isHidden}
+        showPickerLabel.isHidden = !showPickerLabel.isHidden
+        showPicker.isHidden = !showPicker.isHidden
+        buttons.forEach{$0.setTitleColor(UIColor.gray, for: .disabled)}
+    }
+    
     
 }
 

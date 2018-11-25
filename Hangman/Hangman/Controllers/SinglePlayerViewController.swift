@@ -96,14 +96,14 @@ extension SinglePlayerViewController: UITextFieldDelegate {
         
         if HangmanBrain.correct == randomWord.count {
             hideMainMenu(bool: false)
-            mainScreenText.text = "The correct word was: \(randomWord)"
+            mainScreenText.text = "The correct word was: \(randomWord.uppercased())"
             winnerScreen.text = "Won!"
             
             
         }
         if HangmanBrain.allowedStrikes == 7 {
             hideMainMenu(bool: false)
-            mainScreenText.text = "The correct word was: \(randomWord)"
+            mainScreenText.text = "The correct word was: \(randomWord.uppercased())"
             winnerScreen.text = "Lost!"
             
         }
