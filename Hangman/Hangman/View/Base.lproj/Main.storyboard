@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter word to guess" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-8a-FMp">
+                                <rect key="frame" x="130" y="144" width="154" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hangman!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR7-Pj-gTp">
+                                <rect key="frame" x="20" y="264" width="374" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a letter" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="H5x-Tw-8u5">
+                                <rect key="frame" x="140" y="384" width="134" height="128"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two Player Hangman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naB-hL-jec">
+                                <rect key="frame" x="125" y="104" width="164" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwm-D1-IPs">
+                                <rect key="frame" x="170" y="520" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2EK-wY-VFb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H5x-Tw-8u5" secondAttribute="bottom" constant="350" id="54e-zj-8vp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GR7-Pj-gTp" secondAttribute="trailing" constant="20" id="Fbc-Ec-rZs"/>
+                            <constraint firstItem="GR7-Pj-gTp" firstAttribute="top" secondItem="d2b-8a-FMp" secondAttribute="bottom" constant="90" id="H5Q-xB-85S"/>
+                            <constraint firstItem="naB-hL-jec" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="LsX-li-1ZO"/>
+                            <constraint firstItem="d2b-8a-FMp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="RYB-VP-dOj"/>
+                            <constraint firstItem="H5x-Tw-8u5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ShJ-rx-iRu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="naB-hL-jec" secondAttribute="trailing" constant="125" id="gJM-7e-UnG"/>
+                            <constraint firstItem="naB-hL-jec" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="k1j-vb-ktr"/>
+                            <constraint firstItem="H5x-Tw-8u5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="kZA-93-0L4"/>
+                            <constraint firstItem="d2b-8a-FMp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="nwe-Sm-Bxr"/>
+                            <constraint firstItem="GR7-Pj-gTp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tBi-Pa-ti3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d2b-8a-FMp" secondAttribute="trailing" constant="130" id="wgS-eu-tzn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H5x-Tw-8u5" secondAttribute="trailing" constant="140" id="xm2-2N-xD7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomTextField" destination="H5x-Tw-8u5" id="0H2-Ij-4ma"/>
+                        <outlet property="middleLabel" destination="GR7-Pj-gTp" id="BjJ-gK-Yoc"/>
+                        <outlet property="newGame" destination="hwm-D1-IPs" id="msz-sc-hoH"/>
+                        <outlet property="topLabel" destination="naB-hL-jec" id="AAP-rt-6K0"/>
+                        <outlet property="topTextField" destination="d2b-8a-FMp" id="5OG-mQ-nPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-78.260869565217391" y="132.58928571428572"/>
+        </scene>
+    </scenes>
+</document>
