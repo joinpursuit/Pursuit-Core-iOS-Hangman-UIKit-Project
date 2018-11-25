@@ -13,13 +13,13 @@ class CategoryViewController: UIViewController {
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var chooseCategory: UILabel!
     @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var backGroundImage: UIImageView!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = HangmanBrain.chosenBackgroundColor
-        chooseCategory.textColor = HangmanBrain.chosenFontColor
+        backGroundImage.image = UIImage(named: "animals")
         categoryPicker.delegate = self
         categoryPicker.delegate = self
     }
@@ -37,7 +37,7 @@ extension CategoryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         Categories.categoryIndex = row
-        
+        backGroundImage.image = UIImage(named: HangmanBrain.backgroundImageName[row])
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Categories.categoryNames[row]

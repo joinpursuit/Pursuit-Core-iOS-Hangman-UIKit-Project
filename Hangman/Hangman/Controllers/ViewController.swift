@@ -32,7 +32,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
     font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
-    background.forEach{$0.backgroundColor = HangmanBrain.chosenBackgroundColor}
+//    background.forEach{$0.backgroundColor = HangmanBrain.chosenBackgroundColor}
+    
     userInputText.delegate = self
     user2InputText.delegate = self
     restartGame()

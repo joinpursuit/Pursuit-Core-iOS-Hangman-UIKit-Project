@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class SinglePlayerViewController: UIViewController {
 
@@ -24,14 +25,16 @@ class SinglePlayerViewController: UIViewController {
     @IBOutlet weak var mainScreenText: UILabel!
     @IBOutlet weak var letterChosen: UILabel!
     @IBOutlet var font: [UILabel]!
-    
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(HangmanBrain.categoryRandomWord)
-        restartButton.backgroundColor = HangmanBrain.chosenBackgroundColor
-        view.backgroundColor = HangmanBrain.chosenBackgroundColor
+//        restartButton.backgroundColor = HangmanBrain.chosenBackgroundColor
+        
+//        view.backgroundColor = HangmanBrain.chosenBackgroundColor
+//        backgroundImage.image = UIImage(named: HangmanBrain.)
         font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
         user2InputText.delegate = self
         restartGame()
@@ -77,6 +80,7 @@ extension SinglePlayerViewController: UITextFieldDelegate {
                     label.text = "Correct!"
                 } else {
                     label.text = "Incorrect!"
+                    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
                 }
                 
             } else {
