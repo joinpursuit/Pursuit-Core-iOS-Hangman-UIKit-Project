@@ -39,8 +39,11 @@ class MainMenuViewController: UIViewController {
 //        numberOfPlayer.forEach{$0.isHidden = true}
         selectChalk.isHidden = true
         numberOfPlayer.forEach{$0.isEnabled = true}
+        numberOfPlayer.forEach{$0.isUserInteractionEnabled = true}
         singlePlayerColor.forEach{$0.isEnabled = true}
+        singlePlayerColor.forEach{$0.isUserInteractionEnabled = true}
         twoPlayersColor.forEach{$0.isEnabled = true}
+        twoPlayersColor.forEach{$0.isUserInteractionEnabled = true}
         singlePlayerImages.forEach{$0.isHidden = true}
         twoPlayersImages.forEach{$0.isHidden = true}
         chooseImage.isHidden = true
