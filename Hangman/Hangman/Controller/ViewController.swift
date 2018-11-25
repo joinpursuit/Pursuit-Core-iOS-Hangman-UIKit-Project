@@ -33,21 +33,23 @@ extension ViewController: UITextFieldDelegate {
             topTextField.text = "Word Added!"
             bottomTextField.isEnabled = hangmanCalc.bottomTextField
             middleLabel.text = hangmanCalc.middleLabel
-            bottomTextField.text = ""
             topTextField.resignFirstResponder()
-            bottomTextField.resignFirstResponder()
             return true
         } else if (textField == bottomTextField) {
             hangmanCalc.guessWord(b: bottomTextField.text?.lowercased() ?? "Not A String")
+            bottomTextField.text = ""
+            bottomTextField.resignFirstResponder()
             return true
         }
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let range = string.range
-            return true
-        } else {
+        let characters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz")
+        if (string.lowercased().rangeOfCharacter(from: characters) == nil) {
+            middleLabel.text = "Enter characters only!"
             return false
+        } else {
+            middleLabel.text = hangmanCalc.middleLabel
         }
         return bottomTextField.text!.count < 1 || string == ""
     }
