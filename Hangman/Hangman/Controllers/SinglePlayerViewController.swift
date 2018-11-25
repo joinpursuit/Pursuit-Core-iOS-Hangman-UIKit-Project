@@ -10,7 +10,8 @@ import UIKit
 
 class SinglePlayerViewController: UIViewController {
 
-    var randomWord = HangmanBrain.allTheWords.randomElement()!
+//    var randomWord = HangmanBrain.allTheWords.randomElement()!
+    var randomWord = Categories.categoryArray[Categories.categoryIndex].randomElement()!.lowercased()
     
     @IBOutlet weak var randowWord: UILabel!
     @IBOutlet weak var label: UILabel!
@@ -28,6 +29,7 @@ class SinglePlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(HangmanBrain.categoryRandomWord)
         restartButton.backgroundColor = HangmanBrain.chosenBackgroundColor
         view.backgroundColor = HangmanBrain.chosenBackgroundColor
         font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
@@ -47,7 +49,7 @@ class SinglePlayerViewController: UIViewController {
         HangmanBrain.correct = 0
         correct.text = "Correct: 0"
         wrong.text = "Wrong: 0"
-        randomWord = HangmanBrain.allTheWords.randomElement()!
+        randomWord = Categories.categoryArray[Categories.categoryIndex].randomElement()!.lowercased()
         HangmanBrain.rightLetter = String()
         HangmanBrain.alreadyChosen = [String]()
         randowWord.text = HangmanBrain.transformWord(word: randomWord)

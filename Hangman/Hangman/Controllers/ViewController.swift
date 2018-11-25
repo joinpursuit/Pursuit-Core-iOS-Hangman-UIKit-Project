@@ -38,6 +38,14 @@ class ViewController: UIViewController {
     restartGame()
     
   }
+    fileprivate func hideMainMenu(bool: Bool){
+        let resultBool = bool
+        mainScreen.isHidden = resultBool
+        restartButton.isHidden = resultBool
+        winnerScreen.isHidden = resultBool
+        mainScreenText.isHidden = resultBool
+    }
+    
     private func restartGame() {
         correct.text = "Correct: "
         wrong.text = "Wrong: "
@@ -106,28 +114,23 @@ extension ViewController: UITextFieldDelegate {
         wrong.text = "Wrong: \(HangmanBrain.allowedStrikes)"
         
         if HangmanBrain.correct == HangmanBrain.userWordInput.count {
-            chosenWord.text = "\(HangmanBrain.userWordInput)"
-            restartButton.isHidden = false
-            mainScreen.isHidden = false
-            winnerScreen.isHidden = false
-            mainScreenText.text = "The Correct Word Is: \(HangmanBrain.userWordInput)"
+            hideMainMenu(bool: false)
+            mainScreenText.text = "The Correct Word Was: \(HangmanBrain.userWordInput)"
             winnerScreen.text = "Won!"
 
             
         }
+        
         if HangmanBrain.allowedStrikes == 7 {
-           chosenWord.text = "\(HangmanBrain.userWordInput)"
-            restartButton.isHidden = false
-            mainScreen.isHidden = false
-            winnerScreen.isHidden = false
-            mainScreenText.text = "The Correct Word Is: \(HangmanBrain.userWordInput)"
+            hideMainMenu(bool: false)
+            mainScreenText.text = "The Correct Word Was: \(HangmanBrain.userWordInput)"
             winnerScreen.text = "Lost!"
-
         }
+        
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//
+
         var boolToReturn = Bool()
 
         if user2InputText.text!.count > 1 {

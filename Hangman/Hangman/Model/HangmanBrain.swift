@@ -11,6 +11,7 @@ import UIKit
 class HangmanBrain {
     static var userWordInput = String()
     static var userWordGuess = String()
+    static var categoryRandomWord = String()
     static var correct = 0
     static var rightLetter = String()
     static var alreadyChosen = [String]()
