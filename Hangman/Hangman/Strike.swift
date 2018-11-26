@@ -10,9 +10,9 @@ import UIKit
 
 class Strike {
     var num: Int
-    var image: UIImage?
+    var image: UIImage
     
-    init(num: Int, image: UIImage?) {
+    init(num: Int, image: UIImage) {
         self.num = num
         self.image = image
     }
