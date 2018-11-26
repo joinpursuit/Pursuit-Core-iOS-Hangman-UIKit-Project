@@ -105,12 +105,12 @@ extension ViewController: UITextFieldDelegate {
         Brain.guessLetter = textField.text!.lowercased()
         if Brain.isLetterInWord() {
             message.text = "\"\(Brain.guessLetter)\" : correct guess 😃"
-            rightGuess.text = "Right Guess: \(String(Brain.rightGuess.flatMap{String($0)}))"
+            rightGuess.text = "Right Guess: \(Brain.rightGuess.compactMap{String($0)}.joined(separator: ", "))"
             wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
             checkForGameOver()
         } else {
             message.text = "\"\(Brain.guessLetter)\" : wrong guess 😨"
-            wrongGuess.text = "Wrong Guess: \(String(Brain.wrongGuess.flatMap{String($0)}))"
+            wrongGuess.text = "Wrong Guess: \(Brain.wrongGuess.compactMap{String($0)}.joined(separator: ", "))"
             wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
             strikeImageUpdater()
             checkForGameOver()
@@ -127,22 +127,13 @@ extension ViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
     // https://grokswift.com/uitextfield/ this source helped me with this section
-        let characterSetAllowed = CharacterSet.letters
-        if textField == wordTF {
-            return (string.rangeOfCharacter(from: characterSetAllowed, options: .caseInsensitive) != nil)
+        if string.rangeOfCharacter(from: CharacterSet.letters, options: .caseInsensitive) != nil || (string == "" && range.length > 0) {
+            return guessTF.text!.count < 1
+        } else {
+        return false
         }
-        if textField == guessTF {
-//            let charactersRejected: CharacterSet = Brain.rightChoice.map{Character($0)}
-//            let characterSetRejected = CharacterSet.letters.isDisjoint(with:)
-        let characterCountLimit = 1
-        let startingLength = textField.text?.count ?? 0
-        let lengthToAdd = string.count
-        let lengthToReplace = range.length
-        let newLength = startingLength + lengthToAdd - lengthToReplace
-        return newLength <= characterCountLimit && (string.rangeOfCharacter(from: characterSetAllowed, options: .caseInsensitive) != nil)
-    }
-        return true
     }
 }
 

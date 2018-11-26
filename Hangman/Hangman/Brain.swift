@@ -10,8 +10,7 @@ import UIKit
 
 class Brain {
     static var theWord: String = ""
-    static var theWordArr: [Character] {
-        return Array(Brain.theWord)}
+    static var theWordArr: [String] = theWord.map{ String($0) }
     static var displayWord: [String] = []
     static var guessLetter = ""
     static var rightGuess: [String] = []
@@ -44,11 +43,5 @@ class Brain {
             return false
         }
     }
-    
-//    static func checkForWin() -> Bool {
-//       if Brain.displayWord.contains(<#T##element: String##String#>)
-//        return false
-//    }
-    
     
 }
