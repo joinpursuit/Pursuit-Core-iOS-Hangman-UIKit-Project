@@ -31,7 +31,6 @@ extension ViewController: UITextFieldDelegate {
         if (textField == topTextField) {
             hangmanCalc.createArrays(a: topTextField.text?.lowercased() ?? "Not A String")
             topTextField.isEnabled = false
-            topTextField.text = "Word Added!"
             bottomTextField.isEnabled = hangmanCalc.bottomTextField
             middleLabel.text = hangmanCalc.middleLabel
             topTextField.resignFirstResponder()
@@ -42,7 +41,7 @@ extension ViewController: UITextFieldDelegate {
             badPile.text = hangmanCalc.badLabel
             bottomTextField.text = ""
             bottomTextField.resignFirstResponder()
-            totalTries.text = "Tries: \(hangmanCalc.tries)"
+            totalTries.text = "Tries: \(hangmanCalc.tries) Strikes: \(hangmanCalc.badTries) / 7"
             gameWon = hangmanCalc.gameDone
             imageMan.image = hangmanCalc.imageMan
             if gameWon {
@@ -53,7 +52,6 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        //  || (string == "" && range.length > 0)  incase i want to add backspace
         if (string.rangeOfCharacter(from: CharacterSet.letters) != nil) || (string == "" && range.length > 0){
             middleLabel.text = hangmanCalc.middleLabel
             return bottomTextField.text!.count < 1
@@ -67,7 +65,7 @@ extension ViewController: UITextFieldDelegate {
         imageMan.image = hangmanCalc.imageMan
         topTextField.isEnabled = true
         topTextField.text = ""
-        totalTries.text = "Tries: 0"
+        totalTries.text = "Tries: 0 Strikes: 0 / 7"
         badPile.text = hangmanCalc.badLabel
         middleLabel.text = hangmanCalc.middleLabel
         bottomTextField.isEnabled = false

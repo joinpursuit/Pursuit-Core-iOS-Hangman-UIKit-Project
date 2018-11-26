@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter word to guess" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-8a-FMp">
-                                <rect key="frame" x="130" y="144" width="154" height="32"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter word to guess" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d2b-8a-FMp">
+                                <rect key="frame" x="110" y="124" width="194" height="32"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hangman!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR7-Pj-gTp">
-                                <rect key="frame" x="20" y="266" width="374" height="48"/>
+                                <rect key="frame" x="20" y="206" width="374" height="48"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,13 +36,13 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two Player Hangman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naB-hL-jec">
-                                <rect key="frame" x="125" y="104" width="164" height="29"/>
+                                <rect key="frame" x="125" y="84" width="164" height="29"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwm-D1-IPs">
-                                <rect key="frame" x="160" y="523" width="94" height="30"/>
+                                <rect key="frame" x="160" y="517" width="94" height="36"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="19"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
@@ -50,13 +50,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bad word pile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oy4-EQ-qkm">
-                                <rect key="frame" x="0.0" y="346.5" width="414" height="27.5"/>
+                                <rect key="frame" x="0.0" y="351.5" width="414" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tries: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6T-n2-AYK">
-                                <rect key="frame" x="130" y="184" width="154" height="27.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tries: 0 Strikes: 0 / 7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6T-n2-AYK">
+                                <rect key="frame" x="110" y="164" width="194" height="28"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -75,25 +75,25 @@
                             <constraint firstItem="Xfg-p8-FN0" firstAttribute="top" secondItem="hwm-D1-IPs" secondAttribute="bottom" constant="11" id="81i-0t-wlV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GR7-Pj-gTp" secondAttribute="trailing" constant="20" id="Fbc-Ec-rZs"/>
                             <constraint firstItem="Xfg-p8-FN0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="G3r-lu-eMj"/>
-                            <constraint firstItem="GR7-Pj-gTp" firstAttribute="top" secondItem="d2b-8a-FMp" secondAttribute="bottom" constant="90" id="H5Q-xB-85S"/>
+                            <constraint firstItem="GR7-Pj-gTp" firstAttribute="top" secondItem="d2b-8a-FMp" secondAttribute="bottom" constant="50" id="H5Q-xB-85S"/>
                             <constraint firstItem="naB-hL-jec" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="125" id="LsX-li-1ZO"/>
-                            <constraint firstItem="H5x-Tw-8u5" firstAttribute="top" secondItem="Oy4-EQ-qkm" secondAttribute="bottom" constant="10" id="QbC-CD-c7K"/>
-                            <constraint firstItem="d2b-8a-FMp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="RYB-VP-dOj"/>
+                            <constraint firstItem="H5x-Tw-8u5" firstAttribute="top" secondItem="Oy4-EQ-qkm" secondAttribute="bottom" constant="5" id="QbC-CD-c7K"/>
+                            <constraint firstItem="d2b-8a-FMp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="RYB-VP-dOj"/>
                             <constraint firstItem="H5x-Tw-8u5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ShJ-rx-iRu"/>
-                            <constraint firstItem="hwm-D1-IPs" firstAttribute="top" secondItem="H5x-Tw-8u5" secondAttribute="bottom" constant="11" id="Vbw-Tj-yAf"/>
-                            <constraint firstItem="H6T-n2-AYK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="X2b-7n-Cr3"/>
+                            <constraint firstItem="hwm-D1-IPs" firstAttribute="top" secondItem="H5x-Tw-8u5" secondAttribute="bottom" constant="5" id="Vbw-Tj-yAf"/>
+                            <constraint firstItem="H6T-n2-AYK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="X2b-7n-Cr3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xfg-p8-FN0" secondAttribute="trailing" constant="11" id="YHv-SZ-0Ck"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Oy4-EQ-qkm" secondAttribute="trailing" id="c5g-WA-hCt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H6T-n2-AYK" secondAttribute="trailing" constant="130" id="c9E-wk-pqd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H6T-n2-AYK" secondAttribute="trailing" constant="110" id="c9E-wk-pqd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="naB-hL-jec" secondAttribute="trailing" constant="125" id="gJM-7e-UnG"/>
                             <constraint firstItem="hwm-D1-IPs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="160" id="jUb-iC-mHr"/>
                             <constraint firstItem="Oy4-EQ-qkm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jwg-8H-vNl"/>
-                            <constraint firstItem="naB-hL-jec" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="k1j-vb-ktr"/>
+                            <constraint firstItem="naB-hL-jec" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="k1j-vb-ktr"/>
                             <constraint firstItem="H5x-Tw-8u5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="kZA-93-0L4"/>
-                            <constraint firstItem="d2b-8a-FMp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="nwe-Sm-Bxr"/>
+                            <constraint firstItem="d2b-8a-FMp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="110" id="nwe-Sm-Bxr"/>
                             <constraint firstItem="GR7-Pj-gTp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tBi-Pa-ti3"/>
                             <constraint firstItem="hwm-D1-IPs" firstAttribute="centerX" secondItem="H5x-Tw-8u5" secondAttribute="centerX" id="u54-kp-atk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d2b-8a-FMp" secondAttribute="trailing" constant="130" id="wgS-eu-tzn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d2b-8a-FMp" secondAttribute="trailing" constant="110" id="wgS-eu-tzn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H5x-Tw-8u5" secondAttribute="trailing" constant="140" id="xm2-2N-xD7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Xfg-p8-FN0" secondAttribute="bottom" constant="11" id="yAi-H7-XwI"/>
                         </constraints>

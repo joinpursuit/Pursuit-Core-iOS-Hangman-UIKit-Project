@@ -64,14 +64,15 @@ class Hangman {
             imageMan = UIImage(named: "hang\(badTries)")!
         } else if badTries == 7 {
             imageMan = UIImage(named: "hang\(badTries)")!
-            middleLabel = "GAME OVER! The dude died."
+            middleLabel = "GAME OVER! The dude died. The word was \(answerArray.compactMap{$0}.joined())"
             gameDone = true
         }
         
     }
     func reset() {
-        answerArray = []
-        guessArray = []
+        answerArray.removeAll()
+        guessArray.removeAll()
+        badArray.removeAll()
         middleLabel = "Hangman!"
         tries = 0
         badTries = 0
