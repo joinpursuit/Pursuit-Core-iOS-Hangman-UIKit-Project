@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var letterChosen: UILabel!
     @IBOutlet var font: [UILabel]!
     @IBOutlet var background: [UIView]!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     
     
@@ -32,8 +33,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
     super.viewDidLoad()
     font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
-//    background.forEach{$0.backgroundColor = HangmanBrain.chosenBackgroundColor}
-    
+    background.forEach{$0.backgroundColor = UIColor(patternImage: UIImage(named: HangmanBrain.chosenBackgroundColor)!)}
+    backgroundImage.image = UIImage(named: HangmanBrain.chosenBackgroundColor)
     userInputText.delegate = self
     user2InputText.delegate = self
     restartGame()

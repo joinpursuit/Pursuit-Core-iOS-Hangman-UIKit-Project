@@ -38,6 +38,7 @@ extension CategoryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         Categories.categoryIndex = row
         backGroundImage.image = UIImage(named: HangmanBrain.backgroundImageName[row])
+        HangmanBrain.chosenCategory = Categories.categoryNames[row]
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return Categories.categoryNames[row]

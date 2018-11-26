@@ -26,15 +26,14 @@ class SinglePlayerViewController: UIViewController {
     @IBOutlet weak var letterChosen: UILabel!
     @IBOutlet var font: [UILabel]!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var category: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(HangmanBrain.categoryRandomWord)
-//        restartButton.backgroundColor = HangmanBrain.chosenBackgroundColor
-        
-//        view.backgroundColor = HangmanBrain.chosenBackgroundColor
-//        backgroundImage.image = UIImage(named: HangmanBrain.)
+        restartButton.setBackgroundImage(UIImage(named: HangmanBrain.chosenBackgroundColor), for: .normal)
+        backgroundImage.image = UIImage(named: HangmanBrain.chosenBackgroundColor)
         font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
         user2InputText.delegate = self
         restartGame()
@@ -59,6 +58,7 @@ class SinglePlayerViewController: UIViewController {
         image.image = UIImage (named: "Default Image")
         hideMainMenu(bool: true)
         letterChosen.text = String()
+        category.text = HangmanBrain.chosenCategory
         label.text = ""
         print(randomWord)
     }
@@ -86,6 +86,7 @@ extension SinglePlayerViewController: UITextFieldDelegate {
             } else {
                 label.text = "Letter already Chosen"
                 textField.text = ""
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
             }
             
             textField.text = ""

@@ -24,6 +24,7 @@ class HangmanBrain {
     static var backgroundImageName = ["animals", "countries", "sports", "colors", "days", "fellows", "random" ]
     static var chosenBackgroundColor = String()
     static var chosenFontColor = UIColor()
+    static var chosenCategory = String()
 
 
     static func transformWord (word: String) -> String {
