@@ -64,8 +64,11 @@ extension ViewController: UITextFieldDelegate {
     }
     @IBAction func newGame (_ sender: UIButton) {
         hangmanCalc.reset()
+        imageMan.image = hangmanCalc.imageMan
         topTextField.isEnabled = true
         topTextField.text = ""
+        totalTries.text = "Tries: 0"
+        badPile.text = hangmanCalc.badLabel
         middleLabel.text = hangmanCalc.middleLabel
         bottomTextField.isEnabled = false
         bottomTextField.text = ""

@@ -75,5 +75,7 @@ class Hangman {
         middleLabel = "Hangman!"
         tries = 0
         badTries = 0
+        badLabel = "Bad word pile"
+        imageMan = UIImage(named: "hang1")!
     }
 }
