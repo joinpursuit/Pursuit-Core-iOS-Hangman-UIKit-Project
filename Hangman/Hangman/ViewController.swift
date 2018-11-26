@@ -57,32 +57,15 @@ extension ViewController: UITextFieldDelegate {
       displayRightChoices.text = "\(hangManBrain.arrayToDisplayRigthLetter)"
       
     } else {
-      switch hangManBrain.counterFailedAttempts{
-      case 7:
-        hangImage.image = UIImage(named: Image.hang7.rawValue)
-      case 6:
-        hangImage.image = UIImage(named: Image.hang6.rawValue)
-      case 5:
-        hangImage.image = UIImage(named: Image.hang5.rawValue)
-        
-      case 4:
-        hangImage.image = UIImage(named: Image.hang4.rawValue)
-        
-      case 3:
-        hangImage.image = UIImage(named: Image.hang3.rawValue)
-        
-      case 2:
-        hangImage.image = UIImage(named: Image.hang2.rawValue)
-        
-      case 1:
-        hangImage.image = UIImage(named: Image.hang1.rawValue)
-        
-      default:
-        print("You are done!")
-      }
-      
+      hangImage.image = hangManBrain.settingImageToFailedAttempts(attemptNum: hangManBrain.counterFailedAttempts)
     }
     
+//    if function to lose is true -> disable all the buttons
+    //update with lose message and word that was supposed to be guessed
+//
+//    if function to win is true -> disable all the buttons
+//    update with win message and guessed word
+//
     return true
   }
   
@@ -124,20 +107,3 @@ extension ViewController: UITextFieldDelegate {
 //I need to restart the game
 
 
-
-//
-//if textField == letterByUser {
-//  let currentLetter = letterByUser.text ?? ""
-//  guard let letterByuserRange = Range(range, in: currentLetter) else {return false}
-//  print(letterByuserRange)
-//  let updatedLetterByUser = currentLetter.replacingCharacters(in: letterByuserRange, with: string)
-//  print(updatedLetterByUser)
-//  isLetterRightLength = updatedLetterByUser.count <= hangManBrain.letterByUserLength
-//
-//} else if textField == hiddenWord {
-//  let currentWord = hiddenWord.text ?? ""
-//  guard let hiddenWordRange = Range(range, in: currentWord) else {return false}
-//  let updatedWord = currentWord.replacingCharacters(in: hiddenWordRange, with: string)
-//  isWordRightLength = updatedWord.count <= hangManBrain.hiddenWordLenght
-//
-//}

@@ -46,6 +46,48 @@ class HangmanBrain {
   var indexForLetter = 0
   var arrayToDisplayRigthLetter = [Character]()
   
+  
+  func didYouLose(failedAttempts: Int) -> Bool{
+    var youDidLose = Bool()
+    if failedAttempts == 7{
+     youDidLose = true
+    } else {
+     youDidLose = false
+    }
+    return youDidLose
+  }
+  
+  
+  func settingImageToFailedAttempts(attemptNum: Int) -> UIImage {
+    var hangmanImage = UIImage()
+    
+    switch attemptNum{
+    case 7:
+      hangmanImage = UIImage(named: Image.hang7.rawValue)!
+    case 6:
+      hangmanImage = UIImage(named: Image.hang6.rawValue)!
+    case 5:
+      hangmanImage = UIImage(named: Image.hang5.rawValue)!
+      
+    case 4:
+      hangmanImage = UIImage(named: Image.hang4.rawValue)!
+      
+    case 3:
+      hangmanImage = UIImage(named: Image.hang3.rawValue)!
+      
+    case 2:
+      hangmanImage = UIImage(named: Image.hang2.rawValue)!
+      
+    case 1:
+      hangmanImage = UIImage(named: Image.hang1.rawValue)!
+      
+    default:
+      print("You are done!")
+    }
+    
+    return hangmanImage
+  }
+  
   func letsPlay(wordToGuess: String, letterGuess: String) -> Bool{
     
     var isTheGuessedLetterRight = Bool()
