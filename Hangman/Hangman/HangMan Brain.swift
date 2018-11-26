@@ -47,6 +47,7 @@ class HangmanBrain {
   var arrayToDisplayRigthLetter = [Character]()
   
   func letsPlay(wordToGuess: String, letterGuess: String) -> Bool{
+    
     var isTheGuessedLetterRight = Bool()
 
     self.lettersThatWereSelected.append(letterGuess)
@@ -55,7 +56,6 @@ class HangmanBrain {
     let blanks = String(repeating: "_", count: wordToGuess.count)
     arrayToDisplayRigthLetter = Array(blanks)
   
-    
     hiddenWordArray = Array(wordToGuess)
     
 
@@ -69,11 +69,13 @@ class HangmanBrain {
           arrayToDisplayRigthLetter[index] = element
             print("This is the array with right letters: \(arrayToDisplayRigthLetter)")
           self.counterForGuesses += 1
+          print("This is the counter for guess\(counterForGuesses)")
           continue
         }
       }
     } else {
       self.counterFailedAttempts += 1
+      print("this is the counter for failed attempt: \(counterFailedAttempts)")
       isTheGuessedLetterRight = false
     }
   
