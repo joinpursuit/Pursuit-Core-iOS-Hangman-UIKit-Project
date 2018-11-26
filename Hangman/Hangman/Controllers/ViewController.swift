@@ -25,11 +25,6 @@ class ViewController: UIViewController {
     @IBOutlet var background: [UIView]!
     @IBOutlet weak var backgroundImage: UIImageView!
     
-    
-    
-
-    
-    
     override func viewDidLoad() {
     super.viewDidLoad()
     font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
@@ -134,7 +129,6 @@ extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         var boolToReturn = Bool()
-
         if user2InputText.text!.count > 1 {
             boolToReturn = false
         } else  if user2InputText.text!.count < 1{

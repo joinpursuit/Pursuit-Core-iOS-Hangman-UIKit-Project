@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="32" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oQ-Yc-r5j">
-                                <rect key="frame" x="0.0" y="95.666666666666671" width="414" height="40.000000000000014"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.3142376046" green="0.3127195485" blue="0.31575566059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                                 <state key="normal" title="Single Player">
@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-DA-D1L">
-                                <rect key="frame" x="0.0" y="135.66666666666666" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="154" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.3142376046" green="0.3127195485" blue="0.31575566059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                                 <state key="normal" title="Two Players">
@@ -43,21 +43,27 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Select Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qts-K8-gAY">
-                                <rect key="frame" x="0.0" y="182.66666666666666" width="414" height="47.666666666666657"/>
+                                <rect key="frame" x="0.0" y="201" width="414" height="50"/>
                                 <color key="backgroundColor" red="0.94275027513504028" green="0.78538783392602396" blue="0.32158933042809468" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ehj-vf-kKw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Blackboard Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-oE-M6r">
-                                <rect key="frame" x="0.0" y="230.33333333333334" width="414" height="21.666666666666657"/>
+                                <rect key="frame" x="0.0" y="251" width="414" height="30"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SXM-pj-gn3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eA-Wr-AQo" userLabel="Green Single Player">
-                                <rect key="frame" x="0.0" y="252" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="281" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.38311418009999998" green="0.57669733499999998" blue="0.3604292248" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <state key="normal" title="Green">
@@ -68,8 +74,11 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb8-q5-xDT" userLabel="Green Two Players">
-                                <rect key="frame" x="0.0" y="252" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="281" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.38311418009999998" green="0.57669733499999998" blue="0.3604292248" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kLv-mo-Xoc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <state key="normal" title="Green">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,7 +88,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLo-XY-t9A" userLabel="Black Single Player">
-                                <rect key="frame" x="0.0" y="286" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="321" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.13736758839999999" green="0.1367039769" blue="0.13803119999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <state key="normal" title="Black">
@@ -90,7 +99,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jy8-YP-v05" userLabel="Black Two Player">
-                                <rect key="frame" x="0.0" y="286" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="321" width="414" height="40"/>
                                 <color key="backgroundColor" red="0.13736758839999999" green="0.1367039769" blue="0.13803119999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <state key="normal" title="Black">
@@ -101,25 +110,28 @@
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Chalk Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24c-7P-TlK">
-                                <rect key="frame" x="0.0" y="320" width="414" height="21.666666666666686"/>
+                                <rect key="frame" x="0.0" y="361" width="414" height="30"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEB-O7-GjZ">
-                                <rect key="frame" x="0.0" y="341.66666666666669" width="414" height="216.00000000000006"/>
+                                <rect key="frame" x="0.0" y="391" width="414" height="125"/>
                                 <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="hMo-LD-6jd"/>
+                                </constraints>
                             </pickerView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl4-Rx-zzr">
-                                <rect key="frame" x="0.0" y="564.66666666666663" width="414" height="29.333333333333371"/>
+                                <rect key="frame" x="0.0" y="523" width="414" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vC8-9z-ksB">
-                                <rect key="frame" x="245" y="594" width="131" height="132"/>
+                                <rect key="frame" x="245" y="573" width="131" height="174"/>
                                 <state key="normal" image="hang7"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="drawing" id="rOk-nG-7UL"/>
@@ -147,8 +159,8 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="cartoon" id="kxe-Wf-zMc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdd-Fw-vDc">
-                                <rect key="frame" x="0.0" y="63.999999999999993" width="414" height="31.666666666666664"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdd-Fw-vDc">
+                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
                                 <color key="backgroundColor" red="0.99593228099999997" green="0.27651777859999999" blue="0.36207842829999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,6 +180,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jy8-YP-v05" firstAttribute="leading" secondItem="wWk-xo-2oj" secondAttribute="leading" id="0xQ-ss-7vN"/>
+                            <constraint firstItem="4oQ-Yc-r5j" firstAttribute="height" secondItem="eb8-q5-xDT" secondAttribute="height" id="2IY-6D-9Jd"/>
                             <constraint firstItem="Gdd-Fw-vDc" firstAttribute="leading" secondItem="wWk-xo-2oj" secondAttribute="leading" id="3DO-8F-OFb"/>
                             <constraint firstItem="eb8-q5-xDT" firstAttribute="width" secondItem="Qts-K8-gAY" secondAttribute="width" id="3Hu-kT-iru"/>
                             <constraint firstItem="wWk-xo-2oj" firstAttribute="trailing" secondItem="xl4-Rx-zzr" secondAttribute="trailing" id="4VU-fn-EBV"/>
@@ -182,6 +195,7 @@
                             <constraint firstItem="Fvg-5R-s0x" firstAttribute="width" secondItem="iog-FB-Nul" secondAttribute="width" id="BOx-jE-AYQ"/>
                             <constraint firstItem="Qts-K8-gAY" firstAttribute="top" secondItem="4ZP-DA-D1L" secondAttribute="bottom" constant="7" id="Bmw-lB-uwo"/>
                             <constraint firstItem="4oQ-Yc-r5j" firstAttribute="top" secondItem="Gdd-Fw-vDc" secondAttribute="bottom" id="CPA-aW-GVA"/>
+                            <constraint firstItem="Gdd-Fw-vDc" firstAttribute="height" secondItem="Qts-K8-gAY" secondAttribute="height" id="DPE-f7-sag"/>
                             <constraint firstItem="24c-7P-TlK" firstAttribute="top" secondItem="wLo-XY-t9A" secondAttribute="bottom" id="DTu-5j-Vem"/>
                             <constraint firstItem="4ZP-DA-D1L" firstAttribute="trailing" secondItem="wWk-xo-2oj" secondAttribute="trailing" id="DqS-R7-4OB"/>
                             <constraint firstItem="jwJ-oE-M6r" firstAttribute="trailing" secondItem="wWk-xo-2oj" secondAttribute="trailing" id="EtZ-7i-b9h"/>
@@ -192,10 +206,12 @@
                             <constraint firstItem="xl4-Rx-zzr" firstAttribute="top" secondItem="oEB-O7-GjZ" secondAttribute="bottom" constant="7" id="GfQ-bw-DX4"/>
                             <constraint firstItem="Qts-K8-gAY" firstAttribute="leading" secondItem="wWk-xo-2oj" secondAttribute="leading" id="H54-2I-fur"/>
                             <constraint firstItem="WgS-NE-I4G" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="1.65" id="KS1-ST-6Df"/>
+                            <constraint firstItem="xl4-Rx-zzr" firstAttribute="height" secondItem="Qts-K8-gAY" secondAttribute="height" id="LSC-Fz-Z6b"/>
                             <constraint firstItem="jwJ-oE-M6r" firstAttribute="leading" secondItem="wWk-xo-2oj" secondAttribute="leading" id="LW4-aC-ih9"/>
                             <constraint firstItem="wWk-xo-2oj" firstAttribute="trailing" secondItem="6eA-Wr-AQo" secondAttribute="trailing" id="NJ1-y7-meH"/>
                             <constraint firstItem="Hot-qS-H0Y" firstAttribute="centerY" secondItem="wWk-xo-2oj" secondAttribute="centerY" multiplier="1.65" id="PeH-A7-QrE"/>
                             <constraint firstItem="4oQ-Yc-r5j" firstAttribute="width" secondItem="Gdd-Fw-vDc" secondAttribute="width" id="Pw2-uS-fIz"/>
+                            <constraint firstItem="4ZP-DA-D1L" firstAttribute="height" secondItem="eb8-q5-xDT" secondAttribute="height" id="RD7-hG-wPS"/>
                             <constraint firstItem="wWk-xo-2oj" firstAttribute="trailing" secondItem="wLo-XY-t9A" secondAttribute="trailing" id="TTo-0o-adu"/>
                             <constraint firstItem="wLo-XY-t9A" firstAttribute="width" secondItem="Qts-K8-gAY" secondAttribute="width" id="UyL-Ik-NOP"/>
                             <constraint firstItem="vC8-9z-ksB" firstAttribute="top" secondItem="xl4-Rx-zzr" secondAttribute="bottom" id="VW4-ev-xUd"/>
@@ -320,7 +336,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dey-cf-Fcg">
-                                        <rect key="frame" x="155" y="137.66666666666666" width="104" height="45"/>
+                                        <rect key="frame" x="0.0" y="137.66666666666666" width="414" height="45"/>
                                         <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -352,6 +368,10 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.13736758839999999" green="0.1367039769" blue="0.13803119999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="dey-cf-Fcg" firstAttribute="leading" secondItem="40T-yF-FeE" secondAttribute="leading" id="4d7-Ud-KEf"/>
+                                    <constraint firstAttribute="trailing" secondItem="dey-cf-Fcg" secondAttribute="trailing" id="JHp-Rc-lYh"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.13736758839999999" green="0.1367039769" blue="0.13803119999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -421,7 +441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1433" y="587"/>
+            <point key="canvasLocation" x="1099" y="478"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="z3O-C8-zRm">
@@ -485,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLn-na-yhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1303" y="-68"/>
+            <point key="canvasLocation" x="1099" y="-165"/>
         </scene>
         <!--Single Player View Controller-->
         <scene sceneID="b5H-8J-WRQ">
@@ -558,8 +578,8 @@
                                     <action selector="restart:" destination="h0b-Ya-ugg" eventType="touchUpInside" id="NXE-Oi-c1t"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMI-cv-oMP">
-                                <rect key="frame" x="155" y="137.66666666666666" width="104" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMI-cv-oMP">
+                                <rect key="frame" x="0.0" y="137.66666666666666" width="414" height="45"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
                                 <color key="textColor" red="0.9951923077" green="0.9903846154" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -603,6 +623,8 @@
                             <constraint firstItem="pjZ-ql-Vz0" firstAttribute="trailing" secondItem="S8w-jL-dOO" secondAttribute="trailing" constant="32" id="vJl-bV-8Vk"/>
                             <constraint firstItem="wzx-KY-oSm" firstAttribute="centerX" secondItem="pjZ-ql-Vz0" secondAttribute="centerX" id="vlX-9Z-ZWg"/>
                             <constraint firstItem="NSb-O5-XD0" firstAttribute="height" secondItem="Kh4-sO-All" secondAttribute="height" id="vuk-Fk-XXD"/>
+                            <constraint firstItem="pjZ-ql-Vz0" firstAttribute="trailing" secondItem="oMI-cv-oMP" secondAttribute="trailing" id="vv5-vn-zyD"/>
+                            <constraint firstItem="oMI-cv-oMP" firstAttribute="leading" secondItem="pjZ-ql-Vz0" secondAttribute="leading" id="zG0-J4-jKF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pjZ-ql-Vz0"/>
                     </view>
@@ -631,7 +653,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yP-vt-7fD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2038" y="-69"/>
+            <point key="canvasLocation" x="1822" y="-165"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G7l-E2-O4m">
