@@ -13,9 +13,9 @@ class Brain {
     static var theWordArr: [Character] {
         return Array(Brain.theWord)}
     static var displayWord: [String] = []
-    static var guessLetter: String = ""
-    static var rightChoice: [String] = []
-    static var wrongChoice: [String] = []
+    static var guessLetter = ""
+    static var rightGuess: [String] = []
+    static var wrongGuess: [String] = []
     
     static func displayUnderscores() -> String {
         for _ in theWord {
@@ -26,10 +26,10 @@ class Brain {
     
     static func isLetterInWord() -> Bool {
         if theWord.contains(guessLetter) {
-            if !rightChoice.contains(guessLetter) {
-            rightChoice.append(guessLetter)
+            if !rightGuess.contains(guessLetter) {
+            rightGuess.append(guessLetter)
             for (index, letter) in theWordArr.enumerated() {
-                for guessLetter in rightChoice {
+                for guessLetter in rightGuess {
                     if String(letter) == guessLetter {
                         displayWord[index] = "\(String(letter)) "
                     }
@@ -38,15 +38,17 @@ class Brain {
             }
             return true
         } else {
-            if !wrongChoice.contains(guessLetter) {
-            wrongChoice.append(guessLetter)
+            if !wrongGuess.contains(guessLetter) {
+            wrongGuess.append(guessLetter)
             }
             return false
         }
     }
     
-    static func checkForWin() {
-        print("hello")
-    }
+//    static func checkForWin() -> Bool {
+//       if Brain.displayWord.contains(<#T##element: String##String#>)
+//        return false
+//    }
+    
     
 }

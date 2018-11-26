@@ -8,6 +8,10 @@
 
 import UIKit
 
+// to-do
+// need to fix issue with typing in repeating letters
+// need to fix issue with tracking for win - repeated letters don't count
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var wordTF: UITextField!
@@ -18,8 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var strikeNumDisplay: UILabel!
     @IBOutlet weak var rightGuess: UILabel!
     @IBOutlet weak var wrongGuess: UILabel!
+    private var rightGuessCounter = 0
     private var strikeCounter = 0
-    private var rightLetterCounter = 0
     override func viewDidLoad() {
     super.viewDidLoad()
     wordTF.delegate = self
@@ -50,7 +54,7 @@ class ViewController: UIViewController {
     }
     
     func checkForGameOver() {
-        if rightLetterCounter == Brain.theWord.count {
+        if Brain.rightGuess.count == Brain.theWord.count {
             message.text = "YOU WIN."
             guessTF.isEnabled = false
             strikeNumDisplay.text = "Press \"New Game\" to begin"
@@ -67,7 +71,7 @@ class ViewController: UIViewController {
         //    textFieldShouldClear(wordTF)
         //      textFieldShouldClear(guessTF)
         strikeCounter = 0
-        rightLetterCounter = 0
+        wordDisplay.text = "waiting for word input"
         Brain.theWord = ""
         strikeImageDisplay.isHidden = true
         strikeNumDisplay.isHidden = true
@@ -81,27 +85,32 @@ extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == wordTF {
-        Brain.theWord = textField.text!.lowercased()
-        wordDisplay.text = Brain.displayUnderscores()
-        message.text = "Enter a guess letter."
-        guessTF.isEnabled = true
-        strikeImageDisplay.isHidden = false
-        strikeNumDisplay.isHidden = false
-        wordTF.isEnabled = false
-        return true
-        }
-        
+            if textField.text?.isEmpty ?? true {
+                return true
+            }
+            Brain.theWord = textField.text!.lowercased()
+            wordDisplay.text = Brain.displayUnderscores()
+            message.text = "Enter a guess letter."
+            guessTF.isEnabled = true
+            strikeImageDisplay.isHidden = false
+            strikeNumDisplay.isHidden = false
+            wordTF.isEnabled = false
+            return true
+            }
+    
         if textField == guessTF {
+            if textField.text?.isEmpty ?? true {
+                return true
+            }
         Brain.guessLetter = textField.text!.lowercased()
         if Brain.isLetterInWord() {
             message.text = "\"\(Brain.guessLetter)\" : correct guess 😃"
-            rightGuess.text = "Right Guess: \(String(Brain.rightChoice.flatMap{String($0)}))"
+            rightGuess.text = "Right Guess: \(String(Brain.rightGuess.flatMap{String($0)}))"
             wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
-            rightLetterCounter += 1
             checkForGameOver()
         } else {
             message.text = "\"\(Brain.guessLetter)\" : wrong guess 😨"
-            wrongGuess.text = "Wrong Guess: \(String(Brain.wrongChoice.flatMap{String($0)}))"
+            wrongGuess.text = "Wrong Guess: \(String(Brain.wrongGuess.flatMap{String($0)}))"
             wordDisplay.text = String(Brain.displayWord.flatMap{String($0)})
             strikeImageUpdater()
             checkForGameOver()
@@ -121,21 +130,19 @@ extension ViewController: UITextFieldDelegate {
     // https://grokswift.com/uitextfield/ this source helped me with this section
         let characterSetAllowed = CharacterSet.letters
         if textField == wordTF {
-            if let _ = string.rangeOfCharacter(from: characterSetAllowed, options: .caseInsensitive) {
-                return true
-            } else {
-                return false
-            }
-    } else if textField == guessTF {
+            return (string.rangeOfCharacter(from: characterSetAllowed, options: .caseInsensitive) != nil)
+        }
+        if textField == guessTF {
+//            let charactersRejected: CharacterSet = Brain.rightChoice.map{Character($0)}
+//            let characterSetRejected = CharacterSet.letters.isDisjoint(with:)
         let characterCountLimit = 1
         let startingLength = textField.text?.count ?? 0
         let lengthToAdd = string.count
         let lengthToReplace = range.length
         let newLength = startingLength + lengthToAdd - lengthToReplace
-        return newLength <= characterCountLimit
+        return newLength <= characterCountLimit && (string.rangeOfCharacter(from: characterSetAllowed, options: .caseInsensitive) != nil)
     }
         return true
     }
-    
-    
 }
+
