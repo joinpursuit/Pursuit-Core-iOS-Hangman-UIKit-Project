@@ -31,98 +31,53 @@ class HangmanBrain {
   
   var hiddenWordLenght = 20
   var letterByUserLength = 1
-  
   var instructions = """
   Player2: Enter letters below to guess the word.
   Letters to choose from:
   a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
   """
-  
-  
-  
-  var hiddenWord = UITextField()
+
+  var hiddenWord = " "
+  var letterByUser = " "
   var hiddenWordArray = [Character]()
-  var letterByUserTwo: Character = " "
-  var letterByUser = UITextField()
-  var blanks = " "
-  var blankArray = [Character]()
+  var lettersThatWereSelected = [String]()
   var counterFailedAttempts = 0
   var counterForGuesses = 0
- var indexForLetter = 0
-  var hangmanImage = UIImage(named: " ")
+  var indexForLetter = 0
+  var arrayToDisplayRigthLetter = [Character]()
+  
+  func letsPlay(wordToGuess: String, letterGuess: String) -> Bool{
+    var isTheGuessedLetterRight = Bool()
 
-  
-  func unwrappingResponse() {
-    let userEnteredLetter = letterByUser.text?.lowercased() ?? " "
-    switch userEnteredLetter.lowercased() {
-    case "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z":
-      counterForGuesses += 1
-    default:
-      print("Not a valid entry. Please try again.")
-    }
-  }
-  
-  func settingUpBlanks(word: UITextField){
-    blanks = String(repeating: "_", count: word.text!.count)
-    blankArray = Array(blanks)
-  }
-  
-  func handleHiddenWord(wordToBeGuessed: UITextField) -> [Character] {
-    let arrayWordToPlay: [Character] = Array(wordToBeGuessed.text ?? " ")
-    return arrayWordToPlay
-  }
-  
-  func handleLetterByUser2 (letter:UITextField) -> Character {
-    let letterToCharacter = Character(letter.text ?? "!")
-    return letterToCharacter
-  }
+    self.lettersThatWereSelected.append(letterGuess)
+    print("these are the letters selected so far: \(lettersThatWereSelected)")
     
-  func beginPlay(hiddenWordArray: [Character], letterByUserTwo: Character) {
+    let blanks = String(repeating: "_", count: wordToGuess.count)
+    arrayToDisplayRigthLetter = Array(blanks)
+  
+    
+    hiddenWordArray = Array(wordToGuess)
+    
 
-    if hiddenWordArray.contains(letterByUserTwo){
-      print("hidden word contains letter")
+    if wordToGuess.contains(letterGuess){
+      isTheGuessedLetterRight = true
+      let letterConvertedToCharacter = Character(letterGuess)
+
       for (index, element) in hiddenWordArray.enumerated(){
-        if letterByUserTwo == element{
-          indexForLetter = index
-          blankArray[indexForLetter] = element
-          
+        if letterConvertedToCharacter == element{
+         indexForLetter = index
+          arrayToDisplayRigthLetter[index] = element
+            print("This is the array with right letters: \(arrayToDisplayRigthLetter)")
+          self.counterForGuesses += 1
+          continue
         }
       }
-    } else if !hiddenWordArray.contains(letterByUserTwo){
-      counterFailedAttempts += 1
-      switch counterFailedAttempts{
-      case 5:
-        hangmanImage = UIImage(named: "hang5")!
-        
-        print("")
-        
-      case 4:
-        
-        hangmanImage = UIImage(named: "hang4")!
-        print("")
-        
-      case 3:
-        hangmanImage = UIImage(named: "hang3")!
-        print("")
-        
-      case 2:
-        hangmanImage = UIImage(named: "hang2")!
-        print("")
-        
-      case 1:
-        hangmanImage = UIImage(named: "hang1")!
-        print("")
-        
-      case 6:
-        hangmanImage = UIImage(named: "hang6")!
-        print ("The rigth word was: \(hiddenWord.text!.uppercased())")
-        print("")
-        
-        counterFailedAttempts = 7
-        
-      default:
-        print("You are doneso... 👻")
-      }
+    } else {
+      self.counterFailedAttempts += 1
+      isTheGuessedLetterRight = false
     }
+  
+    return isTheGuessedLetterRight
   }
+
 }

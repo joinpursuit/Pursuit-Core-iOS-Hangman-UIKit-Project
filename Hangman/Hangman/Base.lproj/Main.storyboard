@@ -22,18 +22,12 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="beginPlay" destination="BYZ-38-t0r" eventType="editingDidEnd" id="nLP-dk-FUl"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Player One, enter word to be guessed by opponent" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qIm-cI-uLe">
                                 <rect key="frame" x="13" y="85" width="349" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <connections>
-                                    <action selector="beginPlay" destination="BYZ-38-t0r" eventType="editingDidEnd" id="ygv-a0-aKr"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hang Man!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy4-EW-p36">
                                 <rect key="frame" x="109.5" y="35" width="154" height="30"/>
@@ -46,9 +40,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="beginPlay" destination="BYZ-38-t0r" eventType="editingDidEnd" id="fpv-oN-FrJ"/>
-                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-HB-rO0">
                                 <rect key="frame" x="24" y="515" width="325" height="76"/>

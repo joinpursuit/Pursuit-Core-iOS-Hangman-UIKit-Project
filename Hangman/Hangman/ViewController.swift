@@ -30,106 +30,90 @@ class ViewController: UIViewController {
   }
   
   
-  @IBAction func beginPlay() {
-    hangManBrain.beginPlay(hiddenWordArray: hangManBrain.hiddenWordArray, letterByUserTwo: hangManBrain.letterByUserTwo)
-    displayRightChoices.text = "\(hangManBrain.blanks)"
-    print(hangManBrain.blanks)
-    
-  }
-  
-  
-  
 }
 
 
 extension ViewController: UITextFieldDelegate {
   
-  //textFieldShouldReturn is called when the keyboard return key is pressed. This method is used to dismiss the keyboard
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    guard let isThereText = textField.text else { return false }
+    guard !isThereText.isEmpty else { return false }
+    
     textField.resignFirstResponder()
     
     if textField == hiddenWord{
-      hangManBrain.hiddenWord = textField
-      hangManBrain.hiddenWordArray = hangManBrain.handleHiddenWord(wordToBeGuessed: hiddenWord)
-      
-      print("This is the hiddenWord: \(hangManBrain.hiddenWord.text!)")
+      hangManBrain.hiddenWord = textField.text ?? " "
+      textField.clearButtonMode = .whileEditing
+      print("This is the word: \(hangManBrain.hiddenWord)")
+
     } else if textField == letterByUser{
-      hangManBrain.letterByUser = textField
-      hangManBrain.letterByUserTwo = hangManBrain.handleLetterByUser2(letter: letterByUser)
-      print("This is the letter: \(hangManBrain.letterByUser.text!)")
+      hangManBrain.letterByUser = textField.text ?? " "
+      print("This is the letter: \(hangManBrain.letterByUser)")
+      textField.clearButtonMode = .whileEditing
+      textField.text = " "
     }
     
+    if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord, letterGuess: hangManBrain.letterByUser) == true {
+        displayRightChoices.text = "\(hangManBrain.arrayToDisplayRigthLetter)"
+      
+    } else {
+      switch hangManBrain.counterFailedAttempts{
+      case 7:
+        hangImage.image = UIImage(named: Image.hang7.rawValue)
+      case 6:
+        hangImage.image = UIImage(named: Image.hang6.rawValue)
+      case 5:
+        hangImage.image = UIImage(named: Image.hang5.rawValue)
+
+      case 4:
+        hangImage.image = UIImage(named: Image.hang4.rawValue)
+
+      case 3:
+        hangImage.image = UIImage(named: Image.hang3.rawValue)
+
+      case 2:
+        hangImage.image = UIImage(named: Image.hang2.rawValue)
+
+      case 1:
+        hangImage.image = UIImage(named: Image.hang1.rawValue)
+
+      default:
+        print("You are done!")
+      }
+    }
+
     return true
   }
   
-  //shouldChange Character is called when the user types a new character in the text field or deletes an existing character. This method will also disallow the use of a certain character
+  
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     
-    if textField == hiddenWord {
-      let currentLetter = letterByUser.text ?? ""
-      guard let otherStringRange = Range(range, in: currentLetter) else {return false}
-      let updatedLetterByUser = currentLetter.replacingCharacters(in: otherStringRange, with: string)
-      return updatedLetterByUser.count <= hangManBrain.letterByUserLength
-    } else if textField == letterByUser {
-      let currentLetter = letterByUser.text ?? ""
-      guard let otherStringRange = Range(range, in: currentLetter) else {return false}
-      let updatedLetterByUser = currentLetter.replacingCharacters(in: otherStringRange, with: string)
-      return updatedLetterByUser.count <= hangManBrain.letterByUserLength
-    }
     
-    return true
+    
+    let allowedCharacters = CharacterSet.letters
+    let characterSet = CharacterSet(charactersIn: string)
+    return allowedCharacters.isSuperset(of: characterSet)
+
+    
+    
+    
+
   }
-  
-  //is called when the clearButton is pressed
-  func textFieldShouldClear(_ textField: UITextField) -> Bool {
-    print("clear button pressed")
-    return true
-  }
-  
-  
-  
-  //  internal func textFieldShouldReturn(_ textField: UITextField) -> Bool{
-  //    textField.resignFirstResponder()
-  //    if textField == hiddenWord {
-  //      hangManBrain.hiddenWord = textField
-  //      print("This is the hiddenWord: \(hangManBrain.hiddenWord.text!)")
-  //    } else if textField == letterByUser {
-  //      hangManBrain.letterByUser = textField
-  //      print("This is the letter: \(hangManBrain.letterByUser.text!)")
-  //
-  //    }
-  //    return true
-  //
-  //  }
-  //
-  //  internal func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-  //
-  //    let currentLetter = letterByUser.text ?? ""
-  //    guard let otherStringRange = Range(range, in: currentLetter) else {return false}
-  //    let updatedLetterByUser = currentLetter.replacingCharacters(in: otherStringRange, with: string)
-  //    return updatedLetterByUser.count <= hangManBrain.letterByUserLength
-  //  }
   
 }
-
-////called when editing is about to begin
-//func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//  print("editing is about to begin")
-//  return true
+//
+//if textField == letterByUser {
+//  let currentLetter = letterByUser.text ?? ""
+//  guard let letterByuserRange = Range(range, in: currentLetter) else {return false}
+//  print(letterByuserRange)
+//  let updatedLetterByUser = currentLetter.replacingCharacters(in: letterByuserRange, with: string)
+//  print(updatedLetterByUser)
+//  return updatedLetterByUser.count <= hangManBrain.letterByUserLength
+//  
+//} else if textField == hiddenWord {
+//  let currentWord = hiddenWord.text ?? ""
+//  guard let hiddenWordRange = Range(range, in: currentWord) else {return false}
+//  let updatedWord = currentWord.replacingCharacters(in: hiddenWordRange, with: string)
+//  return updatedWord.count <= hangManBrain.hiddenWordLenght
+//  
 //}
-////is called when editing has begun
-//func textFieldDidBeginEditing(_ textField: UITextField) {
-//  textField.backgroundColor = UIColor.gray
-//  print("editing bagun")
-//}
-////is called when the editing is about to end
-//func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//  print("editing about to end")
-//  return true
-//}
-////is called when editing ended
-//func textFieldDidEndEditing(_ textField: UITextField) {
-//  print("editing ended")
-//  textField.backgroundColor = UIColor.white
-//}
-
