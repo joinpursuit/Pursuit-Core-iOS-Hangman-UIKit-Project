@@ -53,8 +53,7 @@ extension ViewController: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let characters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz")
-        if (string.rangeOfCharacter(from: characters) != nil) || (string == "" && range.length > 0) {
+        if (string.rangeOfCharacter(from: CharacterSet.letters) != nil) || (string == "" && range.length > 0) {
             middleLabel.text = hangmanCalc.middleLabel
             return bottomTextField.text!.count < 1 || string == ""
         } else {
