@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-  override func viewDidLoad() {
+    @IBOutlet weak var singlePlayerMode: UIButton!
+    @IBOutlet weak var twoPlayerMode: UIButton!
+    
+    override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+
   }
 
-
 }
-
