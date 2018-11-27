@@ -11,7 +11,7 @@ import UIKit
 class GameModel {
     var word: String = ""
     var currentGuess = ""
-    var wordAsArr: [String] { return word.map{ String($0) } }
+    private var wordAsArr: [String] { return word.map{ String($0) } }
     var displayWordAsArr: [String] = []
     var rightGuessArr: [String] = []
     var wrongGuessArr: [String] = []

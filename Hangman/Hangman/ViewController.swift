@@ -74,7 +74,7 @@ func checkForGameOver() {
     if instance.strikeCounter == 7 {
         message.text = "GAME OVER 😨😨😨"
         guessTF.isEnabled = false
-        strikeNumDisplay.text = "The word is \"\(instance.word)\""
+        strikeNumDisplay.text = "*** The word is \"\(instance.word)\" ***"
     }
 }
 }
@@ -101,7 +101,7 @@ extension ViewController: UITextFieldDelegate {
         wrongGuess.text = "Wrong Guess: \(instance.wrongGuessArr.compactMap{String($0)}.joined(separator: ", "))"
         wordDisplay.text = String(instance.displayWordAsArr.compactMap{String($0)}.joined(separator: " "))
         strikeImageDisplay.image = instance.strikeImageUpdater()
-        strikeNumDisplay.text = "Strike " + instance.strikeCounter.description + "/7"
+        strikeNumDisplay.text = "* Strike " + instance.strikeCounter.description + " out of 7 *"
         checkForGameOver()
         }
         return true
