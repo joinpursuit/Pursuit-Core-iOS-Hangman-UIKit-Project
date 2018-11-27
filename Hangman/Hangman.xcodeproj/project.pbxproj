@@ -14,7 +14,8 @@
 		57FCB5FE21A36D3E00163B8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57FCB5FC21A36D3E00163B8E /* LaunchScreen.storyboard */; };
 		A5DB225921A49F16002AC7C4 /* Strike.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DB225821A49F16002AC7C4 /* Strike.swift */; };
 		A5DB225B21A49F53002AC7C4 /* StrikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DB225A21A49F53002AC7C4 /* StrikeData.swift */; };
-		A5DB225D21A4CEAC002AC7C4 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DB225C21A4CEAB002AC7C4 /* Brain.swift */; };
+		A5DB225D21A4CEAC002AC7C4 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DB225C21A4CEAB002AC7C4 /* GameModel.swift */; };
+		A5DE7D4721AD96C4004BA327 /* RandomWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DE7D4621AD96C4004BA327 /* RandomWords.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		57FCB5FF21A36D3E00163B8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5DB225821A49F16002AC7C4 /* Strike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strike.swift; sourceTree = "<group>"; };
 		A5DB225A21A49F53002AC7C4 /* StrikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikeData.swift; sourceTree = "<group>"; };
-		A5DB225C21A4CEAB002AC7C4 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		A5DB225C21A4CEAB002AC7C4 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		A5DE7D4621AD96C4004BA327 /* RandomWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,8 @@
 				57FCB5F321A36D3D00163B8E /* AppDelegate.swift */,
 				57FCB5F521A36D3D00163B8E /* ViewController.swift */,
 				57FCB5F721A36D3D00163B8E /* Main.storyboard */,
-				A5DB225C21A4CEAB002AC7C4 /* Brain.swift */,
+				A5DB225C21A4CEAB002AC7C4 /* GameModel.swift */,
+				A5DE7D4621AD96C4004BA327 /* RandomWords.swift */,
 				A5DB225821A49F16002AC7C4 /* Strike.swift */,
 				A5DB225A21A49F53002AC7C4 /* StrikeData.swift */,
 				57FCB5FA21A36D3E00163B8E /* Assets.xcassets */,
@@ -147,7 +150,8 @@
 				57FCB5F621A36D3D00163B8E /* ViewController.swift in Sources */,
 				A5DB225921A49F16002AC7C4 /* Strike.swift in Sources */,
 				57FCB5F421A36D3D00163B8E /* AppDelegate.swift in Sources */,
-				A5DB225D21A4CEAC002AC7C4 /* Brain.swift in Sources */,
+				A5DB225D21A4CEAC002AC7C4 /* GameModel.swift in Sources */,
+				A5DE7D4721AD96C4004BA327 /* RandomWords.swift in Sources */,
 				A5DB225B21A49F53002AC7C4 /* StrikeData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
