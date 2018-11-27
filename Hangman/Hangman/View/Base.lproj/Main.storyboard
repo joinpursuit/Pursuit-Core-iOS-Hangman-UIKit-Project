@@ -114,5 +114,98 @@
             </objects>
             <point key="canvasLocation" x="-78.260869565217391" y="132.58928571428572"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Roi-Hm-287">
+            <objects>
+                <viewController id="FVe-fe-4AL" customClass="ViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tFd-pG-qRO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hangman!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RD5-XJ-gAg">
+                                <rect key="frame" x="20" y="206" width="374" height="48"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a letter" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="j93-kh-nrb">
+                                <rect key="frame" x="140" y="384" width="134" height="128"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One Player Hangman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-EL-dYt">
+                                <rect key="frame" x="120" y="84" width="174" height="29"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Flm-Ke-l3f">
+                                <rect key="frame" x="160" y="517" width="94" height="36"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="19"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGame:" destination="FVe-fe-4AL" eventType="touchUpInside" id="VI6-Xb-zhK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bad word pile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="peU-vH-AU6">
+                                <rect key="frame" x="0.0" y="351.5" width="414" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tries: 0 Strikes: 0 / 7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flF-n2-vbb">
+                                <rect key="frame" x="110" y="164" width="194" height="28"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9nK-J5-p9r">
+                                <rect key="frame" x="11" y="564" width="392" height="287"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9nK-J5-p9r" secondAttribute="height" multiplier="56:41" id="fxe-K5-byG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="bottom" secondItem="9nK-J5-p9r" secondAttribute="bottom" constant="11" id="0QL-9J-Qkz"/>
+                            <constraint firstItem="cDL-EL-dYt" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" constant="120" id="1Z8-2e-nx7"/>
+                            <constraint firstItem="j93-kh-nrb" firstAttribute="centerY" secondItem="tFd-pG-qRO" secondAttribute="centerY" id="1bI-Ex-l2m"/>
+                            <constraint firstItem="j93-kh-nrb" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" constant="140" id="4em-S6-cuu"/>
+                            <constraint firstItem="9nK-J5-p9r" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" constant="11" id="5eQ-Ny-Mh8"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="trailing" secondItem="flF-n2-vbb" secondAttribute="trailing" constant="110" id="8Ab-Ck-wzA"/>
+                            <constraint firstItem="j93-kh-nrb" firstAttribute="top" secondItem="peU-vH-AU6" secondAttribute="bottom" constant="5" id="C9G-PR-3hP"/>
+                            <constraint firstItem="cDL-EL-dYt" firstAttribute="top" secondItem="Z4F-KJ-pzU" secondAttribute="top" constant="40" id="Fuz-97-Mu1"/>
+                            <constraint firstItem="Flm-Ke-l3f" firstAttribute="top" secondItem="j93-kh-nrb" secondAttribute="bottom" constant="5" id="Fxu-Ry-QNR"/>
+                            <constraint firstItem="Flm-Ke-l3f" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" constant="160" id="I2J-md-eFA"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="bottom" secondItem="j93-kh-nrb" secondAttribute="bottom" constant="350" id="Lg7-TH-YMc"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="trailing" secondItem="peU-vH-AU6" secondAttribute="trailing" id="QNu-ui-bEA"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="trailing" secondItem="cDL-EL-dYt" secondAttribute="trailing" constant="120" id="RJX-i1-vHG"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="trailing" secondItem="9nK-J5-p9r" secondAttribute="trailing" constant="11" id="Uc1-Eq-unX"/>
+                            <constraint firstItem="9nK-J5-p9r" firstAttribute="top" secondItem="Flm-Ke-l3f" secondAttribute="bottom" constant="11" id="aLz-vi-I6W"/>
+                            <constraint firstItem="flF-n2-vbb" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" constant="110" id="bPL-6J-6PY"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="trailing" secondItem="RD5-XJ-gAg" secondAttribute="trailing" constant="20" id="lj9-Qe-ORI"/>
+                            <constraint firstItem="peU-vH-AU6" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" id="mm9-dY-Qrk"/>
+                            <constraint firstItem="RD5-XJ-gAg" firstAttribute="leading" secondItem="Z4F-KJ-pzU" secondAttribute="leading" constant="20" id="nq1-vM-kIB"/>
+                            <constraint firstItem="Z4F-KJ-pzU" firstAttribute="trailing" secondItem="j93-kh-nrb" secondAttribute="trailing" constant="140" id="r4D-cL-8j3"/>
+                            <constraint firstItem="Flm-Ke-l3f" firstAttribute="centerX" secondItem="j93-kh-nrb" secondAttribute="centerX" id="r6A-pW-jnf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z4F-KJ-pzU"/>
+                    </view>
+                    <connections>
+                        <outlet property="badPile" destination="peU-vH-AU6" id="dSS-qI-MaE"/>
+                        <outlet property="bottomTextField" destination="j93-kh-nrb" id="JBB-on-c9G"/>
+                        <outlet property="imageMan" destination="9nK-J5-p9r" id="ufG-N8-79o"/>
+                        <outlet property="middleLabel" destination="RD5-XJ-gAg" id="F1B-UV-ObL"/>
+                        <outlet property="newGame" destination="Flm-Ke-l3f" id="E3k-yK-h4M"/>
+                        <outlet property="topLabel" destination="cDL-EL-dYt" id="llA-z8-b6T"/>
+                        <outlet property="totalTries" destination="flF-n2-vbb" id="lEq-tL-JqU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9K-0q-8xZ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="133"/>
+        </scene>
     </scenes>
 </document>
