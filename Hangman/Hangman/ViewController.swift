@@ -26,18 +26,22 @@ class ViewController: UIViewController {
     wordTF.delegate = self
     guessTF.delegate = self
     guessTF.isEnabled = false
-  }
+    guessTF.isHidden = true
+    wordTF.isHidden = true
+    rightGuess.text = ""
+    wrongGuess.text = ""
+    strikeNumDisplay.text = ""
+    }
     
     @IBAction func newGame(_ sender: UIButton) {
+        guessTF.isHidden = false
         guessTF.text = ""
-        strikeImageDisplay.image = instance.strikeImageUpdater()
         strikeNumDisplay.text = ""
         rightGuess.text = "Right Guess:"
         wrongGuess.text = "Wrong Guess:"
         if sender.tag == 0 {
             GameModel.onePlayerMode = true
             instance.reset()
-//            instance.word = instance.getWord()
             wordTF.isHidden = true
             wordTF.isEnabled = false
             guessTF.isEnabled = true
@@ -54,8 +58,7 @@ class ViewController: UIViewController {
             wordDisplay.text = "waiting for word input..."
             message.text = "Enter a word."
         }
-        
-        
+        strikeImageDisplay.image = instance.strikeImageUpdater()
     }
 
 func checkForGameOver() {

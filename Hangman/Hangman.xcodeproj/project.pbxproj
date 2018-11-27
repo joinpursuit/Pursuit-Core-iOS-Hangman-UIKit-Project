@@ -62,18 +62,26 @@
 		57FCB5F221A36D3D00163B8E /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
-				57FCB5F321A36D3D00163B8E /* AppDelegate.swift */,
 				57FCB5F521A36D3D00163B8E /* ViewController.swift */,
 				57FCB5F721A36D3D00163B8E /* Main.storyboard */,
-				A5DB225C21A4CEAB002AC7C4 /* GameModel.swift */,
-				A5DE7D4621AD96C4004BA327 /* RandomWords.swift */,
-				A5DB225821A49F16002AC7C4 /* Strike.swift */,
-				A5DB225A21A49F53002AC7C4 /* StrikeData.swift */,
+				A5DE7D4821AD9AE0004BA327 /* Model */,
+				57FCB5F321A36D3D00163B8E /* AppDelegate.swift */,
 				57FCB5FA21A36D3E00163B8E /* Assets.xcassets */,
 				57FCB5FC21A36D3E00163B8E /* LaunchScreen.storyboard */,
 				57FCB5FF21A36D3E00163B8E /* Info.plist */,
 			);
 			path = Hangman;
+			sourceTree = "<group>";
+		};
+		A5DE7D4821AD9AE0004BA327 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5DB225C21A4CEAB002AC7C4 /* GameModel.swift */,
+				A5DE7D4621AD96C4004BA327 /* RandomWords.swift */,
+				A5DB225821A49F16002AC7C4 /* Strike.swift */,
+				A5DB225A21A49F53002AC7C4 /* StrikeData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGF5N989LK;
 				INFOPLIST_FILE = Hangman/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -317,6 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WGF5N989LK;
 				INFOPLIST_FILE = Hangman/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
