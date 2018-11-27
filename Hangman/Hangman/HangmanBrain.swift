@@ -17,81 +17,56 @@ public struct HangmanImages {
     static let fourWrongGuess = "hang5"
     static let fiveWrongGuess = "hang6"
     static let sixWrongGuess = "hang7"
+    static let youWin = "youWin"
 }
 
 
 class HangmanBrain {
-    var answerArray = [String]()
-    var guessArray = [String]()
     var guessedLetters = [String]()
     var userInputWord: String = ""
+    var userInputLetter: String = ""
+    var correctLetter: String = ""
     var guessingWord: String = ""
-    var gameText: String = ""
     var wrongGuesses: Int = 0
+    var correctGuesses: Int = 0
     var gameOverImage = UIImage(named: HangmanImages.sixWrongGuess)!
-    var inputLetter:Bool = false
     var gameDone: Bool = false
-    func wordArray(a: String) {
-        for i in a {
-            answerArray.append(String(i))
-            guessArray.append("_")
-        }
-        guessingWord = guessArray.compactMap{$0}.joined(separator: " ")
-        inputLetter = true
-    }
-    func checkingWord (b: String) {
-        if answerArray.contains(b) {
-            if guessedLetters.contains(b) {
-                gameText = "You've already picked this letter"
-            } else {
-                for i in 0..<answerArray.count {
-                    for _ in answerArray {
-                        if answerArray[i] == b {
-                            guessArray[i] = answerArray[i]
-                            if guessArray == answerArray {
-                                gameText = "You Win"
-                                gameDone = true
-                                break
-                            }
-                            guessingWord = guessArray.compactMap{$0}.joined(separator: " ")
-                        }
-                    }
+    
+    
+    func checkingWord (userWordInput: String, userWordGuess: String) -> Bool {
+        var rightGuess = Bool()
+        guessedLetters.append(userInputLetter)
+        if userWordInput.contains(userWordGuess) {
+            rightGuess = true
+            let capChar = Character(userWordGuess)
+            for letter in userWordInput {
+                switch letter {
+                case capChar:
+                    correctGuesses += 1
+                    correctLetter.append(userWordGuess)
+                default:
+                    continue
                 }
             }
         } else {
-            if guessedLetters.contains(b) {
-                gameText = "You've already entered the letter \(b)."
+            wrongGuesses += 1
+            rightGuess = false
+        }
+        return rightGuess
+    }
+    
+    func replaceDashes (word: String) -> String {
+        var replacingString = String()
+        for letter in word {
+            if correctLetter.contains(letter) {
+                replacingString += String(letter)
             } else {
-                wrongGuesses += 1
-                guessedLetters.append(b)
-                gameText = "Sorry, word doesn't contain the letter \(b)."
+                replacingString += "_"
             }
+            replacingString += " "
         }
-        if wrongGuesses > 0 && wrongGuesses < 6 {
-            switch wrongGuesses {
-            case 1:
-                gameOverImage = UIImage(named: HangmanImages.oneWrongGuess)!
-            case 2:
-                gameOverImage = UIImage(named: HangmanImages.twoWrongGuess)!
-            case 3:
-                gameOverImage = UIImage(named: HangmanImages.threeWrongGuess)!
-            case 4:
-                gameOverImage = UIImage(named: HangmanImages.fourWrongGuess)!
-            case 5:
-                gameOverImage = UIImage(named: HangmanImages.fiveWrongGuess)!
-            default:
-                gameOverImage = UIImage(named: "Default Image")!
-            }
-        } else if wrongGuesses == 6 {
-            gameOverImage = UIImage(named: HangmanImages.sixWrongGuess)!
-            gameText = "You Lose"
-            gameDone = true
-        }
+        return replacingString
     }
-    func reset() {
-        answerArray = []
-        guessArray = []
-        wrongGuesses = 0
-    }
+    
 }
 
