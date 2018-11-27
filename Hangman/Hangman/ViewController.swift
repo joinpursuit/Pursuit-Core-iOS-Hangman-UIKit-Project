@@ -21,16 +21,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var rightGuess: UILabel!
     @IBOutlet weak var wrongGuess: UILabel!
     
+    fileprivate func setUpForChooseGameMode() {
+        guessTF.isEnabled = false
+        guessTF.isHidden = true
+        wordTF.isHidden = true
+        rightGuess.text = ""
+        wrongGuess.text = ""
+        strikeNumDisplay.text = ""
+    }
+    
     override func viewDidLoad() {
     super.viewDidLoad()
     wordTF.delegate = self
     guessTF.delegate = self
-    guessTF.isEnabled = false
-    guessTF.isHidden = true
-    wordTF.isHidden = true
-    rightGuess.text = ""
-    wrongGuess.text = ""
-    strikeNumDisplay.text = ""
+    setUpForChooseGameMode()
     }
     
     @IBAction func newGame(_ sender: UIButton) {
