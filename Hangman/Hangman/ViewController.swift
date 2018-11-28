@@ -57,19 +57,19 @@ extension ViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     
     if textField == hiddenWord{
-      hangManBrain.hiddenWord = textField.text ?? ""
+      hangManBrain.hiddenWord = textField.text?.lowercased() ?? ""
       textField.clearButtonMode = .whileEditing
       print("This is the word: \(hangManBrain.hiddenWord)")
       
     } else if textField == letterByUser{
-      hangManBrain.letterByUser = textField.text ?? ""
+      hangManBrain.letterByUser = textField.text?.lowercased() ?? ""
       print("This is the letter: \(hangManBrain.letterByUser)")
       textField.clearButtonMode = .whileEditing
       textField.text = ""
     }
     
-    if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord, letterGuess: hangManBrain.letterByUser){
-      displayRightChoices.text = "\(hangManBrain.concatonateWord(word: hangManBrain.hiddenWord, str: hangManBrain.letterByUser))"
+    if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord.lowercased(), letterGuess: hangManBrain.letterByUser.lowercased()){
+      displayRightChoices.text = "\(hangManBrain.concatonateWord(word: hangManBrain.hiddenWord.lowercased(), str: hangManBrain.letterByUser.lowercased()))"
     } else {
      hangImage.image = hangManBrain.settingImageToFailedAttempts(attemptNum: hangManBrain.counterFailedAttempts)
     }

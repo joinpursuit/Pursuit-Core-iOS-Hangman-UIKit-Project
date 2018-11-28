@@ -56,12 +56,12 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdG-F0-POd">
-                                <rect key="frame" x="160" y="618" width="55" height="34"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="140" y="618" width="95" height="34"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.58105844259999995" green="0.12855249639999999" blue="0.57453137639999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="New Game">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.55249613119999996" green="1" blue="0.75710169810000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sR4-jP-IUW"/>
@@ -83,14 +83,14 @@
                             <constraint firstItem="CFb-HB-rO0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Rfh-fg-OcF"/>
                             <constraint firstItem="wg6-G5-J8g" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.4" id="UMU-Ja-Kuu"/>
                             <constraint firstItem="wg6-G5-J8g" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="WfI-6s-RFV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DdG-F0-POd" secondAttribute="trailing" constant="160" id="aHf-aU-81T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DdG-F0-POd" secondAttribute="trailing" constant="140" id="aHf-aU-81T"/>
                             <constraint firstItem="qIm-cI-uLe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="13" id="beF-ym-R7r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CFb-HB-rO0" secondAttribute="trailing" constant="16" id="c7E-Po-Zpa"/>
                             <constraint firstItem="cyu-Ai-R2h" firstAttribute="centerX" secondItem="wg6-G5-J8g" secondAttribute="centerX" id="cw3-cD-oOa"/>
                             <constraint firstItem="DdG-F0-POd" firstAttribute="top" secondItem="CFb-HB-rO0" secondAttribute="bottom" constant="14" id="j4d-gN-dm8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uy4-EW-p36" secondAttribute="trailing" constant="16" id="lls-Vu-Tjw"/>
                             <constraint firstItem="z0v-MP-brE" firstAttribute="top" secondItem="cyu-Ai-R2h" secondAttribute="bottom" constant="8" id="pbe-bu-4gR"/>
-                            <constraint firstItem="DdG-F0-POd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="160" id="rWE-w6-6tS"/>
+                            <constraint firstItem="DdG-F0-POd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="rWE-w6-6tS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cyu-Ai-R2h" secondAttribute="trailing" constant="125" id="rqV-3L-oOv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qIm-cI-uLe" secondAttribute="trailing" constant="13" id="yEX-G3-IIV"/>
                             <constraint firstItem="wg6-G5-J8g" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.8" id="ywa-L6-xbg"/>

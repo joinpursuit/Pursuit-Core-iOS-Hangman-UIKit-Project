@@ -87,18 +87,18 @@ class HangmanBrain {
     
     var isTheGuessedLetterRight = Bool()
     
-    self.lettersThatWereSelected.append(letterGuess)
+    self.lettersThatWereSelected.append(letterGuess.lowercased())
     print("these are the letters selected so far: \(lettersThatWereSelected)")
     
     let blanks = String(repeating: "_", count: wordToGuess.count)
     arrayToDisplayRigthLetter = Array(blanks)
     
-    hiddenWordArray = Array(wordToGuess)
+    hiddenWordArray = Array(wordToGuess.lowercased())
     
     
-    if wordToGuess.contains(letterGuess){
+    if wordToGuess.lowercased().contains(letterGuess.lowercased()){
       isTheGuessedLetterRight = true
-      let letterConvertedToCharacter = Character(letterGuess)
+      let letterConvertedToCharacter = Character(letterGuess.lowercased())
       
       for (index, element) in hiddenWordArray.enumerated(){
         if letterConvertedToCharacter == element{
@@ -129,7 +129,7 @@ class HangmanBrain {
   public func concatonateWord (word:String, str: String) -> String {
     let strToCharacter = Character(str)
     var completeArray = [Character]()
-    let hiddenWordArray = Array(word)
+    let hiddenWordArray = Array(word.lowercased())
     for (index, element) in hiddenWordArray.enumerated(){
       if strToCharacter == element{
         indexForLetter = index
@@ -140,7 +140,7 @@ class HangmanBrain {
     }
     
     let returnString = completeArray.map{ String($0) }.reduce("", +)
-    return returnString
+    return returnString.lowercased()
 
   }
  
