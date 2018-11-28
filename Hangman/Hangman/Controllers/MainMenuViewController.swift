@@ -36,7 +36,6 @@ class MainMenuViewController: UIViewController {
         restartUI()
     }
     private func restartUI (){
-//        numberOfPlayer.forEach{$0.isHidden = true}
         selectChalk.isHidden = true
         numberOfPlayer.forEach{$0.isEnabled = true}
         numberOfPlayer.forEach{$0.isUserInteractionEnabled = true}
@@ -115,18 +114,12 @@ class MainMenuViewController: UIViewController {
             print("Wrong Button")
             
         }
-        
-        
-        
     }
-    
-
 }
 
 
 extension MainMenuViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-
         return 1
     }
 
@@ -136,6 +129,7 @@ extension MainMenuViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         HangmanBrain.chosenFontColor = HangmanBrain.fontColor[row]
         pickerView.backgroundColor = HangmanBrain.fontColor[row]
+        
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

@@ -25,8 +25,10 @@ class ViewController: UIViewController {
     @IBOutlet var background: [UIView]!
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    
     override func viewDidLoad() {
     super.viewDidLoad()
+
     font.forEach{$0.textColor = HangmanBrain.chosenFontColor}
     background.forEach{$0.backgroundColor = UIColor(patternImage: UIImage(named: HangmanBrain.chosenBackgroundColor)!)}
     backgroundImage.image = UIImage(named: HangmanBrain.chosenBackgroundColor)
@@ -77,8 +79,6 @@ extension ViewController: UITextFieldDelegate {
         HangmanBrain.userWordInput = userInputText.text!.lowercased()
         HangmanBrain.userWordGuess = user2InputText.text!.lowercased()
         var word = String()
-        
-        
         for _ in 0..<HangmanBrain.userWordInput.count {
             word += " _ "
         }
@@ -87,7 +87,6 @@ extension ViewController: UITextFieldDelegate {
         mainScreen.isHidden = true
         
         if textField == user2InputText {
-            
             if !HangmanBrain.alreadyChosen.contains(HangmanBrain.userWordGuess){
                 if HangmanBrain.mainLogic(userWordInput: HangmanBrain.userWordInput, userWordGuess: HangmanBrain.userWordGuess) == true {
                     label.text = "Correct!"
@@ -104,7 +103,7 @@ extension ViewController: UITextFieldDelegate {
         image.image = UIImage(named: HangmanBrain.arrayOfImages[HangmanBrain.allowedStrikes])
         letterChosen.text = "Letters Chosen: \(HangmanBrain.alreadyChosen.joined(separator: " ").uppercased())"
             
-            chosenWord.text =  HangmanBrain.transformWord(word: HangmanBrain.userWordInput)
+        chosenWord.text =  HangmanBrain.transformWord(word: HangmanBrain.userWordInput)
         }
         
         correct.text = "Correct: \(HangmanBrain.correct)"
@@ -114,8 +113,6 @@ extension ViewController: UITextFieldDelegate {
             hideMainMenu(bool: false)
             mainScreenText.text = "The Correct Word Was: \(HangmanBrain.userWordInput)"
             winnerScreen.text = "Won!"
-
-            
         }
         
         if HangmanBrain.allowedStrikes == 7 {
@@ -126,6 +123,8 @@ extension ViewController: UITextFieldDelegate {
         
         return true
     }
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
         var boolToReturn = Bool()
@@ -135,7 +134,7 @@ extension ViewController: UITextFieldDelegate {
             boolToReturn = true
         }
 
-        
+
         let allowCharacters = CharacterSet.letters
         let characterSet = CharacterSet(charactersIn: string)
         

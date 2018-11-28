@@ -13,7 +13,6 @@ class SinglePlayerViewController: UIViewController {
 
 //    var randomWord = HangmanBrain.allTheWords.randomElement()!
     var randomWord = Categories.categoryArray[Categories.categoryIndex].randomElement()!.lowercased()
-    
     @IBOutlet weak var randowWord: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var correct: UILabel!
@@ -28,7 +27,7 @@ class SinglePlayerViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var category: UILabel!
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print(HangmanBrain.categoryRandomWord)
@@ -103,17 +102,16 @@ extension SinglePlayerViewController: UITextFieldDelegate {
             hideMainMenu(bool: false)
             mainScreenText.text = "The correct word was: \(randomWord.uppercased())"
             winnerScreen.text = "Won!"
-            
-            
         }
         if HangmanBrain.allowedStrikes == 7 {
             hideMainMenu(bool: false)
             mainScreenText.text = "The correct word was: \(randomWord.uppercased())"
             winnerScreen.text = "Lost!"
-            
         }
         return true
     }
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var boolToReturn = Bool()
         
@@ -123,14 +121,11 @@ extension SinglePlayerViewController: UITextFieldDelegate {
             boolToReturn = true
         }
         
-        
         let allowCharacters = CharacterSet.letters
         let characterSet = CharacterSet(charactersIn: string)
         
         return allowCharacters.isSuperset(of: characterSet) && boolToReturn
         
     }
-    
-    
 }
 
