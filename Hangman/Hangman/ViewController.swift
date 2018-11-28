@@ -53,26 +53,37 @@ extension ViewController: UITextFieldDelegate {
       textField.text = ""
     }
     
-    if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord, letterGuess: hangManBrain.letterByUser) {
-      displayRightChoices.text = "\(hangManBrain.arrayToDisplayRigthLetter)"
-      
+    if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord, letterGuess: hangManBrain.letterByUser){
+      displayRightChoices.text = "\(String(hangManBrain.arrayToDisplayRigthLetter))"
     } else {
-      hangImage.image = hangManBrain.settingImageToFailedAttempts(attemptNum: hangManBrain.counterFailedAttempts)
+     hangImage.image = hangManBrain.settingImageToFailedAttempts(attemptNum: hangManBrain.counterFailedAttempts)
     }
     
-//    if function to lose is true -> disable all the buttons
-    //update with lose message and word that was supposed to be guessed
-//
-//    if function to win is true -> disable all the buttons
-//    update with win message and guessed word
-//
+    
+    
+    if hangManBrain.counterForGuesses == hangManBrain.hiddenWord.count {
+      hangmanTitle.text = "You win!"
+      displayRightChoices.text = "\(hangManBrain.concatonateWord(word: hangManBrain.hiddenWord, str: hangManBrain.letterByUser))"
+      letterByUser.isUserInteractionEnabled = false
+
+    }
+    
+    if hangManBrain.counterFailedAttempts == 7{
+      hangmanTitle.text = "You lose"
+      displayRightChoices.text = "The word you didn't guess is: \(String(hangManBrain.hiddenWordArray))"
+      letterByUser.isUserInteractionEnabled = false
+
+    }
     return true
   }
   
   
+  
+  
+  
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentWord = hiddenWord.text ?? ""
-        let currentLetter = letterByUser.text ?? ""
+    let currentWord = hiddenWord.text ?? ""
+    let currentLetter = letterByUser.text ?? ""
     
     var isWordRightLength = Bool()
     var isLetterRightLength = Bool()
@@ -92,7 +103,6 @@ extension ViewController: UITextFieldDelegate {
     
     let allowedCharacters = CharacterSet.letters
     let characterSet = CharacterSet(charactersIn: string)
-    
     
     return allowedCharacters.isSuperset(of: characterSet) && isWordRightLength && isLetterRightLength
     

@@ -29,6 +29,8 @@ enum Image: String {
 
 class HangmanBrain {
   
+  
+  
   var hiddenWordLenght = 20
   var letterByUserLength = 1
   var instructions = """
@@ -36,9 +38,9 @@ class HangmanBrain {
   Letters to choose from:
   a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
   """
-
-  var hiddenWord = " "
-  var letterByUser = " "
+  
+  var hiddenWord = ""
+  var letterByUser = ""
   var hiddenWordArray = [Character]()
   var lettersThatWereSelected = [String]()
   var counterFailedAttempts = 0
@@ -47,15 +49,7 @@ class HangmanBrain {
   var arrayToDisplayRigthLetter = [Character]()
   
   
-  func didYouLose(failedAttempts: Int) -> Bool{
-    var youDidLose = Bool()
-    if failedAttempts == 7{
-     youDidLose = true
-    } else {
-     youDidLose = false
-    }
-    return youDidLose
-  }
+  
   
   
   func settingImageToFailedAttempts(attemptNum: Int) -> UIImage {
@@ -91,37 +85,89 @@ class HangmanBrain {
   func letsPlay(wordToGuess: String, letterGuess: String) -> Bool{
     
     var isTheGuessedLetterRight = Bool()
-
+    
     self.lettersThatWereSelected.append(letterGuess)
     print("these are the letters selected so far: \(lettersThatWereSelected)")
     
     let blanks = String(repeating: "_", count: wordToGuess.count)
     arrayToDisplayRigthLetter = Array(blanks)
-  
+    
     hiddenWordArray = Array(wordToGuess)
     
-
+    
     if wordToGuess.contains(letterGuess){
       isTheGuessedLetterRight = true
       let letterConvertedToCharacter = Character(letterGuess)
-
+      
       for (index, element) in hiddenWordArray.enumerated(){
         if letterConvertedToCharacter == element{
-         indexForLetter = index
+          indexForLetter = index
           arrayToDisplayRigthLetter[index] = element
-            print("This is the array with right letters: \(arrayToDisplayRigthLetter)")
+          print("This is the array with right letters: \(arrayToDisplayRigthLetter)")
           self.counterForGuesses += 1
           print("This is the counter for guess\(counterForGuesses)")
           continue
         }
       }
     } else {
-      self.counterFailedAttempts += 1
+      counterFailedAttempts += 1
       print("this is the counter for failed attempt: \(counterFailedAttempts)")
       isTheGuessedLetterRight = false
     }
-  
+    
+    
+    
     return isTheGuessedLetterRight
   }
+  
+  // if the entered word contains the right letter
+  //set index to element
+  //set another var to that variable at that moment
+  //return another variable
+  
+  public func concatonateWord (word:String, str: String) -> String {
+    let strToCharacter = Character(str)
+    var completeArray = [Character]()
+    let hiddenWordArray = Array(word)
+    for (index, element) in hiddenWordArray.enumerated(){
+      if strToCharacter == element{
+        indexForLetter = index
+        arrayToDisplayRigthLetter[indexForLetter] = element
+        completeArray = arrayToDisplayRigthLetter
+    
+      }
+    }
+    
+    let returnString = completeArray.map{ String($0) }.reduce("", +)
+    return returnString
 
+  }
+ 
 }
+
+
+//public func winningResult(arrayToBeGuessed: [Character], correctGuessesArray: [Character], failedAttempts: Int) -> Bool{
+//  var didThePlayerWin = Bool()
+//
+//  if arrayToBeGuessed == correctGuessesArray{
+//    didThePlayerWin = true
+//  }
+//
+//  if failedAttempts == 7{
+//    didThePlayerWin = false
+//  }
+//
+//  return didThePlayerWin
+//}
+
+
+//  if arrayToDisplayRigthLetter == hiddenWordArray{
+//  var title = "You win!"
+//  var displayRightChoice = String(arrayToDisplayRigthLetter)
+//  //      letterByUser.isEnabled = false
+//
+//  } else if counterFailedAttempts == 7 {
+//  hangmanTitle.text = "You lost..."
+//  displayRightChoices.text = hiddenWord
+//  //      letterByUser.isEnabled = false
+//  }
