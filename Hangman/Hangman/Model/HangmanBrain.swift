@@ -15,8 +15,9 @@ class HangmanBrain {
     var blankArr = [String]()
     var guessedLetters = [String]()
     
-    var strikes = 0 //didset property to check for lose
-    var hangmanPics = hangmanPic.getSet1()
+    var strikeNum = 0 //didset property to check for lose
+    var hangmanPics = HangmanPic.getSet1()
     
-    static let alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    static let alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    //characterSet = .upperCased
 }

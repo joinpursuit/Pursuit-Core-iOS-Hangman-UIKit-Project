@@ -17,33 +17,70 @@ class TwoPlayerViewController: UIViewController {
     @IBOutlet weak var gameStatus: UILabel!
     @IBOutlet weak var hangmanPic: UIImageView!
     
-    @IBOutlet weak var blanks: UILabel!
+    @IBOutlet weak var blanksLabel: UILabel!
     @IBOutlet weak var guessedLetters: UILabel!
     @IBOutlet weak var strikes: UILabel!
     
+    var gameBrain = HangmanBrain()
+    var winGame = false {
+        didSet {
+            guard winGame else { return }
+            //hide all textFields
+            playerWordTextField.isHidden = true
+            userGuessedLetter.isHidden = true
+            guessTheWordTextField.isHidden = true
+            
+            //game status you win
+            gameStatus.text = "You Win! 😃"
+            
+            //reveal word on that blank label
+            blanksLabel.text = gameBrain.wordArr.joined(separator: " ")
+        }
+    }
+    
     //didset for these 2 variable (check for win and lose)
         //variable for wordArr
-        //variable for strikes
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //hid the userGuessedLetters
-        //hid the guessTheWordTextField
-       
+        playerWordTextField.delegate = self
+        userGuessedLetter.delegate = self
+        guessTheWordTextField.delegate = self
+        setUpGame()
+    }
+    
+    private func setUpGame() {
+        gameStatus.text = ""
+        blanksLabel.text = ""
+        
+        //userGuessedLetter.isHidden = true
+        guessTheWordTextField.isHidden = true
+        
+        hangmanPic.image = gameBrain.hangmanPics[gameBrain.strikeNum].image
     }
     
     
     @IBAction func newGame(_ sender: Any) {
-        //hid the userGuessedLetters
-        //hid the guessTheWordTextField
-        //reveal the playerWordTextFieldLabel
-        //clear game status & blanks label
+        setUpGame()
+        
+        //reveal the playerWordTextField Label
+        playerWordTextField.isHidden = false
+        
         //stikes back to zero in label
-        //reset variables: guessed letters, strikes
+        strikes.text = "Strikes: 0"
+        guessedLetters.text = "Guessed:"
+        
+        //reset variables: guessed letters, strikes, wingGame
+        gameBrain.guessedLetters = [String]()
+        gameBrain.strikeNum = 0
+        winGame = false
     }
 
 }
 
 extension TwoPlayerViewController: UITextFieldDelegate {
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -94,15 +131,25 @@ extension TwoPlayerViewController: UITextFieldDelegate {
         return true
     }
     
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if textField == userGuessedLetter {
-            //make sure the user enters 1 letter
-            //make sure the user enters an alphabet
-            //capitalized the input
+            let uppercasedInputLetter = string.uppercased()
+            
+            //user enters an alphabet
+            //user enters an ungussed letter
+            guard HangmanBrain.alphabets.contains(uppercasedInputLetter),
+                !gameBrain.guessedLetters.contains(uppercasedInputLetter) else { return false }
+            
+            //capitalized the input & limit to only 1 char input
+            textField.text = uppercasedInputLetter
+            return false
         }
         
         return true
-        
     }
+    
+    
 }

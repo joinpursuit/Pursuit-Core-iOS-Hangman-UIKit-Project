@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct hangmanPic {
+struct HangmanPic {
     let image: UIImage
     let strikeNum: Int
     
@@ -18,13 +18,13 @@ struct hangmanPic {
         self.strikeNum = strikeNum
     }
     
-    static func getSet1() -> [hangmanPic] {
-        var hangmanPictureSet = [hangmanPic]()
+    static func getSet1() -> [HangmanPic] {
+        var hangmanPictureSet = [HangmanPic]()
         var picNum = 1
         var strikeNum = 0
         
         for _ in 1...7 {
-            hangmanPictureSet.append(hangmanPic.init(image: UIImage.init(named: "hang\(picNum)")!, strikeNum: strikeNum))
+            hangmanPictureSet.append(HangmanPic.init(image: UIImage.init(named: "hang\(picNum)")!, strikeNum: strikeNum))
             picNum += 1
             strikeNum += 1
         }

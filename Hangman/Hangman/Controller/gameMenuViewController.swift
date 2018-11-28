@@ -14,10 +14,10 @@ class gameMenuViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
-    print(gameBrain.hangmanPics)
+    //print(gameBrain.hangmanPics)
   }
 
-
+    //use segue to pass the brain
     @IBAction func chooseHangmanPictureSet(_ sender: UIButton) {
         //switch on sender.tag for appropriate set
     }

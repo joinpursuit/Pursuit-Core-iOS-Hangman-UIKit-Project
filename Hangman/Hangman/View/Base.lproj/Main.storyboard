@@ -149,7 +149,7 @@
                         <viewLayoutGuide key="safeArea" id="Q1p-rU-hjg"/>
                     </view>
                     <connections>
-                        <outlet property="blanks" destination="jBt-G7-DHE" id="2Tf-uR-WJo"/>
+                        <outlet property="blanksLabel" destination="jBt-G7-DHE" id="2k1-41-Nt8"/>
                         <outlet property="gameStatus" destination="6cZ-y4-8cn" id="taK-vs-Mka"/>
                         <outlet property="guessTheWordTextField" destination="N3D-pB-MzK" id="lpD-Lw-NHe"/>
                         <outlet property="guessedLetters" destination="aZa-2A-LVT" id="Tu9-7h-0Bs"/>
