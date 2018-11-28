@@ -63,14 +63,14 @@ extension ViewController: UITextFieldDelegate {
     
     if hangManBrain.counterForGuesses == hangManBrain.hiddenWord.count {
       hangmanTitle.text = "You win!"
-      displayRightChoices.text = "\(hangManBrain.concatonateWord(word: hangManBrain.hiddenWord, str: hangManBrain.letterByUser))"
+      displayRightChoices.text = "The correct word is: \(hangManBrain.hiddenWord)"
       letterByUser.isUserInteractionEnabled = false
 
     }
     
     if hangManBrain.counterFailedAttempts == 7{
       hangmanTitle.text = "You lose"
-      displayRightChoices.text = "The word you didn't guess is: \(String(hangManBrain.hiddenWordArray))"
+      displayRightChoices.text = "The word you didn't guess is: \(hangManBrain.hiddenWord))"
       letterByUser.isUserInteractionEnabled = false
 
     }
