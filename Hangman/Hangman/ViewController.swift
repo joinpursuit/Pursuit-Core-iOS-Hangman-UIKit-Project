@@ -32,20 +32,17 @@ class ViewController: UIViewController {
   }
   
   func setUp() {
-    instructions.text = hangManBrain.instructions
+    hangManBrain.clearAllFields()
     letterByUser.delegate = self
     hiddenWord.delegate = self
-    hangManBrain.arrayToDisplayRigthLetter = [Character]()
-    hangManBrain.lettersThatWereSelected = [String]()
+    instructions.text = hangManBrain.instructions
+    hangmanTitle.text = "Hang Man!"
+    hangImage.image = nil
+    displayAllChoices.text = ""
+    displayRightChoices.text = ""
     letterByUser.isUserInteractionEnabled = false
     hiddenWord.isUserInteractionEnabled = true
     hiddenWord.text = ""
-    hangManBrain.counterForGuesses = 0
-    hangManBrain.counterFailedAttempts = 0
-    hangmanTitle.text = "Hang Man!"
-    hangImage.image = nil
-    hangManBrain.arrayToDisplayRigthLetter = [Character]()
-    hangManBrain.lettersThatWereSelected = [String]()
   }
   
   @IBAction func newGame(_ sender: Any) {
@@ -80,16 +77,13 @@ extension ViewController: UITextFieldDelegate {
     if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord.lowercased(), letterGuess: hangManBrain.letterByUser.lowercased()){
       displayRightChoices.text = "\(hangManBrain.concatonateWord(word: hangManBrain.hiddenWord.lowercased(), str: hangManBrain.letterByUser.lowercased()))"
       
-      
-      let x = hangManBrain.arrayToDisplayRigthLetter.map{ String($0) }.reduce("", +)
-      print(x)
     } else {
      hangImage.image = hangManBrain.settingImageToFailedAttempts(attemptNum: hangManBrain.counterFailedAttempts)
     }
     
     displayAllChoices.text = "The letters you've entered are: \(hangManBrain.lettersThatWereSelected.joined(separator: " - "))"
     
-    if hangManBrain.counterForGuesses == hangManBrain.hiddenWord.count {
+    if hangManBrain.counterForGuesses == hangManBrain.hiddenWord.count{
       hangmanTitle.text = "You win!"
       hangmanTitle.textColor = UIColor.purple
       

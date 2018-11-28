@@ -125,8 +125,6 @@ class HangmanBrain {
       isTheGuessedLetterRight = false
     }
     
-    
-    
     return isTheGuessedLetterRight
   }
   
@@ -149,9 +147,20 @@ class HangmanBrain {
   }
   
   func clearAllFields() {
-    
+    arrayToDisplayRigthLetter = [Character]()
+    lettersThatWereSelected = [String]()
+    counterForGuesses = 0
+    counterFailedAttempts = 0
+    arrayToDisplayRigthLetter = [Character]()
+    lettersThatWereSelected = [String]()
+    hiddenWord = ""
+    letterByUser = ""
   }
 
 }
 
-
+/*TODO:
+-Make sure you have both a hiddenWord and letterByUser before running letsPlay function in VC
+-Figure out how to display all the letter in arrayToDisplayRightLetter - func concatonateWord doesn't work as it should because the input comes at different moments? - I also tried outside the function
+- If I figure out how to make sure the arrayToDisplayRightletter, this will give me a solid winning outcome as I compare two arrays. Right now with count, if I enter a contained letter twice, I win the game even without all the letters.
+*/
