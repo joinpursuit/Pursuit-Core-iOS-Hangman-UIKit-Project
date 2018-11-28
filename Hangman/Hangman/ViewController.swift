@@ -19,8 +19,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var instructions: UITextView!
   @IBOutlet weak var letterByUser: UITextField!
   @IBOutlet weak var displayRightChoices: UILabel!
-  @IBOutlet weak var newGame: UITextField!
-  
+  @IBOutlet weak var newGame: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,7 +28,23 @@ class ViewController: UIViewController {
     hiddenWord.delegate = self
   }
   
+  func setUp() {
+    instructions.text = hangManBrain.instructions
+    letterByUser.delegate = self
+    hiddenWord.delegate = self
+    displayRightChoices.text = ""
+    letterByUser.isUserInteractionEnabled = true
+    hiddenWord.text = ""
+    hangManBrain.counterForGuesses = 0
+    hangManBrain.counterFailedAttempts = 0
+    hangmanTitle.text = "Hang Man!"
+    displayRightChoices.text = ""
+    hangImage.image = nil
+  }
   
+  @IBAction func newGame(_ sender: Any) {
+    setUp()
+  }
 }
 
 
@@ -54,7 +69,7 @@ extension ViewController: UITextFieldDelegate {
     }
     
     if hangManBrain.letsPlay(wordToGuess: hangManBrain.hiddenWord, letterGuess: hangManBrain.letterByUser){
-      displayRightChoices.text = "\(String(hangManBrain.arrayToDisplayRigthLetter))"
+      displayRightChoices.text = "\(hangManBrain.concatonateWord(word: hangManBrain.hiddenWord, str: hangManBrain.letterByUser))"
     } else {
      hangImage.image = hangManBrain.settingImageToFailedAttempts(attemptNum: hangManBrain.counterFailedAttempts)
     }
@@ -63,6 +78,8 @@ extension ViewController: UITextFieldDelegate {
     
     if hangManBrain.counterForGuesses == hangManBrain.hiddenWord.count {
       hangmanTitle.text = "You win!"
+      hangmanTitle.textColor = UIColor.purple
+      
       displayRightChoices.text = "The correct word is: \(hangManBrain.hiddenWord)"
       letterByUser.isUserInteractionEnabled = false
 
@@ -70,7 +87,8 @@ extension ViewController: UITextFieldDelegate {
     
     if hangManBrain.counterFailedAttempts == 7{
       hangmanTitle.text = "You lose"
-      displayRightChoices.text = "The word you didn't guess is: \(hangManBrain.hiddenWord))"
+      hangmanTitle.textColor = UIColor.red
+      displayRightChoices.text = "The word you didn't guess is: \(hangManBrain.hiddenWord)"
       letterByUser.isUserInteractionEnabled = false
 
     }
@@ -109,11 +127,4 @@ extension ViewController: UITextFieldDelegate {
   }
   
 }
-
-
-//I need to determine win and stop the game
-//I need to determine que perdió and end the game
-//I need to join the word at the end when displaying
-//I need to restart the game
-
 

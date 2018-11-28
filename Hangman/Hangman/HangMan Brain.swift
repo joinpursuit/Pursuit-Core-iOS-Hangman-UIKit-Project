@@ -36,7 +36,8 @@ class HangmanBrain {
   var instructions = """
   Player2: Enter letters below to guess the word.
   Letters to choose from:
-  a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+      a, b, c, d, e, f, g, h, i, j, k, l, m,
+      n, o, p, q, r, s, t, u, v, w, x, y, z
   """
   
   var hiddenWord = ""
@@ -146,28 +147,3 @@ class HangmanBrain {
 }
 
 
-//public func winningResult(arrayToBeGuessed: [Character], correctGuessesArray: [Character], failedAttempts: Int) -> Bool{
-//  var didThePlayerWin = Bool()
-//
-//  if arrayToBeGuessed == correctGuessesArray{
-//    didThePlayerWin = true
-//  }
-//
-//  if failedAttempts == 7{
-//    didThePlayerWin = false
-//  }
-//
-//  return didThePlayerWin
-//}
-
-
-//  if arrayToDisplayRigthLetter == hiddenWordArray{
-//  var title = "You win!"
-//  var displayRightChoice = String(arrayToDisplayRigthLetter)
-//  //      letterByUser.isEnabled = false
-//
-//  } else if counterFailedAttempts == 7 {
-//  hangmanTitle.text = "You lost..."
-//  displayRightChoices.text = hiddenWord
-//  //      letterByUser.isEnabled = false
-//  }
