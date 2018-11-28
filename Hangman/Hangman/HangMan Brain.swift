@@ -33,8 +33,9 @@ class HangmanBrain {
   
   var hiddenWordLenght = 20
   var letterByUserLength = 1
+  var instructionFirstPlayer = "Player1: Enter a word for the second player to guess."
   var instructions = """
-  Player2: Enter letters below to guess the word.
+  Player2: Enter letters in the square below!
   Letters to choose from:
       a, b, c, d, e, f, g, h, i, j, k, l, m,
       n, o, p, q, r, s, t, u, v, w, x, y, z
@@ -83,29 +84,37 @@ class HangmanBrain {
     return hangmanImage
   }
   
-  func letsPlay(wordToGuess: String, letterGuess: String) -> Bool{
+  func letsPlay(wordToGuess: String?, letterGuess: String?) -> Bool{
+    guard let word = wordToGuess,
+    let letter = letterGuess else
+    {return false}
+    
     
     var isTheGuessedLetterRight = Bool()
     
-    self.lettersThatWereSelected.append(letterGuess.lowercased())
+    lettersThatWereSelected.append(letter.lowercased())
+    
+    
     print("these are the letters selected so far: \(lettersThatWereSelected)")
     
-    let blanks = String(repeating: "_", count: wordToGuess.count)
+    let blanks = String(repeating: "_", count: word.count)
     arrayToDisplayRigthLetter = Array(blanks)
     
-    hiddenWordArray = Array(wordToGuess.lowercased())
+    hiddenWordArray = Array(word.lowercased())
     
     
-    if wordToGuess.lowercased().contains(letterGuess.lowercased()){
+    if word.lowercased().contains(letter.lowercased()){
+      
       isTheGuessedLetterRight = true
-      let letterConvertedToCharacter = Character(letterGuess.lowercased())
+      
+      let letterConvertedToCharacter = Character(letter.lowercased())
       
       for (index, element) in hiddenWordArray.enumerated(){
         if letterConvertedToCharacter == element{
           indexForLetter = index
           arrayToDisplayRigthLetter[index] = element
           print("This is the array with right letters: \(arrayToDisplayRigthLetter)")
-          self.counterForGuesses += 1
+          counterForGuesses += 1
           print("This is the counter for guess\(counterForGuesses)")
           continue
         }
@@ -121,10 +130,6 @@ class HangmanBrain {
     return isTheGuessedLetterRight
   }
   
-  // if the entered word contains the right letter
-  //set index to element
-  //set another var to that variable at that moment
-  //return another variable
   
   public func concatonateWord (word:String, str: String) -> String {
     let strToCharacter = Character(str)
@@ -141,9 +146,12 @@ class HangmanBrain {
     
     let returnString = completeArray.map{ String($0) }.reduce("", +)
     return returnString.lowercased()
-
   }
- 
+  
+  func clearAllFields() {
+    
+  }
+
 }
 
 
