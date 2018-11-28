@@ -14,14 +14,23 @@ class TwoPlayerViewController: UIViewController {
     @IBOutlet weak var userGuessedLetter: UITextField!
     @IBOutlet weak var guessTheWordTextField: UITextField!
     
-    @IBOutlet weak var gameStatus: UILabel!
+    @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var hangmanPic: UIImageView!
     
     @IBOutlet weak var blanksLabel: UILabel!
     @IBOutlet weak var guessedLetters: UILabel!
     @IBOutlet weak var strikes: UILabel!
     
-    var gameBrain = HangmanBrain()
+    
+    var word = HangmanBrain.word
+    var wordArr = HangmanBrain.wordArr
+    
+    var blankArr = HangmanBrain.blankArr
+    var guessedLettersArr = HangmanBrain.guessedLettersArr
+    
+    var strikeNum = HangmanBrain.startingStrikeNum
+    var hangmanPicsArr = HangmanBrain.hangmanPicsArr
+    
     var winGame = false {
         didSet {
             guard winGame else { return }
@@ -31,15 +40,12 @@ class TwoPlayerViewController: UIViewController {
             guessTheWordTextField.isHidden = true
             
             //game status you win
-            gameStatus.text = "You Win! 😃"
+            gameStatusLabel.text = "You Win! 😃"
             
-            //reveal word on that blank label
-            blanksLabel.text = gameBrain.wordArr.joined(separator: " ")
+            //reveal blank label
+            blanksLabel.text = blankArr.joined(separator: " ")
         }
     }
-    
-    //didset for these 2 variable (check for win and lose)
-        //variable for wordArr
     
     
     override func viewDidLoad() {
@@ -51,17 +57,17 @@ class TwoPlayerViewController: UIViewController {
     }
     
     private func setUpGame() {
-        gameStatus.text = ""
+        gameStatusLabel.text = ""
         blanksLabel.text = ""
         
-        //userGuessedLetter.isHidden = true
+        userGuessedLetter.isHidden = true
         guessTheWordTextField.isHidden = true
         
-        hangmanPic.image = gameBrain.hangmanPics[gameBrain.strikeNum].image
+        hangmanPic.image = hangmanPicsArr[strikeNum].image
     }
     
     
-    @IBAction func newGame(_ sender: Any) {
+    @IBAction func newGame(_ sender: UIButton) {
         setUpGame()
         
         //reveal the playerWordTextField Label
@@ -72,8 +78,8 @@ class TwoPlayerViewController: UIViewController {
         guessedLetters.text = "Guessed:"
         
         //reset variables: guessed letters, strikes, wingGame
-        gameBrain.guessedLetters = [String]()
-        gameBrain.strikeNum = 0
+        guessedLettersArr = HangmanBrain.guessedLettersArr
+        strikeNum = HangmanBrain.startingStrikeNum
         winGame = false
     }
 
@@ -89,30 +95,68 @@ extension TwoPlayerViewController: UITextFieldDelegate {
         switch textField {
         case playerWordTextField:
             //store the word in brain.word (uppercased it)
-            //beak the word into an arr and store in wordArr (in brain)
+            guard let playerWord = textField.text, playerWord != "" else {
+                gameStatusLabel.text = "Invalid Input ☹️"
+                return false
+            }
+            word = playerWord.uppercased()
+            
+            //break the word into an arr and store in wordArr (in brain)
+            wordArr = Array(word)
+                print(wordArr)
+            
             //create an array of blanks & output in the View (joined w/ separator space)
+            wordArr.forEach { (char: Character) -> () in
+                char == " " ? blankArr.append(" "): blankArr.append("_")
+            }
+            print(blankArr)
+            blanksLabel.text = blankArr.joined(separator: " ")
+            
+            
             //hid this textfield & reveal userGuessedLetters + guessTheWordTextField
-            break
+            playerWordTextField.isHidden = true
+            userGuessedLetter.isHidden = false
+            guessTheWordTextField.isHidden = false
+            
+            
         case userGuessedLetter:
-            //guard against already guessed words
-                //iterate the guessed arr
+            
+            guard let guessedLetter = textField.text else {
+                gameStatusLabel.text = "Invalid Input"
+                return false
+            }
+            
+            guard guessedLettersArr.contains(guessedLetter) else {
+                gameStatusLabel.text = "You already enter \"\(guessedLetter)\"."
+                return false
+            }
+            
+            //add letter to guessedLettersArr
+            guessedLettersArr.append(guessedLetter)
+
             //check if the letter in the wordArr
                 //yes --> game status ("there's a _")
                     //check for win********
                 //no -->  game status ("sorry wrong letter")
                         //update Strike label & variable (strike += 1)
                         //update hangman picture to next one (+1 body part)
-            
-            //update Blank variable and label
+            if wordArr.contains(guessedLetter) {
+                
+                //update Blank variable and label
                 //loop over wordArr
-                    //if matched replade the blank with the actual letter based on index
+                //if matched replade the blank with the actual letter based on index
                 //use joined to update blank label
+            } else {
+                break
+            }
+            
+            
+
             
             //update guessedLetters variable and label
-                //add the letter into the gussed array
                 //sort the arr
                 //update label
-            break
+            textField.text = ""
         case guessTheWordTextField:
             //uppercased the input and compared to the word
                 //matched:
@@ -128,6 +172,7 @@ extension TwoPlayerViewController: UITextFieldDelegate {
         
         //don't forget to secure textfield the 1st one
         
+        gameStatusLabel.text = ""
         return true
     }
     
@@ -140,8 +185,9 @@ extension TwoPlayerViewController: UITextFieldDelegate {
             
             //user enters an alphabet
             //user enters an ungussed letter
-            guard HangmanBrain.alphabets.contains(uppercasedInputLetter),
-                !gameBrain.guessedLetters.contains(uppercasedInputLetter) else { return false }
+            guard HangmanBrain.alphabets.contains(uppercasedInputLetter)
+                  //,!guessedLettersArr.contains(uppercasedInputLetter)
+                else { return false }
             
             //capitalized the input & limit to only 1 char input
             textField.text = uppercasedInputLetter

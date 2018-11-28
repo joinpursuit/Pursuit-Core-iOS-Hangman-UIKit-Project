@@ -9,14 +9,14 @@
 import UIKit
 
 class HangmanBrain {
-    var word = ""
-    var wordArr = [String]()
+    static var word = ""
+    static var wordArr = [Character]()
     
-    var blankArr = [String]()
-    var guessedLetters = [String]()
+    static var blankArr = [String]()
+    static var guessedLettersArr = [String]()
     
-    var strikeNum = 0 //didset property to check for lose
-    var hangmanPics = HangmanPic.getSet1()
+    static var startingStrikeNum = 0
+    static var hangmanPicsArr = HangmanPic.getSet1()
     
     static let alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     //characterSet = .upperCased
