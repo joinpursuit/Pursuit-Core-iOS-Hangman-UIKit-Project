@@ -15,11 +15,11 @@ class TwoPlayerViewController: UIViewController {
     @IBOutlet weak var guessTheWordTextField: UITextField!
     
     @IBOutlet weak var gameStatusLabel: UILabel!
-    @IBOutlet weak var hangmanPic: UIImageView!
+    @IBOutlet weak var hangmanPicImgView: UIImageView!
     
     @IBOutlet weak var blanksLabel: UILabel!
-    @IBOutlet weak var guessedLetters: UILabel!
-    @IBOutlet weak var strikes: UILabel!
+    @IBOutlet weak var guessedLettersLabel: UILabel!
+    @IBOutlet weak var strikeLabel: UILabel!
     
     
     var word = HangmanBrain.word
@@ -28,22 +28,37 @@ class TwoPlayerViewController: UIViewController {
     var blankArr = HangmanBrain.blankArr
     var guessedLettersArr = HangmanBrain.guessedLettersArr
     
-    var strikeNum = HangmanBrain.startingStrikeNum
     var hangmanPicsArr = HangmanBrain.hangmanPicsArr
+    var strikeNum = HangmanBrain.startingStrikeNum {
+        didSet {
+            if strikeNum > 5 {
+                //game status you win
+                gameStatusLabel.text = "You Lose! Better Luck Next Time 😇."
+                //hide all textFields
+                playerWordTextField.isHidden = true
+                userGuessedLetter.isHidden = true
+                guessTheWordTextField.isHidden = true
+                
+                //reveal blank label
+                blanksLabel.text = wordArr.joined(separator: " ")
+            }
+        }
+    }
     
     var winGame = false {
         didSet {
             guard winGame else { return }
+            
+            //game status you win
+            gameStatusLabel.text = "You Win! 😃"
+            
             //hide all textFields
             playerWordTextField.isHidden = true
             userGuessedLetter.isHidden = true
             guessTheWordTextField.isHidden = true
             
-            //game status you win
-            gameStatusLabel.text = "You Win! 😃"
-            
             //reveal blank label
-            blanksLabel.text = blankArr.joined(separator: " ")
+            blanksLabel.text = wordArr.joined(separator: " ")
         }
     }
     
@@ -63,7 +78,7 @@ class TwoPlayerViewController: UIViewController {
         userGuessedLetter.isHidden = true
         guessTheWordTextField.isHidden = true
         
-        hangmanPic.image = hangmanPicsArr[strikeNum].image
+        hangmanPicImgView.image = hangmanPicsArr[strikeNum].image
     }
     
     
@@ -74,12 +89,13 @@ class TwoPlayerViewController: UIViewController {
         playerWordTextField.isHidden = false
         
         //stikes back to zero in label
-        strikes.text = "Strikes: 0"
-        guessedLetters.text = "Guessed:"
+        strikeLabel.text = "Strike: 0"
+        guessedLettersLabel.text = "Guessed:"
         
         //reset variables: guessed letters, strikes, wingGame
         guessedLettersArr = HangmanBrain.guessedLettersArr
         strikeNum = HangmanBrain.startingStrikeNum
+        wordArr = HangmanBrain.wordArr
         winGame = false
     }
 
@@ -102,12 +118,15 @@ extension TwoPlayerViewController: UITextFieldDelegate {
             word = playerWord.uppercased()
             
             //break the word into an arr and store in wordArr (in brain)
-            wordArr = Array(word)
-                print(wordArr)
+            word.forEach {(char: Character) -> () in
+                let charStringConvert = String(char)
+                wordArr.append(charStringConvert)
+            }
+            print(wordArr)
             
             //create an array of blanks & output in the View (joined w/ separator space)
-            wordArr.forEach { (char: Character) -> () in
-                char == " " ? blankArr.append(" "): blankArr.append("_")
+            wordArr.forEach { (letter: String) -> () in
+                letter == " " ? blankArr.append(" "): blankArr.append("_")
             }
             print(blankArr)
             blanksLabel.text = blankArr.joined(separator: " ")
@@ -126,53 +145,79 @@ extension TwoPlayerViewController: UITextFieldDelegate {
                 return false
             }
             
-            guard guessedLettersArr.contains(guessedLetter) else {
+            guard !guessedLettersArr.contains(guessedLetter) else {
                 gameStatusLabel.text = "You already enter \"\(guessedLetter)\"."
                 return false
             }
             
-            //add letter to guessedLettersArr
+            //add letter to guessedLettersArr & sort it
             guessedLettersArr.append(guessedLetter)
+            guessedLettersArr.sort()
+            //update guessed letter variables
+            guessedLettersLabel.text = "Guessed:\n\(guessedLettersArr.joined(separator: " "))"
 
             //check if the letter in the wordArr
+            if wordArr.contains(guessedLetter) {
                 //yes --> game status ("there's a _")
                     //check for win********
-                //no -->  game status ("sorry wrong letter")
-                        //update Strike label & variable (strike += 1)
-                        //update hangman picture to next one (+1 body part)
-            if wordArr.contains(guessedLetter) {
+                gameStatusLabel.text = "Yah 😃! There's  \"\(guessedLetter)\" !"
                 
                 //update Blank variable and label
-                //loop over wordArr
-                //if matched replade the blank with the actual letter based on index
-                //use joined to update blank label
+                    //loop over wordArr
+                        //if matched replade the blank with the actual letter based on index
+                    //use joined to update blank labe
+                for (index, char) in wordArr.enumerated() {
+                    if String(char) == guessedLetter {
+                        blankArr[index] = guessedLetter
+                    }
+                }
+                blanksLabel.text = blankArr.joined(separator: " ")
+                
+                //🙀check for win🙀
+                winGame = word == blankArr.joined()
+                
             } else {
-                break
+                //no -->  game status ("sorry wrong letter")
+                gameStatusLabel.text = "Sorry, no \"\(guessedLetter)\" 😕."
+                
+                //update Strike label & variable (strike += 1)
+                strikeNum += 1
+                strikeLabel.text = "Strike: \(strikeNum)"
+                
+                //update hangman picture to next one (+1 body part)
+                hangmanPicImgView.image = hangmanPicsArr[strikeNum].image
             }
-            
-            
-
-            
-            //update guessedLetters variable and label
-                //sort the arr
-                //update label
-            textField.text = ""
+       
+        
         case guessTheWordTextField:
             //uppercased the input and compared to the word
                 //matched:
                     //"you win"********** use
                     //show the word (reveal the blanks --> use the wordArr instead to update the blank label)
                 //not matched:  strike += 1     wrong guess (game status)
-            break
+            let uppercasedGuessedWord = textField.text?.uppercased()
+            
+            if word == uppercasedGuessedWord {
+                winGame = true
+            } else {
+                gameStatusLabel.text = "Good Guess...but nope! 😕"
+                
+                //update Strike label & variable (strike += 1)
+                strikeNum += 1
+                strikeLabel.text = "Strike: \(strikeNum)"
+                
+                //update hangman picture to next one (+1 body part)
+                hangmanPicImgView.image = hangmanPicsArr[strikeNum].image
+            }
+            
         default:
             return false
         }
-        //use a didSet property on blankArr to check for win
-            //make sure all textfield is hidden when the user wins
         
-        //don't forget to secure textfield the 1st one
+        //🙀don't forget to secure textfield the 1st one🙀
         
-        gameStatusLabel.text = ""
+        //after pressing return, turn textfield back to blank
+        textField.text = ""
         return true
     }
     

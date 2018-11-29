@@ -10,7 +10,7 @@ import UIKit
 
 class HangmanBrain {
     static var word = ""
-    static var wordArr = [Character]()
+    static var wordArr = [String]()
     
     static var blankArr = [String]()
     static var guessedLettersArr = [String]()
