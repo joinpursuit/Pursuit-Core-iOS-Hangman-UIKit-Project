@@ -18,6 +18,7 @@ class HangmanBrain {
     static var startingStrikeNum = 0
     static var hangmanPicsArr = HangmanPic.getSet1()
     
+    //characterSet = .upperCased if possible
     static let alphabets = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    //characterSet = .upperCased
+    
 }

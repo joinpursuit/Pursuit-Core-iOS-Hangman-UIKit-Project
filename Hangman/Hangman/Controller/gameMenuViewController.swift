@@ -10,14 +10,24 @@ import UIKit
 
 class gameMenuViewController: UIViewController {
 
-  var gameBrain = HangmanBrain()
+    @IBOutlet weak var hangmanMainImg: UIImageView!
+    
+    @IBOutlet weak var player1Button: UIButton!
+    @IBOutlet weak var picSetLabel: UILabel!
+    @IBOutlet weak var set1Button: UIButton!
+    @IBOutlet weak var set2Button: UIButton!
     
   override func viewDidLoad() {
     super.viewDidLoad()
-    //print(gameBrain.hangmanPics)
+    hangmanMainImg.image = UIImage.init(named: "hang7")
+    
+    player1Button.isHidden = true
+    picSetLabel.isHidden = true
+    set1Button.isHidden = true
+    set2Button.isHidden = true
   }
 
-    //use segue to pass the brain
+    //this is used to change hangman picture sets
     @IBAction func chooseHangmanPictureSet(_ sender: UIButton) {
         //switch on sender.tag for appropriate set
     }
