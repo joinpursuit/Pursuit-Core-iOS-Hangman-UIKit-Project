@@ -40,6 +40,9 @@
                                 <state key="normal" title="restart">
                                     <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="restartButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8MC-Jr-nUV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4Y-cl-2Bh">
                                 <rect key="frame" x="20" y="484" width="374" height="21"/>
@@ -75,7 +78,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A B C D E F G H I J K L M N O P Q R S T U V W X Y Z" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItO-o8-Zej">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ItO-o8-Zej">
                                 <rect key="frame" x="109" y="540" width="197" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,11 +92,11 @@
                     </view>
                     <connections>
                         <outlet property="alphabetBox" destination="ItO-o8-Zej" id="Sa6-OO-S6x"/>
-                        <outlet property="currentLetterSelected" destination="Y4Y-cl-2Bh" id="Qac-po-kbG"/>
                         <outlet property="displayWord" destination="gFw-lz-nOx" id="sSz-F1-oQY"/>
+                        <outlet property="guessesLeft" destination="Y4Y-cl-2Bh" id="9Xk-DM-2Dd"/>
                         <outlet property="hangManImage" destination="Ek9-RS-Fec" id="MdO-0j-Z9i"/>
                         <outlet property="score" destination="IZa-ST-9D1" id="d3m-fP-q7q"/>
-                        <outlet property="singleCharacter" destination="H19-LR-wYU" id="sqJ-M9-YDy"/>
+                        <outlet property="singleCharInput" destination="H19-LR-wYU" id="HSy-XP-hQG"/>
                         <outlet property="winLooseLabel" destination="z7w-vH-buV" id="DHJ-bS-qMC"/>
                     </connections>
                 </viewController>

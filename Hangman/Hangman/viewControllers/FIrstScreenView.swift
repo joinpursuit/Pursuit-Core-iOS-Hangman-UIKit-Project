@@ -31,15 +31,18 @@ class FIrstScreenView: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-//        var wins = hangManBrain.wins
-//        var incorrect = hangManBrain.wrongChar
-//        var alphabet = hangManBrain.alphabet
-//        var guessesLeft = hangManBrain.guessesLeft
-//        var losses = hangManBrain.losses
         var underScores = hangManBrain.underScores
         var randomWord = hangManBrain.randomWord
-//        var charSelected = hangManBrain.singleChar
-//        var guessBox = hangManBrain.userGuesses
+        var wins = hangManBrain.wins
+        var incorrect = hangManBrain.wrongChar
+        var alphabet = hangManBrain.alphabet
+        var guessesLeft = hangManBrain.numberOfGuesses
+        var losses = hangManBrain.losses
+        var charSelected = hangManBrain.singleChar
+        var guessBox = hangManBrain.userGuesses
+        let randomWordArray = Array(randomWord)
+        
+        
         
         if segue.identifier == "segueName" {
             guard let word = InitialWord.text , let controller = segue.destination as? ViewController else { fatalError("text field is empty") }
@@ -47,11 +50,17 @@ class FIrstScreenView: UIViewController {
                 underScores.append("_ ")
                 randomWord = underScores.joined()
             }
-            if InitialWord.hasText == false && InitialWord == nil  {
+            
+            
+            
+            
+            
+            
+            if InitialWord.hasText == false || InitialWord.text == nil  {
 //                changePageButton.isEnabled = false
                 Prompt.text = "Invalid Entry, Please Type in a Word"
 
-            } else if InitialWord.hasText == true && InitialWord != nil  {
+            } else if InitialWord.hasText == true || InitialWord.text != nil  {
                 changePageButton.isHidden = false
                 changePageButton.isEnabled = true
                 controller.word = randomWord

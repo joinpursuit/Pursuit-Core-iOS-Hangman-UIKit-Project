@@ -10,23 +10,55 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    //outlets
+    @IBOutlet weak var hangManImage: UIImageView! //picture
+    @IBOutlet weak var singleCharInput: UITextField!//user input(this appends to either userguesses, singleChar & wrong Char
+    
+    //5 labels
+    @IBOutlet weak var displayWord: UILabel!//randomWord + underscores
+    @IBOutlet weak var alphabetBox: UILabel! //alphabet
+    @IBOutlet weak var winLooseLabel: UILabel! //wins & losses
+    @IBOutlet weak var score: UILabel! //wins
+    @IBOutlet weak var guessesLeft: UILabel! //numberOfGuesses(on this page) & guesses left(in the brain)
+    
+    //variables
     var word: String?
-    @IBOutlet weak var displayWord: UILabel!
-    @IBOutlet weak var singleCharacter: UITextField!
-    @IBOutlet weak var hangManImage: UIImageView!
-    @IBOutlet weak var alphabetBox: UILabel!
-    @IBOutlet weak var winLooseLabel: UILabel!
-    @IBOutlet weak var score: UILabel!
-    @IBOutlet weak var currentLetterSelected: UILabel!
-    var wordBox = [String]()
+    var wordBox = [Character]()
+    var indexBox = [Int]()
+    var hangManBrain = HangManBrain()
+    var picture = HangManBrain.allPictures
+    var alphabet = HangManBrain.alphabetCharBox.description
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        singleCharacter.delegate = self
+        
+        //displayWord(1
+        singleCharInput.delegate = self
         if let word = word {
             displayWord.text = word
         }
+        
+        //alphabetBox(2
+        alphabetBox.text = alphabet
+        //winLooseLabel(3
+        winLooseLabel.text = ("wins:\(hangManBrain.wins), losses:\(hangManBrain.losses)")
+        //gussesLeft(4
+        guessesLeft.text = ("Guesses:\(hangManBrain.numberOfGuesses)")
+        //score(5
+        score.text = ("Score:\(hangManBrain.wins)")
+        
+        
+        for (index, character) in hangManBrain.alphabet.enumerated(){
+            wordBox.append(character)
+            indexBox.append(index)
+        }
+        
+        
     }
 }
+
 
 
 
@@ -38,13 +70,11 @@ extension ViewController: UITextFieldDelegate {
         
         //allows me to block a character or symbol
         print(textField.text ?? "")
-        let chara = textField.text ?? " "
-        wordBox.append(chara)
-        if wordBox.count > 1 {
-            let allowedChar = CharacterSet.letters
-            let charaSet = CharacterSet(charactersIn: String())
-            return  allowedChar.isSuperset(of: charaSet)
-        }
+//        if wordBox.count > 1 {
+//            let allowedChar = CharacterSet.letters
+//            let charaSet = CharacterSet(charactersIn: String())
+//            return  allowedChar.isSuperset(of: charaSet)
+//        }
         
         return true
         //false wont allow you to text anything
@@ -52,12 +82,17 @@ extension ViewController: UITextFieldDelegate {
     //step 2: implement methods as needed
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()//dismiss keyBoard
-        currentLetterSelected.text = singleCharacter.text ?? "lala"
+        guessesLeft.text = singleCharInput.text ?? "lala"
         return true
     }
     
- 
     
+    @IBAction func restartButton(sender: UIButton){
+        displayWord.text = ""
+        winLooseLabel.text = "wins:\(hangManBrain.wins), losses:\(hangManBrain.losses)"
+        guessesLeft.text = "\(hangManBrain.numberOfGuesses) guesses left!"
+        alphabetBox.text = alphabet.description
+    }
     
     
     func lol(){

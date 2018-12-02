@@ -6,20 +6,26 @@
 //  Copyright © 2018 Pursuit. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
 
 class HangManBrain {
     
     var randomWord = String()
-    var guessesLeft = Int()
     var userGuesses = [String]()
-    var wins = Int()
-    var losses = Int()
+    var underScores = [String]()
     var singleChar: Character = " "
     var wrongChar: Character = " "
     var alphabet = [Character]()
-    var underScores = [String]()
+    var numberOfGuesses = 7
+    var wins = Int()
+    var losses = Int()
+    var pictures = UIImage()
     
+    
+    static let allPictures = [UIImage(named: "hang1")!,UIImage(named:"hang2")!,UIImage(named:"hang3")!,UIImage(named:"hang4")!,UIImage(named:"hang5")!,UIImage(named:"hang6")!,UIImage(named:"hang7")!]
+    
+    static let alphabetCharBox: [Character] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 //    init(randomWord: String,guessesLeft:Int,userGuesses: [String],wins: Int, losses: Int, singleChar: Character, wrongChar: Character,alphabet: [Character],underScores: [String]) {
 //        self.alphabet = alphabet
 //        self.randomWord = randomWord
