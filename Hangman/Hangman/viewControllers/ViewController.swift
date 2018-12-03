@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         //alphabetBox(2
         alphabetBox.text = alphabet
         //winLooseLabel(3
-        winLooseLabel.text = ("wins:\(hangManBrain.wins), losses:\(hangManBrain.losses)")
+        winLooseLabel.text = ("wins:\(hangManBrain.wins) losses:\(hangManBrain.losses)")
         //gussesLeft(4
         guessesLeft.text = ("Guesses:\(hangManBrain.numberOfGuesses)")
         //score(5
