@@ -93,8 +93,8 @@
 		57FCB5F221A36D3D00163B8E /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
-				1E62D47421C9AE27006F7400 /* Model */,
 				1E62D47321C9AE0D006F7400 /* View */,
+				1E62D47421C9AE27006F7400 /* Model */,
 				1E62D47221C9ADEF006F7400 /* Controllers */,
 				1E62D47121C9ADB8006F7400 /* supportingFiles */,
 				57FCB5FF21A36D3E00163B8E /* Info.plist */,
