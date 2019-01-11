@@ -59,13 +59,16 @@ class ViewController: UIViewController {
         
         //hide letterTextField,
         letterTextField.isHidden = true
+        
         //set image to 1t hang()man
         imageDisplay.image = hangmanImages[0]
+        
         //set blank label text to an " "
         blankSpaces.text = " "
         
         //set won or lost label to an " "
         winOrLossTrack.text = " "
+        
         //already guessed label to " "
         wrongGuesses.text = " "
         
@@ -117,10 +120,12 @@ extension ViewController : UITextFieldDelegate{
            
             //TODO:
             //iterate through array to create array of blanks
+            blanksArr = []
             for _ in wordArr {
                  blanksArr.append("_")
             }
             //update blanks label to display masked labels
+            blankSpaces.text = ""
             for _ in blanksArr {
                 blankSpaces.text?.append("_")
                  blankSpaces.text?.append(" ")
@@ -138,32 +143,46 @@ extension ViewController : UITextFieldDelegate{
            
         }
         
-        if textField == letterTextField {
+         else if textField == letterTextField {
             //check if the letter is part of the word
             if let unwrappedLetter = textField.text?.uppercased() {
                 letter = unwrappedLetter
             }
             
+            var isFound = false //resetting the value of ea search
             for element in wordArr {
-                if element  == letter {
-                    for _ in wordArr {
-                    blankSpaces.text? = element
-                 // letterTextField.text?.append(i)
-                  winOrLossTrack.text = "\(letter) is part of the word"
-                    }
-                }else{
-                    winOrLossTrack.text = "\(letter) is Strike\(strikeNum)"
-                    imageDisplay.image = hangmanImages[0]
-                    wrongGuesses.text?.append(element)
-                    //wrongGuesses.
-                    strikeNum += 1
-                }
                 
+                blankSpaces.text? = element
+                if element  == letter {
+                   isFound = true
+                // letterTextField.text?.append(i)
+                  winOrLossTrack.text = "\(letter ?? "") is part of the word"
+                  break
+                    
+                }
+            }
+            
+           // blankSpaces.text? = element
+            if isFound == false {
+                winOrLossTrack.text = "\(letter ?? "") is Strike\(strikeNum)"
+                imageDisplay.image = hangmanImages[0] 
+                //wrongGuesses.text?.append(element)
+                //wrongGuesses.
+                //guessedLetters.append(letter ?? "")
+                strikeNum += 1
+                //set image here?
             }
             if blanksArr.joined() == wordTextField.text{
                 playerWin = true
             }
-                //if it's part of the word,
+            letterTextField.isHidden = false
+            letterTextField.text = ""
+            
+          // if
+          // wrongGuesses.text = guessedLetters.joined(separator: ",")
+            
+            
+            //if it's part of the word,
                     //reveal in the blanks
                     //update game status label ("there's this letter)
                 //Otherwise,
