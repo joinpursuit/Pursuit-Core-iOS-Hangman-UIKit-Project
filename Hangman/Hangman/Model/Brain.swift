@@ -9,18 +9,17 @@
 import UIKit
 
 struct Brain {
-    var hiddenWord : [String]
-    var strikes : Int {
+    public var hiddenWord : [String]
+    public var strikes : Int {
         didSet{
             if strikes == 7 {
                 playerLoss = true
             }
         }
     }
-    var guesses : Set<String>
-    var currentPlayer : Player
-    var word : String
-    var playerLoss : Bool
+    public var guesses : Set<String>
+    public var word : String
+    public var playerLoss : Bool
     
     
     
@@ -33,10 +32,11 @@ struct Brain {
     func getStrikes()-> Int {
         return strikes
     }
-    mutating func updateWord (letter : String) {
+    mutating func updateHiddenWord (letter : String) {
         let guessLetter = Character(letter)
         for (index, currentLetter) in word.enumerated(){
             if guessLetter == currentLetter {
+                guesses.insert(letter)
                 hiddenWord[index] = currentLetter.description
             }
         }
@@ -52,5 +52,17 @@ struct Brain {
         return word
     }
     
+    mutating func setHiddenWord( word : String ){
+        //count of word dashes
+       hiddenWord = Array(repeating: "_", count: word.count)
+        
+    }
+    mutating func setWord (word : String){
+        //put it in the purse
+        self.word = word
+    }
+    func isLetterInTheWord (letter: String) -> Bool {
+       return word.contains(letter)
+    }
 }
 
