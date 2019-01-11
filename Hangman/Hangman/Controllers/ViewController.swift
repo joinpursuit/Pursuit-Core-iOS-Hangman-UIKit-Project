@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    var dataFromBrain : Brain!
     @IBOutlet weak var wordTextField: UITextField!
     @IBOutlet weak var letterTextField: UITextField!
     
@@ -18,14 +18,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var winOrLossTrack: UILabel!
     @IBOutlet weak var wrongGuesses: UILabel!
     
-    var word : String? = ""
-    var wordArr = [String]()
-    var letter : String? = ""
+//    var word : String? = ""
+//    var wordArr = [String]()
+//    var letter : String? = ""
     
-    var blanksArr = [String]()
-    var guessedLetters = [String]()
+//    var blanksArr = [String]()
+//    var guessedLetters = [String]()
     
-    var hangmanImages = Brain.getHangmanPics()
+   
     var strikeNum = 0 {
         didSet{
             if strikeNum > 5 {
@@ -61,10 +61,10 @@ class ViewController: UIViewController {
         letterTextField.isHidden = true
         
         //set image to 1t hang()man
-        imageDisplay.image = hangmanImages[0]
+//        imageDisplay.image = hangmanImages[0]
         
         //set blank label text to an " "
-        blankSpaces.text = " "
+//        blankSpaces.text = " "
         
         //set won or lost label to an " "
         winOrLossTrack.text = " "
@@ -72,25 +72,25 @@ class ViewController: UIViewController {
         //already guessed label to " "
         wrongGuesses.text = " "
         
-        word = ""
-        wordArr = [String]()
-        
-        blanksArr = [String]()
-        guessedLetters = [String]()
-        
-        strikeNum = 0
-        playerWin = false
+//        word = ""
+//        wordArr = [String]()
+//
+//        blanksArr = [String]()
+//        guessedLetters = [String]()
+//
+//        strikeNum = 0
+//        playerWin = false
        
         
     }
    
     @IBAction func newGame(_ sender: UIButton) {
-        
+
         wordTextField.isHidden = false
         //hide letterTextField,
         letterTextField.isHidden = true
         //set image to 1t hangman
-        imageDisplay.image = hangmanImages[0]
+//        imageDisplay.image = hangmanImages[0]
         //set blank label text to an " "
         blankSpaces.text = ""
         //set won or lost label to an " "
@@ -100,7 +100,10 @@ class ViewController: UIViewController {
         strikeNum = 0
         
     }
+    func getHangmanPics(_ strike : Int) -> UIImage? {
+        return UIImage.init(named: "hang\(strike)")
     
+    }
 }
 
 extension ViewController : UITextFieldDelegate{
@@ -151,8 +154,6 @@ extension ViewController : UITextFieldDelegate{
             
             var isFound = false //resetting the value of ea search
             for element in wordArr {
-                
-                blankSpaces.text? = element
                 if element  == letter {
                    isFound = true
                 // letterTextField.text?.append(i)

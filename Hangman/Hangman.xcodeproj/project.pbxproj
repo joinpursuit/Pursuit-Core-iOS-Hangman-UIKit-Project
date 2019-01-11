@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E1A958321C9B15000B522EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E1A958221C9B15000B522EB /* Main.storyboard */; };
 		1E1A958521C9CF7D00B522EB /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1A958421C9CF7D00B522EB /* Brain.swift */; };
+		1E97C98421E83B1F001CC30D /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E97C98321E83B1F001CC30D /* Players.swift */; };
 		1E9F78C121C6939D00D346D7 /* PseudoCode.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1E9F78C021C6939D00D346D7 /* PseudoCode.rtf */; };
 		57FCB5F421A36D3D00163B8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCB5F321A36D3D00163B8E /* AppDelegate.swift */; };
 		57FCB5F621A36D3D00163B8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCB5F521A36D3D00163B8E /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		1E1A958221C9B15000B522EB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1E1A958421C9CF7D00B522EB /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		1E97C98321E83B1F001CC30D /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		1E9F78C021C6939D00D346D7 /* PseudoCode.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = PseudoCode.rtf; sourceTree = "<group>"; };
 		57FCB5F021A36D3D00163B8E /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FCB5F321A36D3D00163B8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				1E1A958421C9CF7D00B522EB /* Brain.swift */,
+				1E97C98321E83B1F001CC30D /* Players.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E97C98421E83B1F001CC30D /* Players.swift in Sources */,
 				1E1A958521C9CF7D00B522EB /* Brain.swift in Sources */,
 				57FCB5F621A36D3D00163B8E /* ViewController.swift in Sources */,
 				57FCB5F421A36D3D00163B8E /* AppDelegate.swift in Sources */,
