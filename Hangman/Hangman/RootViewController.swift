@@ -22,6 +22,14 @@ class RootViewController: UIViewController {
   }
     
     //MARK: Other methods of RootViewController
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "TwoPlayerGame"{
+            let referenceToViewController: GameViewController = segue.destination as! GameViewController
+            referenceToViewController.setOneOrTwoPlayers(true)
+        }
+    }
 
 }
 

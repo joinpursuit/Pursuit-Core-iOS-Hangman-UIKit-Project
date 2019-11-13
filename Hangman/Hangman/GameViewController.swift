@@ -18,7 +18,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var lettersGuessedLabel: UILabel!
     @IBOutlet weak var theHangedMan: UIImageView!
     var wholeText: String = ""
+    private var oneOrTwoPlayers: Bool = true // True for TwoPlayer Game and False for OnePlayer Game
     var hangmanClass: HangmanLogic = HangmanLogic()
+    var categoryClassInstance: Category = Category() // Used in single player game
     
     //MARK: Lifecycle methods
     override func viewDidLoad() {
@@ -27,12 +29,21 @@ class GameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        navItem.title = "Single Player Game"
         wordInputTextField.delegate = self
         letterGuessingTextField.delegate = self
         wordInputTextField.placeholder = "Input word here."
         letterGuessingTextField.placeholder = "Input letter."
-        someLabel.text = "Input a word to guess in the textfield above."
+        
+        if oneOrTwoPlayers{
+            navItem.title = "Two Player Game"
+            someLabel.text = "Input a word to guess in the textfield above."
+        } else {
+            navItem.title = "Single Player Game"
+            wordInputTextField.isUserInteractionEnabled = true
+            wordInputTextField.isHidden = true
+            hangmanClass.setTargetWord(categoryClassInstance.targetWords[Int.random(in: 0..<categoryClassInstance.targetWords.count)].lowercased())
+            someLabel.text = hangmanClass.displayWord()
+        }
         theHangedMan.image = hangmanClass.printHangedMan()
         lettersGuessedLabel.text = "Guessed letters: \(hangmanClass.displayGuessedLetters())."
     }
@@ -42,6 +53,10 @@ class GameViewController: UIViewController {
         navItem.title = ""
         hangmanClass.cleanUp()
         theHangedMan.image = UIImage()
+    }
+    
+    public func setOneOrTwoPlayers(_ set: Bool){
+        self.oneOrTwoPlayers = set
     }
 
 }
@@ -56,6 +71,10 @@ extension GameViewController: UITextFieldDelegate{
         wholeText = textFieldText + string
         
         if textField == wordInputTextField{
+            if !Character(string).isLetter{
+                someLabel.text = "You cannot input numbers or special characters."
+                return false
+            }
             textField.isSecureTextEntry = true
         } else if textField == letterGuessingTextField{
             if wholeText.count > 1{
@@ -64,6 +83,9 @@ extension GameViewController: UITextFieldDelegate{
             } else if hangmanClass.containedInSet(string){
                 someLabel.text = "You have already guessed that letter."
                 return false
+            } else if !Character(wholeText).isLetter{
+                someLabel.text = "You cannot input numbers or special characters."
+                return false
             }
         }
         
@@ -71,17 +93,18 @@ extension GameViewController: UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let textFieldText = textField.text else{
+        guard let textFieldText = textField.text?.lowercased() else{
             return false
         }
-        
-        if textField == wordInputTextField{
-            hangmanClass.setTargetWord(textFieldText.lowercased())
+        if textFieldText == ""{
+            return false
+        } else if textField == wordInputTextField{
+            hangmanClass.setTargetWord(textFieldText)
             textField.isUserInteractionEnabled = false
             textField.isHidden = true
         }else if textField == letterGuessingTextField{
-            hangmanClass.addToSet(textFieldText.lowercased())
-            if !hangmanClass.correctGuess(textFieldText) {
+            hangmanClass.addToSet(textFieldText)
+            if !hangmanClass.correctGuess(textFieldText){
                 hangmanClass.decrementRemainingGuesses()
             }
             theHangedMan.image = hangmanClass.printHangedMan()

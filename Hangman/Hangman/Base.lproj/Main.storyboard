@@ -11,7 +11,6 @@
         <!--Navigation Controller-->
         <scene sceneID="XaN-iM-IpE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="URR-N4-IBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="j3m-FA-c0n" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c6Z-26-BXa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -21,13 +20,13 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ug3-4n-qfz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="URR-N4-IBz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2512" y="126"/>
         </scene>
         <!--rootViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="rootViewController" id="BYZ-38-t0r" userLabel="rootViewController" customClass="RootViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -37,14 +36,14 @@
                                 <rect key="frame" x="0.0" y="264" width="414" height="53"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="O0T-UE-aCi" kind="show" id="di2-R9-pJp"/>
+                                    <segue destination="O0T-UE-aCi" kind="show" identifier="TwoPlayerGame" id="di2-R9-pJp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDP-tc-lJ1" userLabel="SinglePlayerGameButton">
                                 <rect key="frame" x="0.0" y="380.5" width="414" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="O0T-UE-aCi" kind="show" id="AeP-uU-0rQ"/>
+                                    <segue destination="FxZ-VB-iD4" kind="show" id="86A-9g-vQr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -66,13 +65,13 @@
                         <outlet property="twoPlayerGameButton" destination="hiS-26-Ju9" id="dc2-Zi-Fyl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1617.3913043478262" y="125.89285714285714"/>
         </scene>
         <!--gameViewController-->
         <scene sceneID="xjY-mn-pJJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="adB-fd-rQG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="gameViewController" id="O0T-UE-aCi" userLabel="gameViewController" customClass="GameViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t7s-Vx-yR1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -136,11 +135,65 @@
                         <outlet property="wordInputTextField" destination="kb0-ru-PjF" id="4fg-Z2-JeN"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adB-fd-rQG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-781.15942028985512" y="125.89285714285714"/>
         </scene>
+        <!--Categories View Controller-->
+        <scene sceneID="TIj-7N-zhd">
+            <objects>
+                <viewController storyboardIdentifier="categoriesView" id="FxZ-VB-iD4" customClass="CategoriesViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4gU-UZ-29Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UDX-fS-k3R">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categoryCell" textLabel="eTx-1L-KnA" style="IBUITableViewCellStyleDefault" id="CLI-3C-4x0">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CLI-3C-4x0" id="lcV-NG-ilb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eTx-1L-KnA">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="O0T-UE-aCi" kind="show" id="Ly2-AN-Cu6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dnH-j9-e2z" firstAttribute="trailing" secondItem="UDX-fS-k3R" secondAttribute="trailing" id="9dI-FX-XHw"/>
+                            <constraint firstItem="UDX-fS-k3R" firstAttribute="top" secondItem="dnH-j9-e2z" secondAttribute="top" id="THQ-h3-HiP"/>
+                            <constraint firstItem="UDX-fS-k3R" firstAttribute="leading" secondItem="dnH-j9-e2z" secondAttribute="leading" id="c6x-Zb-cnE"/>
+                            <constraint firstItem="dnH-j9-e2z" firstAttribute="bottom" secondItem="UDX-fS-k3R" secondAttribute="bottom" id="wm7-UJ-sLW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dnH-j9-e2z"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="o0s-op-SiE"/>
+                    <connections>
+                        <outlet property="tableView" destination="UDX-fS-k3R" id="uoh-iY-Ecw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxr-0G-gca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1617" y="957"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AeP-uU-0rQ"/>
+        <segue reference="Ly2-AN-Cu6"/>
     </inferredMetricsTieBreakers>
 </document>
