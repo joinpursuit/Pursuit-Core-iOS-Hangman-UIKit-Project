@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  override func viewDidLoad() {
+    @IBOutlet weak var headerLabel: UILabel!
+    
+    override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+        
+        headerLabel.text = "Let's Play Hangman!"
   }
 
 
