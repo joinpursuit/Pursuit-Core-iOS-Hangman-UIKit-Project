@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="-57.971014492753625" y="116.51785714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--WordViewController-->
         <scene sceneID="ZC5-fj-9q3">
             <objects>
-                <viewController id="pgw-w2-M03" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WordViewController" id="pgw-w2-M03" userLabel="WordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gRb-s0-4OU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,6 +72,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <segue destination="JOG-wq-1Ye" kind="custom" id="SdD-y8-4Yy"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -83,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="728.98550724637687" y="116.51785714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--GameView Controller-->
         <scene sceneID="QXc-Bk-6dx">
             <objects>
-                <viewController id="JOG-wq-1Ye" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" id="JOG-wq-1Ye" userLabel="GameView Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sFb-dq-KKE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
