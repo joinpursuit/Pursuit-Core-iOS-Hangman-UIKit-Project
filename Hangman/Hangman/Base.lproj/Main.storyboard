@@ -11,8 +11,8 @@
         <!--Player1Screen-->
         <scene sceneID="pz0-id-gYr">
             <objects>
-                <viewController storyboardIdentifier="Player1View" title="Player1Screen" id="hAy-Pf-oQB" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CHF-Xk-f4t">
+                <viewController storyboardIdentifier="Player1View" title="Player1Screen" id="hAy-Pf-oQB" customClass="Player1ViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CHF-Xk-f4t" customClass="Player1View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -40,6 +40,9 @@
                                 <rect key="frame" x="20" y="497" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="player1TextAction:" destination="hAy-Pf-oQB" eventType="editingDidEnd" id="17j-EW-cPo"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hz0-RF-9gx">
                                 <rect key="frame" x="182" y="541" width="50" height="50"/>
@@ -53,6 +56,7 @@
                                     <color key="titleColor" red="0.97831374410000005" green="0.51883703469999998" blue="0.45880103109999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
+                                    <action selector="startGameButton:" destination="hAy-Pf-oQB" eventType="touchUpInside" id="F9k-h4-T5P"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="l12-yf-0Yb"/>
                                 </connections>
                             </button>
@@ -87,6 +91,9 @@
                         <viewLayoutGuide key="safeArea" id="ngP-OY-tSq"/>
                     </view>
                     <navigationItem key="navigationItem" id="zhd-98-ft6"/>
+                    <connections>
+                        <outlet property="player1Text" destination="Yqz-yT-07z" id="rHy-1f-qxA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjf-Sy-vwb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,7 +192,7 @@
         <!--Navigation Controller-->
         <scene sceneID="G1U-OR-AtU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dFH-XF-2HP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="hangman" automaticallyAdjustsScrollViewInsets="NO" id="dFH-XF-2HP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z5b-d8-64R">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
