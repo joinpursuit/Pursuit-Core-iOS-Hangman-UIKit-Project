@@ -26,10 +26,32 @@ class Player2ScreenViewController: UIViewController {
         
     }
     
+    func hangManStrikes() {
+        switch game.numOfGuessesWrong {
+        case 0 :
+            hangManImage.image = #imageLiteral(resourceName: "hang1")
+        case 1 :
+            hangManImage.image = #imageLiteral(resourceName: "hang2")
+        case 2:
+            hangManImage.image = #imageLiteral(resourceName: "hang3")
+        case 3:
+            hangManImage.image = #imageLiteral(resourceName: "hang4")
+        case 4:
+            hangManImage.image = #imageLiteral(resourceName: "hang5")
+        case 5:
+            hangManImage.image = #imageLiteral(resourceName: "hang6")
+        case 6:
+            hangManImage.image = #imageLiteral(resourceName: "hang7")
+        default:
+            hangManImage.image = #imageLiteral(resourceName: "hang1")
+        }
+        
+    }
 
 }
 
 extension Player2ScreenViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player2Guesstf.resignFirstResponder()
         return true
