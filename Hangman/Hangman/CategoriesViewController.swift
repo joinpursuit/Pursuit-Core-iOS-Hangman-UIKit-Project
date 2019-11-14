@@ -11,7 +11,7 @@ import UIKit
 class CategoriesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let categoryArray: [Category] = Data.singlePlayerWords
+    let categoryArray: [Category] = Data.singlePlayerWords.sorted{ $0.type < $1.type}
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -31,12 +31,20 @@ class CategoriesViewController: UIViewController {
 extension CategoriesViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return categoryArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let xCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         xCell.textLabel?.text = categoryArray[indexPath.row].type
         return xCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Categories"
     }
 }

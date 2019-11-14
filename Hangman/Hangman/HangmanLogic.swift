@@ -11,7 +11,7 @@ import UIKit
 class HangmanLogic{
     
     // MARK: Properties of Hangman Logic
-    private var guessedWords: Set<String> = []
+    private var guessedLetters: Set<String> = []
     private var guessesLeft: Int = 6
     private var targetWord: String = ""
     private var won: Bool = false
@@ -24,7 +24,7 @@ class HangmanLogic{
         var tempString: String = ""
         
         for char in self.targetWord{
-            if guessedWords.contains(char.description){
+            if guessedLetters.contains(char.description){
                 tempString += char.description
             } else {
                 tempString += "_ "
@@ -72,14 +72,14 @@ class HangmanLogic{
     }
     
     func cleanUp(){
-        guessedWords = []
+        guessedLetters = []
         guessesLeft = 6
         targetWord = ""
         won = false
     }
     
     func displayGuessedLetters() -> String{
-        return guessedWords.description
+        return guessedLetters.description
     }
     
     func getGuessesLeft() -> Int {
@@ -93,7 +93,7 @@ class HangmanLogic{
     }
     
     func addToSet(_ guess: String){
-        self.guessedWords.insert(guess)
+        self.guessedLetters.insert(guess)
     }
     
     func setTargetWord(_ string: String){
@@ -105,17 +105,22 @@ class HangmanLogic{
     }
     
     func containedInSet(_ guess: String) -> Bool{
-        return guessedWords.contains(guess)
+        return guessedLetters.contains(guess)
     }
     
     func winConditionMet() -> Bool {
         won = true
         for char in targetWord{
-            if !guessedWords.contains(char.description){
+            if !guessedLetters.contains(char.description){
                 won = false
             }
         }
         return won
+    }
+    
+    func toggleTextField(_ textField: UITextField){
+        textField.isHidden.toggle()
+        textField.isUserInteractionEnabled.toggle()
     }
     
 }

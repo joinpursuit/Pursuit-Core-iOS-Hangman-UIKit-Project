@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var someLabel: UILabel!
     @IBOutlet weak var lettersGuessedLabel: UILabel!
     @IBOutlet weak var theHangedMan: UIImageView!
+
     var wholeText: String = ""
     private var oneOrTwoPlayers: Bool = true // True for TwoPlayer Game and False for OnePlayer Game
     var hangmanClass: HangmanLogic = HangmanLogic()
@@ -33,14 +34,15 @@ class GameViewController: UIViewController {
         letterGuessingTextField.delegate = self
         wordInputTextField.placeholder = "Input word here."
         letterGuessingTextField.placeholder = "Input letter."
+        navItem.rightBarButtonItem?.title = "New Game"
         
         if oneOrTwoPlayers{
             navItem.title = "Two Player Game"
             someLabel.text = "Input a word to guess in the textfield above."
+            hangmanClass.toggleTextField(letterGuessingTextField)
         } else {
             navItem.title = "Single Player Game"
-            wordInputTextField.isUserInteractionEnabled = true
-            wordInputTextField.isHidden = true
+            hangmanClass.toggleTextField(wordInputTextField)
             hangmanClass.setTargetWord(categoryClassInstance.targetWords[Int.random(in: 0..<categoryClassInstance.targetWords.count)].lowercased())
             someLabel.text = hangmanClass.displayWord()
         }
@@ -58,6 +60,25 @@ class GameViewController: UIViewController {
     public func setOneOrTwoPlayers(_ set: Bool){
         self.oneOrTwoPlayers = set
     }
+    
+    @IBAction func newGameButtonPressed(_ sender: UIBarButtonItem){
+        hangmanClass.cleanUp()
+        newSinglePlayerGame()
+    }
+    
+    private func newSinglePlayerGame(){
+        if navItem.title == "Single Player Game"{
+        hangmanClass.setTargetWord(categoryClassInstance.targetWords[Int.random(in: 0..<categoryClassInstance.targetWords.count)].lowercased())
+            hangmanClass.toggleTextField(letterGuessingTextField)
+        } else if navItem.title == "Two Player Game" {
+            hangmanClass.toggleTextField(wordInputTextField)
+            hangmanClass.toggleTextField(letterGuessingTextField)
+        }
+        someLabel.text = hangmanClass.displayWord()
+        theHangedMan.image = hangmanClass.printHangedMan()
+        lettersGuessedLabel.text = "Guessed letters: \(hangmanClass.displayGuessedLetters())."
+        letterGuessingTextField.text = ""
+    }
 
 }
 
@@ -68,10 +89,16 @@ extension GameViewController: UITextFieldDelegate{
         guard let textFieldText = textField.text else {
             return false
         }
+        let char = string.cString(using: String.Encoding.utf8)!
+        let isBackSpace = strcmp(char, "\\b")
+        
         wholeText = textFieldText + string
         
         if textField == wordInputTextField{
-            if !Character(string).isLetter{
+            if isBackSpace == -92{
+                return true
+            }
+            else if !Character(string).isLetter{
                 someLabel.text = "You cannot input numbers or special characters."
                 return false
             }
@@ -100,8 +127,8 @@ extension GameViewController: UITextFieldDelegate{
             return false
         } else if textField == wordInputTextField{
             hangmanClass.setTargetWord(textFieldText)
-            textField.isUserInteractionEnabled = false
-            textField.isHidden = true
+            hangmanClass.toggleTextField(textField)
+            hangmanClass.toggleTextField(letterGuessingTextField)
         }else if textField == letterGuessingTextField{
             hangmanClass.addToSet(textFieldText)
             if !hangmanClass.correctGuess(textFieldText){
@@ -113,15 +140,14 @@ extension GameViewController: UITextFieldDelegate{
         if hangmanClass.getGuessesLeft() > 0 && hangmanClass.winConditionMet(){
             someLabel.text = "You win!"
             lettersGuessedLabel.text = hangmanClass.displayGuessedLetters()
-            textField.isUserInteractionEnabled = false
-            textField.isHidden = true
+            hangmanClass.toggleTextField(textField)
+            lettersGuessedLabel.isHidden = true
         } else if hangmanClass.getGuessesLeft() > 0{
             someLabel.text = hangmanClass.displayWord()
             lettersGuessedLabel.text = hangmanClass.displayGuessedLetters()
         } else {
             someLabel.text = "Game Over. The correct word was: \(hangmanClass.getTargetWord())"
-            textField.isUserInteractionEnabled = false
-            textField.isHidden = true
+            hangmanClass.toggleTextField(textField)
         }
         textField.text = ""
         textField.resignFirstResponder()
