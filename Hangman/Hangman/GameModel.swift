@@ -19,17 +19,13 @@ class GameModel {
     var indicies : Set<Int> = []
     var player1WordInput : String = ""
     
-    init() {
-        
-    }
-    
     static func getDashes(word: String) -> [String] {
-        let dashes = Array(repeating: "_", count: word.count)
+        var dashes = Array(repeating: "_", count: word.count)
         return dashes
     }
-    
+
     static func winCondition(word: String) {
-        
+
     }
     
     

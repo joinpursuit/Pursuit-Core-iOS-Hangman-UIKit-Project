@@ -19,11 +19,19 @@ class Player2ScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        wordInPlayLabel.text = ""
+        player2Guesstf.delegate = self
+        let dashes = GameModel.getDashes(word: game.player1WordInput)
+        wordInPlayLabel.text = dashes.joined(separator: "")
         
         
     }
     
 
+}
+
+extension Player2ScreenViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        player2Guesstf.resignFirstResponder()
+        return true
+    }
 }
