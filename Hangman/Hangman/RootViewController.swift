@@ -9,7 +9,7 @@
 import UIKit
 
 class RootViewController: UIViewController {
-    // When orientation is landscape, the twoPlayerButton is unpressable. Fix this at some point.
+    
     //MARK: Properties and Outlets
     @IBOutlet weak var twoPlayerGameButton: UIButton!
     @IBOutlet weak var singlePlayerGameButton: UIButton!

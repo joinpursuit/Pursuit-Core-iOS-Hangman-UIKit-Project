@@ -57,16 +57,22 @@ class GameViewController: UIViewController {
         theHangedMan.image = UIImage()
     }
     
+    // MARK: Other Methods of GameViewController
+    
+    // Sets the value of the boolean, oneOrTwoPlayers
     public func setOneOrTwoPlayers(_ set: Bool){
         self.oneOrTwoPlayers = set
     }
     
+    // Allows to user to play a new game.
+    // Linked to the newGame Bar Button.
     @IBAction func newGameButtonPressed(_ sender: UIBarButtonItem){
         hangmanClass.cleanUp()
-        newSinglePlayerGame()
+        newPlayerGame()
     }
     
-    private func newSinglePlayerGame(){
+    // A helper method that resets everything to a new game setting.
+    private func newPlayerGame(){
         if navItem.title == "Single Player Game"{
         hangmanClass.setTargetWord(categoryClassInstance.targetWords[Int.random(in: 0..<categoryClassInstance.targetWords.count)].lowercased())
             hangmanClass.toggleTextField(letterGuessingTextField)
