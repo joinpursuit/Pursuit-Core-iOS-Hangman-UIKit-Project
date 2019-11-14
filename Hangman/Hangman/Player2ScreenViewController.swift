@@ -10,10 +10,19 @@ import UIKit
 
 class Player2ScreenViewController: UIViewController {
 
+    @IBOutlet weak var wordInPlayLabel: UILabel!
+    @IBOutlet weak var player2Guesstf: UITextField!
+    @IBOutlet weak var hangManImage: UIImageView!
+    @IBOutlet weak var alreadyGuessedLabel: UILabel!
+    
+    var game = GameModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        wordInPlayLabel.text = ""
+        
+        
     }
     
 

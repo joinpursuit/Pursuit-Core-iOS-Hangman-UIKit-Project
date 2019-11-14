@@ -14,16 +14,13 @@ enum GameResult {
 }
 
 class GameModel {
-    var numOfGuessesWrong : Int
-    var count : Int
-    var indicies : Set<Int>
-    var player1WordInput : String
+    var numOfGuessesWrong : Int = 0
+    var count : Int = 0
+    var indicies : Set<Int> = []
+    var player1WordInput : String = ""
     
-    init(numOfGuessesWrong: Int, count: Int, indices: Set<Int>, player1WordInput: String){
-        self.numOfGuessesWrong = numOfGuessesWrong
-        self.count = count
-        self.indicies = indices
-        self.player1WordInput = player1WordInput
+    init() {
+        
     }
     
     static func getDashes(word: String) -> [String] {
@@ -31,7 +28,7 @@ class GameModel {
         return dashes
     }
     
-    static func winCondition() {
+    static func winCondition(word: String) {
         
     }
     
