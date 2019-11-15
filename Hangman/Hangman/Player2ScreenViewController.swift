@@ -58,7 +58,9 @@ class Player2ScreenViewController: UIViewController {
         }
         
     }
-    
+    func winOrLose() {
+        gameStatus.text = game.checkWin(guessed: player2Guesstf.text ?? "", player1: game.player1WordInput)
+    }
 
     
 }
@@ -71,13 +73,14 @@ extension Player2ScreenViewController: UITextFieldDelegate {
             return true
         }
         
+        
         wordInPlayLabel.text = game.generateLetters(guessed: string, player1: game.player1WordInput)
         
         alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: string)
         
         hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
         
-        gameStatus.text = game.checkWin(guessed: string, player1: game.player1WordInput)
+//        gameStatus.text = game.checkWin(guessed: string, player1: game.player1WordInput)
         
         return true
     }
@@ -86,7 +89,8 @@ extension Player2ScreenViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == player2Guesstf {
         player2Guesstf.resignFirstResponder()
-        return false 
+        winOrLose()
+        return false
         }
         return true
     }

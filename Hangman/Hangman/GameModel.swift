@@ -15,8 +15,6 @@ enum GameResult {
 
 class GameModel {
     var numOfGuessesWrong : Int = 0
-    var count : Int = 0
-    var indicies : Set<Int> = []
     var player1WordInput : String = ""
     var hiddenWord = [String]()
     
@@ -54,16 +52,13 @@ class GameModel {
     func checkWin(guessed: String, player1: String) -> String {
         var message = ""
         var usedLetter: Set<String> = []
-        var player1Set: Set<String> = []
-
-        for char in player1 {
-            player1Set.insert(String(char))
-        }
         
-        if player1.contains(Character(guessed)) {
-            usedLetter.insert(guessed)
+        for letter in guessed {
+        if player1.contains(letter) {
+            usedLetter.insert(String(letter))
         } else {
             numOfGuessesWrong += 1
+        }
         }
         
         if guessed == player1 {
@@ -73,6 +68,7 @@ class GameModel {
         if numOfGuessesWrong == 6 {
             message = "You lost!"
         }
+            
         
   return message
 }
