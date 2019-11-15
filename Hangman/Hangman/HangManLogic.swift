@@ -13,12 +13,13 @@ class HangManLogic{
     var guessedChars: Set<String> = []
     var guessesLeft = 6
     var word = ""
-    //var enteredGuesses = Set<String>()
     
+    //func to decrement guesses across object
     func decrementGuess(){
         guessesLeft -= 1
     }
     
+    //func to show current status of word depending on chars guessed throughout each char of word. chars of word are "_" by default, unless found within set of guessedChars
     func showHiddenWord() -> String{
         var revealingWord = ""
         for char in word{
@@ -31,6 +32,7 @@ class HangManLogic{
         return revealingWord
     }
     
+    // func displays UIImage of hanged man depending on guesses remaining throughout object, cases depend on decrement func to work
     func showHangedMan() -> UIImage{
         switch guessesLeft{
         case 6:
@@ -52,6 +54,7 @@ class HangManLogic{
         }
     }
     
+    //func used to check if the player won
     func didPlayerWon() -> Bool{
         if word == self.showHiddenWord(){
             return true
@@ -60,7 +63,7 @@ class HangManLogic{
         }
     }
     
-    //overall game state
+    //func used to check the overall game state
     func isGameEnd() -> Bool{
         if guessesLeft == 0 || word == self.showHiddenWord(){
             return true
@@ -69,6 +72,7 @@ class HangManLogic{
         }
     }
     
+    //func used to reset the core logical components of the game
     func resetGame(){
         guessesLeft = 6
         word = ""
