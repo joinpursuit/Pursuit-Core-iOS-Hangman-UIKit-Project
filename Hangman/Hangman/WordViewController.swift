@@ -27,8 +27,8 @@ class WordViewController: UIViewController {
             return
             
         }
-        // gameWord variable contains player1 word
-        GameViewController.gameWord = word
+        // word variable contains player1 word
+        GameViewController.storeWord = enteredWordTextField.text ?? ""
     }
     
     // MARK:- Methods and Actions

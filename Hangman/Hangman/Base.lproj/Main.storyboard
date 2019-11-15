@@ -101,6 +101,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eNm-jC-cQ7"/>
                     <connections>
+                        <outlet property="enteredWordButton" destination="zFh-sE-uWd" id="Wjg-mc-4dM"/>
                         <outlet property="enteredWordTextField" destination="4Yk-lR-ZnH" id="H9j-bz-7Wz"/>
                     </connections>
                 </viewController>
@@ -117,7 +118,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Guess Letter" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RNT-UT-Mwx">
-                                <rect key="frame" x="125" y="427" width="165" height="34"/>
+                                <rect key="frame" x="152" y="427" width="110.33333333333331" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -126,17 +127,17 @@
                                 <rect key="frame" x="20" y="90" width="307" height="292"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Guess the correct letter in the word!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03A-kC-Gfr">
+                                <rect key="frame" x="20" y="62" width="374" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcF-am-KXc">
                                 <rect key="frame" x="20" y="390" width="374" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Guess the correct letter in the word!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03A-kC-Gfr">
-                                <rect key="frame" x="20" y="58" width="374" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -148,7 +149,7 @@
                     <connections>
                         <outlet property="imageView" destination="cYh-Oe-pXC" id="Ecv-3B-SHK"/>
                         <outlet property="labelDisplay" destination="03A-kC-Gfr" id="vIb-S6-lNG"/>
-                        <outlet property="textField" destination="RNT-UT-Mwx" id="zkF-Tu-GaE"/>
+                        <outlet property="textField" destination="RNT-UT-Mwx" id="uIA-7M-Vbs"/>
                         <outlet property="wordDisplay" destination="EcF-am-KXc" id="MLF-OB-YMA"/>
                     </connections>
                 </viewController>

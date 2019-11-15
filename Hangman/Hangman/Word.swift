@@ -15,7 +15,7 @@ enum gameResult {
 
 class Word {
     var word: String = ""
-    var guessWord: [Character] = []
+    var guessWord: String = ""
     var numberOfGuesses: Int = 0
     var indices: Set<Int> = []
     let alphabets: Set<Character> = Set("abcdefghijklmnopqrstuvwxyz")

@@ -15,28 +15,32 @@ class GameViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelDisplay: UILabel!
     @IBOutlet weak var wordDisplay: UILabel!
+    @IBOutlet weak var textField: UITextField!
     
-    var gameWord = Word()
+    var storeWord:String?
+    var word = Word()
+    var arr = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
+        print(storeWord ?? "")
         // calls function from brain - gets word in "_" form
-        let hiddenWord = Word.getDashes(word: gameWord.word)
+        arr = Word.getDashes(word: storeWord ?? "")
         // displays word in wordDisplay and seperates dashes with " "
-        wordDisplay.text = hiddenWord.joined(separator: " ")
+        wordDisplay.text = arr.joined(separator: " ")
     }
     
     // MARK:- Methods and Actions
     
-//    func gameStatus() {
-//
-//        if gameWord.guessWord.contains(gameWord.word) {
-//            for (index, char) in gameWord.word.enumerated(){
-//
-//            }
-//        }
-//
-//    }
+    func gameStatus() {
+
+        for (index, char) in (storeWord?.enumerated())! {
+            
+        }
+
+    }
 
 }
+
+
