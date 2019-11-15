@@ -29,6 +29,7 @@ class gameViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
     
     //set delegate to securedWordTF
+
     securedWordTF.delegate = self
     guessWordTF.delegate = self
     hiddenSecuredWordLabel.isHidden = true
@@ -41,6 +42,10 @@ class gameViewController: UIViewController {
     }
     
     //helper funcs
+    func disableGame(){
+        securedWordTF.isEnabled = false
+        guessWordTF.isEnabled = false
+    }
         
 }
 
@@ -66,9 +71,19 @@ extension gameViewController:UITextFieldDelegate{
             hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
             if !hangManGame.word.contains(guessCharInWord){
                 hangManGame.decrementGuess()
+                userFeedBackLabel.text = "You have \(hangManGame.guessesLeft) guesses remaining"
+            }
+            
+            //check to see if player won game or if all attempts are lost
+            if hangManGame.didPlayerWon() == true{
+                userFeedBackLabel.text = "You won with \(hangManGame.guessesLeft) guesses remaining"
+                disableGame()
+            } else if hangManGame.isGameEnd() == true{
+                userFeedBackLabel.text = "YOU LOST."
+                disableGame()
             }
             hangedManIV.image = hangManGame.showHangedMan()
-            print(hangManGame.guessesLeft)
+            print(hangManGame.isGameEnd())
             guessWordTF.text = nil
         }
         
@@ -101,10 +116,10 @@ extension gameViewController:UITextFieldDelegate{
             print("GuessWord:", guessCharInWord)
             print("Guess word count: ", guessCharInWord.count)
             
+            //checks to see if user already guessed a certain char
             if guessCharInWord.contains(where: {!$0.isLetter}) || string == "" || guessCharInWord.count > 1 || hangManGame.guessedChars.contains(string){
                 return false
             }
-            //checks to see if user already guessed a certain char
         }
         return true
     }

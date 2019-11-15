@@ -51,4 +51,27 @@ class HangManLogic{
             return #imageLiteral(resourceName: "hang7")
         }
     }
+    
+    func didPlayerWon() -> Bool{
+        if word == self.showHiddenWord(){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    //overall game state
+    func isGameEnd() -> Bool{
+        if guessesLeft == 0 || word == self.showHiddenWord(){
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func resetGame(){
+        guessesLeft = 6
+        word = ""
+        guessedChars.removeAll()
+    }
 }
