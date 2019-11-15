@@ -20,10 +20,7 @@ class gameViewController: UIViewController {
     var guessCharInWord = ""
     
     let hangManGame = HangManLogic()
-    
-    //bank of entered guesses
-    //var enteredGuesses = Set<String>()
-    
+        
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -38,13 +35,21 @@ class gameViewController: UIViewController {
   }
 
     @IBAction func newGameButton(_ sender: UIButton) {
-        
+        hangManGame.resetGame()
+        restartGame()
     }
     
     //helper funcs
     func disableGame(){
         securedWordTF.isEnabled = false
         guessWordTF.isEnabled = false
+    }
+    
+    func restartGame(){
+        securedWordTF.isEnabled = true
+        guessWordTF.isEnabled = true
+        securedWordTF.text = nil
+        hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
     }
         
 }
@@ -56,7 +61,7 @@ extension gameViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == securedWordTF {
-            hangManGame.word = securedWordTF.text!
+            hangManGame.word = securedWordTF.text!.lowercased()
             hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
             hiddenSecuredWordLabel.isHidden = false
             securedWordTF.isEnabled = false
@@ -67,7 +72,7 @@ extension gameViewController:UITextFieldDelegate{
         } else if textField == guessWordTF{
             
             //insert series of char onto set property of HangManLogic
-            hangManGame.guessedChars.insert(guessWordTF.text!)
+            hangManGame.guessedChars.insert(guessWordTF.text!.lowercased())
             hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
             if !hangManGame.word.contains(guessCharInWord){
                 hangManGame.decrementGuess()
@@ -105,19 +110,19 @@ extension gameViewController:UITextFieldDelegate{
             print(string)
             if string == ""{
                 return true
-            } else if !Character(string).isLetter{
+            } else if !Character(string).isLetter /*|| Character(string).isUppercase*/{
                 return false
             }
         }
         else if textField == guessWordTF{
             //checks to see if user enters anything other than letters, delete key, or beyond the count of guessWord being one
-            guessCharInWord = currentText
+            guessCharInWord = currentText.lowercased()
             print("String:", string)
             print("GuessWord:", guessCharInWord)
             print("Guess word count: ", guessCharInWord.count)
             
             //checks to see if user already guessed a certain char
-            if guessCharInWord.contains(where: {!$0.isLetter}) || string == "" || guessCharInWord.count > 1 || hangManGame.guessedChars.contains(string){
+            if guessCharInWord.contains(where: {!$0.isLetter}) || string == "" || guessCharInWord.count > 1 || hangManGame.guessedChars.contains(string) /*|| Character(string).isUppercase*/{
                 return false
             }
         }
