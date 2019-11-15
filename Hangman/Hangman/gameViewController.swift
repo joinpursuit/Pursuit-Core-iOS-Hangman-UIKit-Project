@@ -14,12 +14,15 @@ class gameViewController: UIViewController {
     @IBOutlet weak var hiddenSecuredWordLabel: UILabel!
     @IBOutlet weak var userFeedBackLabel: UILabel!
     @IBOutlet weak var guessWordTF: UITextField!
+    @IBOutlet weak var hangedManIV: UIImageView!
     
-    var securedWord = ""
+    //var securedWord = ""
     var guessCharInWord = ""
     
+    let hangManGame = HangManLogic()
+    
     //bank of entered guesses
-    var enteredGuesses = Set<String>()
+    //var enteredGuesses = Set<String>()
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,6 +33,7 @@ class gameViewController: UIViewController {
     guessWordTF.delegate = self
     hiddenSecuredWordLabel.isHidden = true
     guessWordTF.isEnabled = false
+    hangedManIV.isHidden = true
   }
 
     @IBAction func newGameButton(_ sender: UIButton) {
@@ -37,12 +41,7 @@ class gameViewController: UIViewController {
     }
     
     //helper funcs
-    
-    //func to change underscore label
-    func returnHiddenWordToLabel(){
-        hiddenSecuredWordLabel.text = String(repeating: "_ ", count: securedWord.count)
-    }
-    
+        
 }
 
 extension gameViewController:UITextFieldDelegate{
@@ -52,14 +51,16 @@ extension gameViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField == securedWordTF {
-            securedWord = securedWordTF.text!
-            returnHiddenWordToLabel()
+            hangManGame.word = securedWordTF.text!
+            hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
             hiddenSecuredWordLabel.isHidden = false
+            securedWordTF.isEnabled = false
             guessWordTF.isEnabled = true
             
         } else if textField == guessWordTF{
             
-            enteredGuesses.insert(securedWord)
+            //inset series of char onto set property of HangManLogic
+            hangManGame.guessedChars.insert(guessWordTF.text!)
             guessWordTF.text = nil
         }
         
@@ -75,8 +76,13 @@ extension gameViewController:UITextFieldDelegate{
         
         let currentText = textFieldSelected + string
 
+        //can never delete after typing char
+        
         if textField == securedWordTF{
-            if !Character(string).isLetter{
+            print(string)
+            if string == ""{
+                return true
+            } else if !Character(string).isLetter{
                 return false
             }
         }
@@ -87,7 +93,7 @@ extension gameViewController:UITextFieldDelegate{
             print("GuessWord:", guessCharInWord)
             print("Guess word count: ", guessCharInWord.count)
             
-            if guessCharInWord.contains(where: {!$0.isLetter}) || string == "" || guessCharInWord.count > 1 || enteredGuesses.contains(string){
+            if guessCharInWord.contains(where: {!$0.isLetter}) || string == "" || guessCharInWord.count > 1 || hangManGame.guessedChars.contains(string){
                 return false
             }
             //checks to see if user already guessed a certain char
