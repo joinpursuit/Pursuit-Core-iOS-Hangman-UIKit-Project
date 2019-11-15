@@ -14,59 +14,71 @@ class Player2ScreenViewController: UIViewController {
     @IBOutlet weak var player2Guesstf: UITextField!
     @IBOutlet weak var hangManImage: UIImageView!
     @IBOutlet weak var alreadyGuessedLabel: UILabel!
+    @IBOutlet weak var gameStatus: UILabel!
     
     var game = GameModel()
+    var dashes = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         player2Guesstf.delegate = self
-        let dashes = GameModel.getDashes(word: game.player1WordInput)
+        dashes = GameModel.getDashes(word: game.player1WordInput)
         wordInPlayLabel.text = dashes.joined(separator: " ")
         alreadyGuessedLabel.text = ""
+        gameStatus.text = ""
     }
     
-    func hangManStrikes() {
-        switch game.numOfGuessesWrong {
+    func hangManStrikes(numWrong: Int) -> UIImage? {
+        let numWrong = game.numOfGuessesWrong
+        var imageDisplayed = hangManImage.image
+        switch numWrong {
         case 0 :
-            hangManImage.image = #imageLiteral(resourceName: "hang1")
+            imageDisplayed = #imageLiteral(resourceName: "hang1")
+            return imageDisplayed
         case 1 :
-            hangManImage.image = #imageLiteral(resourceName: "hang2")
+            imageDisplayed = #imageLiteral(resourceName: "hang2")
+            return imageDisplayed
         case 2:
-            hangManImage.image = #imageLiteral(resourceName: "hang3")
+            imageDisplayed = #imageLiteral(resourceName: "hang3")
+            return imageDisplayed
         case 3:
-            hangManImage.image = #imageLiteral(resourceName: "hang4")
+            imageDisplayed = #imageLiteral(resourceName: "hang4")
+            return imageDisplayed
         case 4:
-            hangManImage.image = #imageLiteral(resourceName: "hang5")
+            imageDisplayed = #imageLiteral(resourceName: "hang5")
+            return imageDisplayed
         case 5:
-            hangManImage.image = #imageLiteral(resourceName: "hang6")
+            imageDisplayed = #imageLiteral(resourceName: "hang6")
+            return imageDisplayed
         case 6:
-            hangManImage.image = #imageLiteral(resourceName: "hang7")
+            imageDisplayed = #imageLiteral(resourceName: "hang7")
+            return imageDisplayed
         default:
-            hangManImage.image = #imageLiteral(resourceName: "hang1")
+            imageDisplayed = #imageLiteral(resourceName: "hang1")
+            return imageDisplayed
         }
         
     }
+    
 
+    
 }
 
 extension Player2ScreenViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var usedLetter : Set<String> = []
         
-        if usedLetter.contains(string) {
-            alreadyGuessedLabel.text = "You already guessed that!"
+        if string == "" {
+            return true
         }
+        wordInPlayLabel.text = game.generateLetters(guessed: string, player1: game.player1WordInput, dashes: dashes)
         
-        if game.player1WordInput.contains(Character(string)) {
-            usedLetter.insert(string)
-            for (index, char) in game.player1WordInput.enumerated() {
-                if char == Character(string) {
-                    game.indicies.insert(index)
-                }
-            }
-            
-        }
+        alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: string)
+        
+        hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
+        
+        gameStatus.text = game.checkWin(guessed: string, player1: game.player1WordInput, numWrong: game.numOfGuessesWrong)
+        
         return true
     }
     
