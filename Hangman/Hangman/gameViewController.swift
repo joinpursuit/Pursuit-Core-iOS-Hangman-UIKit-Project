@@ -50,9 +50,12 @@ class gameViewController: UIViewController {
     //restart game and enable inputs
     func restartGame(){
         securedWordTF.isEnabled = true
-        guessWordTF.isEnabled = true
+        guessWordTF.isEnabled = false
         securedWordTF.text = nil
         hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
+        userFeedBackLabel.text = "Guess by entering a letter below"
+        hangedManIV.image = hangManGame.showHangedMan()
+        
     }
         
 }
