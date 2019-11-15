@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+        textField.delegate = self
         print(storeWord ?? "")
         // calls function from brain - gets word in "_" form
         arr = Word.getDashes(word: storeWord ?? "")
@@ -33,14 +33,33 @@ class GameViewController: UIViewController {
     
     // MARK:- Methods and Actions
     
-    func gameStatus() {
-
+    // func to check and replace each letter in storeWord variable
+    func gameStatus(word: String) {
+        
         for (index, char) in (storeWord?.enumerated())! {
             
-        }
-
+            }
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newLength = (textField.text?.count ?? 1) + string.count - range.length
+        return newLength <= 1
+    }
+//
+//    // func to store/display used letters
+//    func usedLetters(){
+//        var usedLetters: [Character] = []
+//
+//    }
 
+}
+
+extension GameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("shouldReturn")
+        textField.resignFirstResponder()
+        return false
+    }
 }
 
 
