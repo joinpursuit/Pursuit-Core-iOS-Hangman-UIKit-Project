@@ -36,17 +36,17 @@ class GameModel {
     
     func generateLetters(guessed: String, player1: String) -> String {
         var index = 0
-
+        var letterIndicies: Set<Int> = []
+        
         for char in player1 {
-            if char == Character(guessed) {
-                hiddenWord[index] = String(char)
-            } else {
-                index += 1
+            if guessed == String(char) {
+                hiddenWord[index] = guessed
             }
+                index += 1
+        
         }
         return hiddenWord.joined(separator: " ")
     }
-    
     
     
     func checkWin(guessed: String, player1: String) -> String {

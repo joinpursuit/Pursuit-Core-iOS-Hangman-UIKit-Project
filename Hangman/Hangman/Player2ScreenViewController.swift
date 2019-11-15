@@ -73,14 +73,10 @@ extension Player2ScreenViewController: UITextFieldDelegate {
             return true
         }
         
-        
         wordInPlayLabel.text = game.generateLetters(guessed: string, player1: game.player1WordInput)
-        
         alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: string)
-        
         hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
-        
-//        gameStatus.text = game.checkWin(guessed: string, player1: game.player1WordInput)
+        winOrLose()
         
         return true
     }
@@ -89,9 +85,10 @@ extension Player2ScreenViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == player2Guesstf {
         player2Guesstf.resignFirstResponder()
-        winOrLose()
+        
         return false
         }
+        
         return true
     }
     
