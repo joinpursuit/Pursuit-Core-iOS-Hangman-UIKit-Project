@@ -8,13 +8,20 @@
 
 import Foundation
 
+enum GuessResult: CaseIterable    {
+    
+    case correctGuess
+    case IncorrectGuess
+    case redundantGuess
+}
+
 struct HangManGame  {
     var hiddenWord: String
     
     var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
                     "n","o","p","q","r","s","t","u","v","w","x","y","z"]
     
-    var usedLetters: Set<String> = [] // optional if no letters gussed
+    var usedLetters: Set<String>? = [] // optional if no letters gussed
     
     func hideWord() -> String {
         var wordToHide = ""
@@ -22,5 +29,19 @@ struct HangManGame  {
             wordToHide += "_ "
         }
         return wordToHide
+    }
+    
+    func gameGuess(letterGuess: String) -> GuessResult  {
+        let guessResult:GuessResult
+        if hiddenWord.contains(letterGuess)   {
+            guessResult = .correctGuess
+        }
+        else if let letterGuess = usedLetters?.contains(letterGuess)   {
+            guessResult = .redundantGuess
+        }
+        else    {
+            guessResult = .IncorrectGuess
+        }
+        return guessResult
     }
 }

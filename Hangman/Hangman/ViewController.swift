@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var winnerLabel:  UILabel!
     @IBOutlet weak var hiddenWordLabel: UILabel!
     
+    
     override func viewDidLoad() {
     super.viewDidLoad()
         
@@ -42,10 +43,11 @@ extension ViewController: UITextFieldDelegate   {
             guard let text = textField.text else {
                 return false
             }
-            
+            print(text)
+            print(string)
             let currentText = text + string
-                
             if currentText.count > 1    {
+                textField.text = string
                 return false
             }
         }
