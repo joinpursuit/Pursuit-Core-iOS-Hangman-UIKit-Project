@@ -9,22 +9,41 @@
 import UIKit
 
 class WordViewController: UIViewController {
-
+    
+    // MARK:- Outlets and Properties
+    @IBOutlet weak var enteredWordTextField: UITextField!
+    @IBOutlet weak var enteredWordButton: UIButton!
+    
+    var word = Word()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        enteredWordTextField.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        print("prepare(ForSegue: )")
+        guard let GameViewController = segue.destination as? GameViewController else { 
+            return
+            
+        }
+        // gameWord variable contains player1 word
+        GameViewController.gameWord = word
     }
-    */
+    
+    // MARK:- Methods and Actions
+    func enteredWord() {
+        }
+    
 
+}
+
+extension WordViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        word.word = enteredWordTextField.text ?? ""
+        return true
+    }
+    
 }

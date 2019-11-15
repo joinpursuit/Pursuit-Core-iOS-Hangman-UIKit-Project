@@ -9,22 +9,34 @@
 import UIKit
 
 class GameViewController: UIViewController {
+    
+    // MARK:- Outlets and Properties
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var labelDisplay: UILabel!
+    @IBOutlet weak var wordDisplay: UILabel!
+    
+    var gameWord = Word()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("viewDidLoad")
+        // calls function from brain - gets word in "_" form
+        let hiddenWord = Word.getDashes(word: gameWord.word)
+        // displays word in wordDisplay and seperates dashes with " "
+        wordDisplay.text = hiddenWord.joined(separator: " ")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // MARK:- Methods and Actions
+    
+//    func gameStatus() {
+//
+//        if gameWord.guessWord.contains(gameWord.word) {
+//            for (index, char) in gameWord.word.enumerated(){
+//
+//            }
+//        }
+//
+//    }
 
 }
