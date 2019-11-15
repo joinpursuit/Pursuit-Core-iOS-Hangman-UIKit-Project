@@ -17,7 +17,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var wordDisplay: UILabel!
     @IBOutlet weak var textField: UITextField!
     
-    var storeWord:String?
+    var storeWord: String?
     var word = Word()
     var arr = [String]()
 
@@ -36,9 +36,14 @@ class GameViewController: UIViewController {
     // func to check and replace each letter in storeWord variable
     func gameStatus(word: String) {
         
-        for (index, char) in (storeWord?.enumerated())! {
-            
+        var indices: Set<Int> = []
+        
+        for (index, char) in storeWord!.enumerated() {
+            if word == String(char) {
+                indices.insert(index)
+                print(indices)
             }
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -57,7 +62,8 @@ class GameViewController: UIViewController {
 extension GameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("shouldReturn")
-        textField.resignFirstResponder()
+        print(storeWord)
+        gameStatus(word: storeWord ?? "")
         return false
     }
 }
