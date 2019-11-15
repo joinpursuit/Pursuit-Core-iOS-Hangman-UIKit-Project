@@ -15,9 +15,8 @@ class HangManLogic{
     var word = ""
     //var enteredGuesses = Set<String>()
     
-    func decrementGuess() -> Int{
+    func decrementGuess(){
         guessesLeft -= 1
-        return guessesLeft
     }
     
     func showHiddenWord() -> String{
@@ -33,7 +32,7 @@ class HangManLogic{
     }
     
     func showHangedMan() -> UIImage{
-        switch self.guessesLeft{
+        switch guessesLeft{
         case 6:
             return #imageLiteral(resourceName: "hang1")
         case 5:

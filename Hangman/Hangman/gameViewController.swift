@@ -56,12 +56,19 @@ extension gameViewController:UITextFieldDelegate{
             hiddenSecuredWordLabel.isHidden = false
             securedWordTF.isEnabled = false
             guessWordTF.isEnabled = true
+            hangedManIV.isHidden = false
+            hangedManIV.image = hangManGame.showHangedMan()
             
         } else if textField == guessWordTF{
             
             //insert series of char onto set property of HangManLogic
             hangManGame.guessedChars.insert(guessWordTF.text!)
             hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
+            if !hangManGame.word.contains(guessCharInWord){
+                hangManGame.decrementGuess()
+            }
+            hangedManIV.image = hangManGame.showHangedMan()
+            print(hangManGame.guessesLeft)
             guessWordTF.text = nil
         }
         
