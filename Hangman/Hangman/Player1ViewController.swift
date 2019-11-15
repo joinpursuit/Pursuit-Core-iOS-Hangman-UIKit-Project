@@ -24,7 +24,6 @@ class Player1ViewController: UIViewController {
             return
         }
         player2Screen.game = game
-        
     }
 }
 

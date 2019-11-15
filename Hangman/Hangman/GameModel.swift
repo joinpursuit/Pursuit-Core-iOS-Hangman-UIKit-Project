@@ -18,9 +18,10 @@ class GameModel {
     var count : Int = 0
     var indicies : Set<Int> = []
     var player1WordInput : String = ""
+    var hiddenWord = [String]()
     
     
-    static func getDashes(word: String) -> [String] {
+    func getDashes(word: String) -> [String] {
         let dashes = Array(repeating: "_", count: word.count)
         return dashes
     }
@@ -28,59 +29,52 @@ class GameModel {
     func checkAlreadyUsed(guessed: String) -> String {
         let usedLetter : Set<String> = []
         var message = ""
-    
+        
         if usedLetter.contains(guessed) {
             message = "You already guessed that!"
         }
         return message
     }
     
-    func generateLetters(guessed: String, player1: String, dashes: [String]) -> String {
-        var usedLetter : Set<String> = []
-        var indicies : Set <Int> = []
-        var dashes = [String]()
-        
-        if player1.contains(Character(guessed)) {
-            usedLetter.insert(guessed)
-            for (index, char) in player1.enumerated() {
-                if char == Character(guessed) {
-                    indicies.insert(index)
-                }
-                for (index, _) in dashes.enumerated() {
-                    if indicies.contains(index) {
-                        dashes[index] = guessed
-                    }
-                }
-                return dashes.joined(separator: " ")
+    func generateLetters(guessed: String, player1: String) -> String {
+        var index = 0
+
+        for char in player1 {
+            if char == Character(guessed) {
+                hiddenWord[index] = String(char)
+            } else {
+                index += 1
             }
         }
-        return dashes.joined(separator: " ")
+        return hiddenWord.joined(separator: " ")
     }
     
     
-    func checkWin(guessed: String, player1: String, numWrong: Int) -> String {
+    
+    func checkWin(guessed: String, player1: String) -> String {
         var message = ""
         var usedLetter: Set<String> = []
-        var count = numWrong
         var player1Set: Set<String> = []
-        
-        if player1.contains(Character(guessed)) {
-            usedLetter.insert(guessed)
-        } else {
-            count += 1
-        }
-        
+
         for char in player1 {
             player1Set.insert(String(char))
         }
         
-        if player1Set.isSubset(of: usedLetter) {
-            message = "You won!"
+        if player1.contains(Character(guessed)) {
+            usedLetter.insert(guessed)
         } else {
+            numOfGuessesWrong += 1
+        }
+        
+        if guessed == player1 {
+            message = "You won!"
+        }
+        
+        if numOfGuessesWrong == 6 {
             message = "You lost!"
         }
-        return message
-    }
-    
+        
+  return message
+}
     
 }

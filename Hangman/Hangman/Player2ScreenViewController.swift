@@ -17,13 +17,12 @@ class Player2ScreenViewController: UIViewController {
     @IBOutlet weak var gameStatus: UILabel!
     
     var game = GameModel()
-    var dashes = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         player2Guesstf.delegate = self
-        dashes = GameModel.getDashes(word: game.player1WordInput)
-        wordInPlayLabel.text = dashes.joined(separator: " ")
+        game.hiddenWord = game.getDashes(word: game.player1WordInput)
+        wordInPlayLabel.text = game.hiddenWord.joined(separator: " ")
         alreadyGuessedLabel.text = ""
         gameStatus.text = ""
     }
@@ -71,20 +70,24 @@ extension Player2ScreenViewController: UITextFieldDelegate {
         if string == "" {
             return true
         }
-        wordInPlayLabel.text = game.generateLetters(guessed: string, player1: game.player1WordInput, dashes: dashes)
+        
+        wordInPlayLabel.text = game.generateLetters(guessed: string, player1: game.player1WordInput)
         
         alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: string)
         
         hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
         
-        gameStatus.text = game.checkWin(guessed: string, player1: game.player1WordInput, numWrong: game.numOfGuessesWrong)
+        gameStatus.text = game.checkWin(guessed: string, player1: game.player1WordInput)
         
         return true
     }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == player2Guesstf {
         player2Guesstf.resignFirstResponder()
+        return false 
+        }
         return true
     }
     
