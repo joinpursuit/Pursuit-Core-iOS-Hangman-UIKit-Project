@@ -59,8 +59,9 @@ extension gameViewController:UITextFieldDelegate{
             
         } else if textField == guessWordTF{
             
-            //inset series of char onto set property of HangManLogic
+            //insert series of char onto set property of HangManLogic
             hangManGame.guessedChars.insert(guessWordTF.text!)
+            hiddenSecuredWordLabel.text = hangManGame.showHiddenWord()
             guessWordTF.text = nil
         }
         
