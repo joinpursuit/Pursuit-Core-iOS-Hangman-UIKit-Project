@@ -21,9 +21,8 @@ class Player2ScreenViewController: UIViewController {
         super.viewDidLoad()
         player2Guesstf.delegate = self
         let dashes = GameModel.getDashes(word: game.player1WordInput)
-        wordInPlayLabel.text = dashes.joined(separator: "")
-        
-        
+        wordInPlayLabel.text = dashes.joined(separator: " ")
+        alreadyGuessedLabel.text = ""
     }
     
     func hangManStrikes() {
@@ -52,8 +51,29 @@ class Player2ScreenViewController: UIViewController {
 
 extension Player2ScreenViewController: UITextFieldDelegate {
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var usedLetter : Set<String> = []
+        
+        if usedLetter.contains(string) {
+            alreadyGuessedLabel.text = "You already guessed that!"
+        }
+        
+        if game.player1WordInput.contains(Character(string)) {
+            usedLetter.insert(string)
+            for (index, char) in game.player1WordInput.enumerated() {
+                if char == Character(string) {
+                    game.indicies.insert(index)
+                }
+            }
+            
+        }
+        return true
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player2Guesstf.resignFirstResponder()
         return true
     }
+    
 }
