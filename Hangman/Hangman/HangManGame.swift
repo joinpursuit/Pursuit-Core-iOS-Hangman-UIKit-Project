@@ -23,6 +23,8 @@ struct HangManGame  {
     
     var usedLetters: Set<String>? = [] // optional if no letters gussed
     
+    var chances = 6
+    
     func hideWord() -> String {
         var wordToHide = ""
         for char in hiddenWord {
@@ -36,7 +38,7 @@ struct HangManGame  {
         if hiddenWord.contains(letterGuess)   {
             guessResult = .correctGuess
         }
-        else if let letterGuess = usedLetters?.contains(letterGuess)   {
+        else if usedLetters?.contains(letterGuess) ?? false   {
             guessResult = .redundantGuess
         }
         else    {

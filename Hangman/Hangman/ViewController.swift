@@ -43,13 +43,23 @@ extension ViewController: UITextFieldDelegate   {
             guard let text = textField.text else {
                 return false
             }
-            print(text)
-            print(string)
             let currentText = text + string
+            var guessResult = hangManGame.gameGuess(letterGuess: string)
+            switch guessResult {
+            case .correctGuess:
+                print("Correct")
+            case .IncorrectGuess:
+                print("Incorrect")
+            case .redundantGuess:
+                print("redundant")
+            }
             if currentText.count > 1    {
                 textField.text = string
                 return false
             }
+            
+            
+            
         }
         return true
     }
