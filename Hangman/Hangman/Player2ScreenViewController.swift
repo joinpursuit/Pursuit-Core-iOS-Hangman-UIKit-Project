@@ -51,6 +51,7 @@ class Player2ScreenViewController: UIViewController {
             return imageDisplayed
         case 6:
             imageDisplayed = #imageLiteral(resourceName: "hang7")
+            wordInPlayLabel.text = game.player1WordInput
             return imageDisplayed
         default:
             imageDisplayed = #imageLiteral(resourceName: "hang1")
@@ -82,7 +83,7 @@ extension Player2ScreenViewController: UITextFieldDelegate {
                 return false
             }
         }
-        
+
         for char in string.lowercased() {
             wordInPlayLabel.text = game.generateLetters(guessed: String(char), player1: game.player1WordInput)
             alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: String(char))
