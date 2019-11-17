@@ -9,7 +9,7 @@
 import UIKit
 
 class Player2ScreenViewController: UIViewController {
-
+    
     @IBOutlet weak var wordInPlayLabel: UILabel!
     @IBOutlet weak var player2Guesstf: UITextField!
     @IBOutlet weak var hangManImage: UIImageView!
@@ -61,7 +61,7 @@ class Player2ScreenViewController: UIViewController {
     func winOrLose() {
         gameStatus.text = game.checkWin(guessed: player2Guesstf.text ?? "", player1: game.player1WordInput)
     }
-
+    
     
 }
 
@@ -72,11 +72,24 @@ extension Player2ScreenViewController: UITextFieldDelegate {
         if string == "" {
             return true
         }
+        for char in string {
+            if char.isNumber || char.isPunctuation {
+                return false
+            }
+        }
         
-        wordInPlayLabel.text = game.generateLetters(guessed: string, player1: game.player1WordInput)
-        alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: string)
-        hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
-        winOrLose()
+        for char in string.lowercased() {
+            wordInPlayLabel.text = game.generateLetters(guessed: String(char), player1: game.player1WordInput)
+            
+            alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: String(char))
+            
+            hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
+            
+            winOrLose()
+            
+            return true
+        }
+        
         
         return true
     }
@@ -84,9 +97,9 @@ extension Player2ScreenViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == player2Guesstf {
-        player2Guesstf.resignFirstResponder()
-        
-        return false
+            player2Guesstf.resignFirstResponder()
+            
+            return false
         }
         
         return true

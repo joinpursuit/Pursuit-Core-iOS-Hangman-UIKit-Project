@@ -17,7 +17,7 @@ class GameModel {
     var numOfGuessesWrong : Int = 0
     var player1WordInput : String = ""
     var hiddenWord = [String]()
-    
+    var usedLetter: Set<Character> = []
     
     func getDashes(word: String) -> [String] {
         let dashes = Array(repeating: "_", count: word.count)
@@ -25,25 +25,28 @@ class GameModel {
     }
     
     func checkAlreadyUsed(guessed: String) -> String {
-        let usedLetter : Set<String> = []
         var message = ""
         
-        if usedLetter.contains(guessed) {
-            message = "You already guessed that!"
+        for char in guessed {
+            if usedLetter.contains(char) {
+                message = "You already guessed that"
+            } else {
+                usedLetter.insert(char)
+            }
         }
+        
         return message
     }
     
     func generateLetters(guessed: String, player1: String) -> String {
         var index = 0
-        var letterIndicies: Set<Int> = []
         
         for char in player1 {
             if guessed == String(char) {
                 hiddenWord[index] = guessed
             }
-                index += 1
-        
+            index += 1
+            
         }
         return hiddenWord.joined(separator: " ")
     }
@@ -51,26 +54,26 @@ class GameModel {
     
     func checkWin(guessed: String, player1: String) -> String {
         var message = ""
-        var usedLetter: Set<String> = []
+        var player1Set : Set<Character> = []
+        
+        for char in player1 {
+            player1Set.insert(char)
+        }
         
         for letter in guessed {
-        if player1.contains(letter) {
-            usedLetter.insert(String(letter))
-        } else {
-            numOfGuessesWrong += 1
-        }
+            if !player1.contains(letter) {
+                numOfGuessesWrong += 1
+            }
         }
         
-        if guessed == player1 {
+        if hiddenWord.joined() == player1 {
             message = "You won!"
         }
         
         if numOfGuessesWrong == 6 {
             message = "You lost!"
         }
-            
-        
-  return message
-}
+        return message
+    }
     
 }
