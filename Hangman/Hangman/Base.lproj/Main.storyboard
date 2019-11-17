@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-ND-y2H">
-                                <rect key="frame" x="20" y="0.0" width="374" height="29"/>
+                                <rect key="frame" x="20" y="273.33333333333331" width="374" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -28,7 +28,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 enter your word on this screen here. Player 2 will try to guess that word in the game." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-ET-Dy0">
-                                <rect key="frame" x="10" y="37" width="394" height="71.666666666666686"/>
+                                <rect key="frame" x="10" y="312.33333333333331" width="394" height="71.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -44,21 +44,31 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="XO9-nP-YCH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HangMan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHc-KT-50T">
+                                <rect key="frame" x="0.0" y="80" width="414" height="72"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92133218050003052" green="0.54128266322662211" blue="0.47753004083033551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="ngP-OY-tSq" firstAttribute="trailing" secondItem="BHc-KT-50T" secondAttribute="trailing" id="3Xc-sY-R1n"/>
                             <constraint firstItem="fvH-ND-y2H" firstAttribute="leading" secondItem="ngP-OY-tSq" secondAttribute="leading" constant="20" id="40j-A6-Wnl"/>
                             <constraint firstItem="Yqz-yT-07z" firstAttribute="centerY" secondItem="CHF-Xk-f4t" secondAttribute="centerY" id="61c-RS-HQF"/>
                             <constraint firstItem="Hz0-RF-9gx" firstAttribute="top" secondItem="Yqz-yT-07z" secondAttribute="bottom" constant="8" id="8h1-yh-nvJ"/>
+                            <constraint firstItem="SrW-ET-Dy0" firstAttribute="top" secondItem="fvH-ND-y2H" secondAttribute="bottom" constant="10" id="9iw-xA-cuV"/>
                             <constraint firstItem="Yqz-yT-07z" firstAttribute="leading" secondItem="ngP-OY-tSq" secondAttribute="leading" constant="20" id="9n4-Sz-44p"/>
+                            <constraint firstItem="Yqz-yT-07z" firstAttribute="top" secondItem="SrW-ET-Dy0" secondAttribute="bottom" constant="20" id="AGq-US-KLy"/>
                             <constraint firstItem="SrW-ET-Dy0" firstAttribute="leading" secondItem="ngP-OY-tSq" secondAttribute="leading" constant="10" id="Brd-XO-tHw"/>
                             <constraint firstItem="ngP-OY-tSq" firstAttribute="trailing" secondItem="Yqz-yT-07z" secondAttribute="trailing" constant="20" id="L9k-YP-PrH"/>
                             <constraint firstAttribute="trailing" secondItem="SrW-ET-Dy0" secondAttribute="trailing" constant="10" id="PBc-cf-zlD"/>
-                            <constraint firstItem="fvH-ND-y2H" firstAttribute="top" secondItem="ngP-OY-tSq" secondAttribute="top" id="TN6-HJ-zxO"/>
                             <constraint firstItem="Yqz-yT-07z" firstAttribute="centerX" secondItem="CHF-Xk-f4t" secondAttribute="centerX" id="TuZ-KL-3YX"/>
+                            <constraint firstItem="BHc-KT-50T" firstAttribute="leading" secondItem="ngP-OY-tSq" secondAttribute="leading" id="UIF-KD-qF7"/>
                             <constraint firstItem="ngP-OY-tSq" firstAttribute="trailing" secondItem="fvH-ND-y2H" secondAttribute="trailing" constant="20" id="b2b-oA-L4Q"/>
-                            <constraint firstItem="SrW-ET-Dy0" firstAttribute="top" secondItem="fvH-ND-y2H" secondAttribute="bottom" constant="8" id="cEu-fj-86s"/>
                             <constraint firstItem="Hz0-RF-9gx" firstAttribute="centerX" secondItem="CHF-Xk-f4t" secondAttribute="centerX" id="d5T-cM-8Ke"/>
+                            <constraint firstItem="BHc-KT-50T" firstAttribute="top" secondItem="ngP-OY-tSq" secondAttribute="top" constant="80" id="ecd-fZ-4Ji"/>
+                            <constraint firstItem="BHc-KT-50T" firstAttribute="centerX" secondItem="CHF-Xk-f4t" secondAttribute="centerX" id="php-Lg-3fh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ngP-OY-tSq"/>
                     </view>
@@ -178,6 +188,7 @@
         <image name="hang1" width="150" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XO9-nP-YCH"/>
         <segue reference="CW0-ba-ldv"/>
     </inferredMetricsTieBreakers>
 </document>
