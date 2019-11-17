@@ -58,9 +58,7 @@ class Player2ScreenViewController: UIViewController {
         }
         
     }
-    func winOrLose() {
-        gameStatus.text = game.checkWin(guessed: player2Guesstf.text ?? "", player1: game.player1WordInput)
-    }
+    
     
     
 }
@@ -83,9 +81,11 @@ extension Player2ScreenViewController: UITextFieldDelegate {
             
             alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: String(char))
             
+            gameStatus.text = game.checkWin(guessed: String(char), player1: game.player1WordInput)
             hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
             
-            winOrLose()
+            
+            
             
             return true
         }

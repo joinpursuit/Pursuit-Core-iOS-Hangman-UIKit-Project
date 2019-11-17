@@ -63,6 +63,9 @@ class GameModel {
         for letter in guessed {
             if !player1.contains(letter) {
                 numOfGuessesWrong += 1
+                if numOfGuessesWrong == 6 {
+                    message = "You lost!"
+                }
             }
         }
         
@@ -70,9 +73,7 @@ class GameModel {
             message = "You won!"
         }
         
-        if numOfGuessesWrong == 6 {
-            message = "You lost!"
-        }
+        
         return message
     }
     
