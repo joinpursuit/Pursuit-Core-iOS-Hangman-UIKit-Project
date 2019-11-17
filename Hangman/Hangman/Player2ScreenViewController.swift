@@ -56,10 +56,17 @@ class Player2ScreenViewController: UIViewController {
             imageDisplayed = #imageLiteral(resourceName: "hang1")
             return imageDisplayed
         }
-        
     }
     
     
+    @IBAction func newGame(_ sender: UIButton) {
+        gameStatus.text = ""
+        game.numOfGuessesWrong = 0
+        game.hiddenWord = [""]
+        wordInPlayLabel.text = ""
+        alreadyGuessedLabel.text = ""
+        
+    }
     
 }
 
@@ -78,19 +85,11 @@ extension Player2ScreenViewController: UITextFieldDelegate {
         
         for char in string.lowercased() {
             wordInPlayLabel.text = game.generateLetters(guessed: String(char), player1: game.player1WordInput)
-            
             alreadyGuessedLabel.text = game.checkAlreadyUsed(guessed: String(char))
-            
             gameStatus.text = game.checkWin(guessed: String(char), player1: game.player1WordInput)
             hangManImage.image = hangManStrikes(numWrong: game.numOfGuessesWrong)
-            
-            
-            
-            
             return true
         }
-        
-        
         return true
     }
     
@@ -98,10 +97,8 @@ extension Player2ScreenViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == player2Guesstf {
             player2Guesstf.resignFirstResponder()
-            
             return false
         }
-        
         return true
     }
     
