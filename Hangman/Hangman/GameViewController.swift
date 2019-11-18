@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     var storeWord: String?
     var word = Word()
     var arr = [String]()
+    var maxGuesses = 6
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,16 @@ class GameViewController: UIViewController {
     // func to check and replace each letter in storeWord variable
     func gameStatus(word: String) {
         
-        var indices: Set<Int> = []
+        let usedLetters: [String] = []
         
-        for (index, char) in storeWord!.enumerated() {
-            if word == String(char) {
-                indices.insert(index)
-                print(indices)
+        for letters in arr {
+            let strLetter = String(letters)
+            if usedLetters.contains(strLetter) {
+                arr += [strLetter]
             }
         }
+        print("Function performed")
+        print(arr)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -62,9 +65,8 @@ class GameViewController: UIViewController {
 extension GameViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("shouldReturn")
-        print(storeWord)
-        gameStatus(word: storeWord ?? "")
-        return false
+        gameStatus(word: textField.text ?? "")
+        return true
     }
 }
 
