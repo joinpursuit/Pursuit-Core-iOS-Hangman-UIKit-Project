@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,13 +12,139 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Hangman" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-rY-VY0">
+                                <rect key="frame" x="80" y="588" width="254" height="254"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rlc-rY-VY0" secondAttribute="height" multiplier="1:1" id="VXa-sA-A8x"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type in a word" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vXx-yd-XLN">
+                                <rect key="frame" x="60" y="115.5" width="294" height="32"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☠️ HANGMAN ☠️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSm-lN-qGH">
+                                <rect key="frame" x="11" y="55" width="392" height="49.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="38"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello there..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjE-ne-LOZ">
+                                <rect key="frame" x="11" y="169.5" width="392" height="31.5"/>
+                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type in a letter e.g. a" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RSR-2Y-P0f">
+                                <rect key="frame" x="50" y="252" width="314" height="32"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a game mode." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcH-DB-iS6">
+                                <rect key="frame" x="11" y="212" width="392" height="29"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right Guess: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuv-jX-hpt">
+                                <rect key="frame" x="22" y="295" width="381" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wrong Guess: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUb-XK-jE1">
+                                <rect key="frame" x="22" y="333.5" width="381" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strike 0/7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbM-b7-0BK">
+                                <rect key="frame" x="158.5" y="549.5" width="97" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="m5C-ox-O6v">
+                                <rect key="frame" x="11" y="372" width="392" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bU9-2G-6f1">
+                                        <rect key="frame" x="0.0" y="0.0" width="192" height="40"/>
+                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                        <state key="normal" title="One-Player Mode">
+                                            <color key="titleColor" red="0.96620899438858032" green="0.39946689744944924" blue="0.66080673114015875" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Nv-lc-NWS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EU9-s1-e3Q">
+                                        <rect key="frame" x="200" y="0.0" width="192" height="40"/>
+                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="21"/>
+                                        <state key="normal" title="Two-Player Mode">
+                                            <color key="titleColor" red="0.96620899439999997" green="0.39946689740000002" blue="0.66080673109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PTJ-jE-ZF8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WSm-lN-qGH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="3QZ-3n-XTe"/>
+                            <constraint firstItem="vXx-yd-XLN" firstAttribute="top" secondItem="WSm-lN-qGH" secondAttribute="bottom" constant="11" id="6Yr-RP-T2K"/>
+                            <constraint firstItem="NjE-ne-LOZ" firstAttribute="top" secondItem="vXx-yd-XLN" secondAttribute="bottom" constant="22" id="7jN-zK-p7k"/>
+                            <constraint firstItem="cbM-b7-0BK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="BGW-Ab-kGZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dcH-DB-iS6" secondAttribute="trailing" constant="11" id="Bib-dO-RXi"/>
+                            <constraint firstItem="xUb-XK-jE1" firstAttribute="top" secondItem="wuv-jX-hpt" secondAttribute="bottom" constant="11" id="CHO-G8-zZQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xUb-XK-jE1" secondAttribute="trailing" constant="11" id="DEB-BS-ZcW"/>
+                            <constraint firstItem="dcH-DB-iS6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="Ojl-Ev-YNr"/>
+                            <constraint firstItem="RSR-2Y-P0f" firstAttribute="top" secondItem="dcH-DB-iS6" secondAttribute="bottom" constant="11" id="SNH-eS-UsV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WSm-lN-qGH" secondAttribute="trailing" constant="11" id="a8A-Pr-9mw"/>
+                            <constraint firstItem="wuv-jX-hpt" firstAttribute="top" secondItem="RSR-2Y-P0f" secondAttribute="bottom" constant="11" id="eRQ-md-O4g"/>
+                            <constraint firstItem="vXx-yd-XLN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="fSe-dh-3yn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RSR-2Y-P0f" secondAttribute="trailing" constant="50" id="fg8-hl-dbD"/>
+                            <constraint firstItem="m5C-ox-O6v" firstAttribute="top" secondItem="xUb-XK-jE1" secondAttribute="bottom" constant="11" id="hZf-05-a4K"/>
+                            <constraint firstItem="xUb-XK-jE1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="iCV-KM-Yx3"/>
+                            <constraint firstItem="RSR-2Y-P0f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="jOl-GC-FHy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NjE-ne-LOZ" secondAttribute="trailing" constant="11" id="kGC-dD-UFy"/>
+                            <constraint firstItem="rlc-rY-VY0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="kHt-nj-BF3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wuv-jX-hpt" secondAttribute="trailing" constant="11" id="l49-OM-eJG"/>
+                            <constraint firstItem="dcH-DB-iS6" firstAttribute="top" secondItem="NjE-ne-LOZ" secondAttribute="bottom" constant="11" id="lpl-Ez-S6C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rlc-rY-VY0" secondAttribute="trailing" constant="80" id="mMm-fo-OXj"/>
+                            <constraint firstItem="WSm-lN-qGH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="p8p-eC-CM1"/>
+                            <constraint firstItem="rlc-rY-VY0" firstAttribute="top" secondItem="cbM-b7-0BK" secondAttribute="bottom" constant="11" id="pXj-WO-MER"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m5C-ox-O6v" secondAttribute="trailing" constant="11" id="sCc-gu-0Ku"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rlc-rY-VY0" secondAttribute="bottom" constant="20" id="tDL-Je-rgz"/>
+                            <constraint firstItem="NjE-ne-LOZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="uhP-9X-KZq"/>
+                            <constraint firstItem="wuv-jX-hpt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="vgL-TK-ggu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXx-yd-XLN" secondAttribute="trailing" constant="60" id="wa8-fj-4HW"/>
+                            <constraint firstItem="m5C-ox-O6v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="11" id="wnj-UX-w5f"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="guessTF" destination="RSR-2Y-P0f" id="GJ9-EX-qA1"/>
+                        <outlet property="message" destination="dcH-DB-iS6" id="od4-Dj-PZv"/>
+                        <outlet property="rightGuess" destination="wuv-jX-hpt" id="x0d-Ff-8kl"/>
+                        <outlet property="strikeImageDisplay" destination="rlc-rY-VY0" id="39i-vk-WkB"/>
+                        <outlet property="strikeNumDisplay" destination="cbM-b7-0BK" id="X0K-HK-Far"/>
+                        <outlet property="wordDisplay" destination="NjE-ne-LOZ" id="k0i-wC-xkG"/>
+                        <outlet property="wordTF" destination="vXx-yd-XLN" id="4Cg-Ru-ggC"/>
+                        <outlet property="wrongGuess" destination="xUb-XK-jE1" id="ytB-Xw-BJg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
